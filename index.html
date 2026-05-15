@@ -819,26 +819,89 @@
     </section>
 
     <section id="contact">
-        <div class="container">
-            <h2 class="section-title">Получите консультацию</h2>
-            <div class="form-card">
-                <form action="#" method="post">
-                    <label>Ваше имя</label>
-                    <input type="text" placeholder="Иван Иванов" required>
-                    <label>Телефон</label>
-                    <input type="text" placeholder="+7 913 376 18 60" required>
-                    <label>Коротко опишите ситуацию</label>
-                    <textarea rows="3" placeholder="Например: построили дом/квартиру с дефектами..."></textarea>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="consent" required>
-                        <label for="consent">Я согласен на <a href="#">обработку персональных данных</a> в соответствии с политикой конфиденциальности</label>
-                    </div>
-                    <button type="submit">Перезвоните мне</button>
-                    <p style="font-size: 12px; margin-top: 20px; text-align:center;">Нажимая на кнопку, вы соглашаетесь с обработкой данных. Свяжемся в течение суток.</p>
-                </form>
-            </div>
+    <div class="container">
+        <h2 class="section-title">Получите консультацию</h2>
+        <div class="form-card">
+            <form id="tgForm" method="post">
+                <label>Ваше имя</label>
+                <input type="text" id="name" placeholder="Иван Иванов" required>
+                <label>Телефон</label>
+                <input type="text" id="phone" placeholder="+7 913 376 18 60" required>
+                <label>Коротко опишите ситуацию</label>
+                <textarea id="message" rows="3" placeholder="Например: построили дом/квартиру с дефектами..."></textarea>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="consent" required>
+                    <label for="consent">Я согласен на <a href="#">обработку персональных данных</a></label>
+                </div>
+                <button type="submit">Перезвоните мне</button>
+                <p style="font-size: 12px; margin-top: 20px; text-align:center;">Нажимая кнопку, вы даёте согласие на обработку данных и получаете консультацию.</p>
+            </form>
         </div>
-    </section>
+    </div>
+</section>
+
+<script>
+    // ВАЖНО: замените на свои данные от бота
+    const BOT_TOKEN = '8809527400:AAF38_28VZ5fC7YdGHwhZrrFd2NVUKTIrzM';   // сюда вставьте токен, который дал BotFather
+    const CHAT_ID = '5362106992';        // сюда вставьте ID из @userinfobot
+
+    const form = document.getElementById('tgForm');
+    if (form) {
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Собираем данные из полей
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const messageText = document.getElementById('message').value.trim();
+            const consent = document.getElementById('consent').checked;
+
+            if (!name || !phone || !messageText) {
+                alert('Пожалуйста, заполните все поля');
+                return;
+            }
+            if (!consent) {
+                alert('Необходимо ваше согласие на обработку персональных данных');
+                return;
+            }
+
+            // Формируем красивое сообщение для Telegram
+            const text = `📋 *Новая заявка с сайта*\n\n👤 *Имя:* ${name}\n📞 *Телефон:* ${phone}\n💬 *Сообщение:* ${messageText}`;
+
+            // Отключаем кнопку на время отправки
+            const submitBtn = form.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Отправка...';
+
+            try {
+                const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: CHAT_ID,
+                        text: text,
+                        parse_mode: 'Markdown'
+                    })
+                });
+
+                const result = await response.json();
+                if (result.ok) {
+                    alert('✅ Заявка отправлена! Мы свяжемся с вами в ближайшее время.');
+                    form.reset();
+                } else {
+                    console.error('Ошибка Telegram API:', result);
+                    alert('❌ Ошибка отправки. Попробуйте позже или напишите в Telegram.');
+                }
+            } catch (error) {
+                console.error('Ошибка сети:', error);
+                alert('❌ Ошибка соединения. Проверьте интернет и попробуйте снова.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Перезвоните мне';
+            }
+        });
+    }
+</script>
 
     <footer>
         <div class="container">
