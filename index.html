@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>ФАВОР СИБИРЬ | Юридическая компания Павла Машко</title>
     <link rel="icon" type="image/png" href="favicon.png">
+    <!-- Remix Icons (современные иконки) -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -206,6 +208,7 @@
         .direction-icon {
             font-size: 2.2rem;
             flex-shrink: 0;
+            line-height: 1;
         }
         .direction-text h3 {
             font-size: 1.25rem;
@@ -567,6 +570,12 @@
             padding: 40px 0;
             font-size: 0.9rem;
         }
+        /* Дополнительный стиль для выравнивания иконок в кнопках и ссылках */
+        .btn-tg i, .contact-header a i, .quick-btn i {
+            vertical-align: middle;
+            margin-right: 4px;
+            font-size: 1.1em;
+        }
         @media (max-width: 800px) {
             .hero-text h2 { font-size: 2.2rem; }
             .package-card { flex-basis: 100%; }
@@ -600,7 +609,7 @@
                 <a href="#reviews">Отзывы</a>
                 <a href="#tg-channel">Блог</a>
                 <a href="#contact">Контакты</a>
-                <a href="https://t.me/Favor_sibir" target="_blank" class="contact-header tg-header" style="background:transparent;">📱 Telegram</a>
+                <a href="https://t.me/Favor_sibir" target="_blank" class="contact-header tg-header" style="background:transparent;"><i class="ri-telegram-line"></i> Telegram</a>
                 <a href="#contact" class="contact-header">+7 913 376 18 60</a>
             </div>
         </div>
@@ -627,42 +636,42 @@
             <h2 class="section-title">Основные направления практики</h2>
             <div class="directions-grid">
                 <div class="direction-card">
-                    <div class="direction-icon">🏗️</div>
+                    <div class="direction-icon"><i class="ri-building-line"></i></div>
                     <div class="direction-text">
                         <h3>Недвижимость / споры с застройщиками</h3>
                         <p>Защита прав дольщиков, споры по ИЖС, качество строительства, сроки сдачи.</p>
                     </div>
                 </div>
                 <div class="direction-card">
-                    <div class="direction-icon">🚗</div>
+                    <div class="direction-icon"><i class="ri-car-line"></i></div>
                     <div class="direction-text">
                         <h3>Страхование и ДТП</h3>
                         <p>Споры по ОСАГО, КАСКО, взыскание страховых выплат, оценка ущерба.</p>
                     </div>
                 </div>
                 <div class="direction-card">
-                    <div class="direction-icon">💰</div>
+                    <div class="direction-icon"><i class="ri-money-cny-circle-line"></i></div>
                     <div class="direction-text">
                         <h3>Взыскание / защита от взыскания</h3>
                         <p>Долги, банкротство, исполнительное производство, оспаривание сделок.</p>
                     </div>
                 </div>
                 <div class="direction-card">
-                    <div class="direction-icon">👨‍👩‍👧</div>
+                    <div class="direction-icon"><i class="ri-heart-line"></i></div>
                     <div class="direction-text">
                         <h3>Семейное и наследственное право</h3>
                         <p>Раздел имущества, алименты, споры об опеке, наследство, завещания.</p>
                     </div>
                 </div>
                 <div class="direction-card">
-                    <div class="direction-icon">⚖️</div>
+                    <div class="direction-icon"><i class="ri-scales-3-line"></i></div>
                     <div class="direction-text">
                         <h3>Арбитражное судопроизводство</h3>
                         <p>Споры из договоров подряда, поставки, аренды, купли-продажи, помощь бизнесу.</p>
                     </div>
                 </div>
                 <div class="direction-card">
-                    <div class="direction-icon">🏢</div>
+                    <div class="direction-icon"><i class="ri-briefcase-line"></i></div>
                     <div class="direction-text">
                         <h3>Трудовые споры</h3>
                         <p>Защита работников и работодателей, незаконное увольнение, взыскание зарплаты.</p>
@@ -794,10 +803,10 @@
     <section id="tg-channel">
         <div class="container">
             <div class="tg-channel-card">
-                <h3>📱 Авторский Telegram-канал Павла Машко</h3>
+                <h3><i class="ri-telegram-line"></i> Авторский Telegram-канал Павла Машко</h3>
                 <p>Разборы судебных дел, внутренняя кухня юриспруденции, новости законодательства, видео-блоги и экспертные комментарии. Подпишитесь, чтобы быть в курсе.</p>
                 <a href="https://t.me/pavelmashko" target="_blank" class="btn-tg">
-                    ✈️ Подписаться → @pavelmashko
+                    <i class="ri-telegram-line"></i> Подписаться → @pavelmashko
                 </a>
                 <div class="channel-features">
                     <span class="channel-feature">📖 Разборы дел</span>
@@ -833,8 +842,8 @@
 
     <footer>
         <div class="container">
+            <p><i class="ri-mail-line"></i> favorsibir@mail.ru | <i class="ri-phone-line"></i> +7 913 376 18 60 | <i class="ri-telegram-line"></i> Telegram: @Favor_sibir</p>
             <p>ИП Машко Павел Игоревич | ОГРНИП: 321665800167760 | ИНН: 661588362049</p>
-            <p>📧 favorsibir@mail.ru | 📞 +7 913 376 18 60 | ✈️ Telegram: @Favor_sibir</p>
             <p>© 2026 «ФАВОР СИБИРЬ» — юридическая помощь со всей ответственностью.</p>
         </div>
     </footer>
@@ -1057,6 +1066,9 @@
                 cursor: pointer;
                 color: ${CONFIG.primaryColor};
                 transition: 0.2s;
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
             }
             .quick-btn:hover {
                 background: ${CONFIG.primaryColor};
@@ -1091,11 +1103,11 @@
                     <div class="message bot">${CONFIG.welcomeMessage}</div>
                 </div>
                 <div class="quick-buttons" id="quickButtons">
-                    <button class="quick-btn" data-question="Неустойка с застройщика">🏗️ Неустойка</button>
-                    <button class="quick-btn" data-question="ДТП и страховые споры">🚗 ДТП</button>
-                    <button class="quick-btn" data-question="Развод и наследство">🏠 Семейные споры</button>
-                    <button class="quick-btn" data-question="Спор с подрядчиком ИЖС">🔨 ИЖС</button>
-                    <button class="quick-btn" data-question="Записаться на консультацию">📞 Консультация</button>
+                    <button class="quick-btn" data-question="Неустойка с застройщика"><i class="ri-building-line"></i> Неустойка</button>
+                    <button class="quick-btn" data-question="ДТП и страховые споры"><i class="ri-car-line"></i> ДТП</button>
+                    <button class="quick-btn" data-question="Развод и наследство"><i class="ri-home-heart-line"></i> Семейные споры</button>
+                    <button class="quick-btn" data-question="Спор с подрядчиком ИЖС"><i class="ri-hammer-line"></i> ИЖС</button>
+                    <button class="quick-btn" data-question="Записаться на консультацию"><i class="ri-customer-service-line"></i> Консультация</button>
                 </div>
                 <div class="chat-input-area">
                     <input type="text" id="chatInput" placeholder="Напишите вопрос...">
