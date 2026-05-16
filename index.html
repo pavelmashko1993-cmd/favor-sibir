@@ -1304,5 +1304,30 @@
         });
     })();
     </script>
+    
+    <script>
+    // Выравнивание высоты блоков цены в карточках услуг
+    function equalizePriceHeights() {
+        const priceBlocks = document.querySelectorAll('.package-card .price');
+        if (!priceBlocks.length) return;
+        let maxHeight = 0;
+        // Сбросим высоту, чтобы получить реальную
+        priceBlocks.forEach(block => {
+            block.style.height = 'auto';
+            block.style.minHeight = '0';
+        });
+        // Найдём максимальную высоту
+        priceBlocks.forEach(block => {
+            const h = block.offsetHeight;
+            if (h > maxHeight) maxHeight = h;
+        });
+        // Установим одинаковую высоту
+        priceBlocks.forEach(block => {
+            block.style.height = maxHeight + 'px';
+        });
+    }
+    window.addEventListener('load', equalizePriceHeights);
+    window.addEventListener('resize', equalizePriceHeights);
+</script>
 </body>
 </html>
