@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>ФАВОР СИБИРЬ | Юридическая компания Павла Машко</title>
     <link rel="icon" type="image/png" href="favicon.png">
-    <!-- Remix Icons (современные иконки) -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
     <style>
         * {
@@ -227,21 +226,20 @@
             align-items: stretch;
         }
         @media (max-width: 1000px) {
-    .packages {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-@media (max-width: 640px) {
-    .packages {
-        grid-template-columns: 1fr;
-    }
-}
+            .packages {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 640px) {
+            .packages {
+                grid-template-columns: 1fr;
+            }
+        }
         .package-card {
             background: white;
             border-radius: 32px;
             box-shadow: 0 12px 24px -12px rgba(0,0,0,0.08);
             padding: 32px 24px;
-            flex: 1 1 280px;
             transition: 0.25s ease;
             border: 1px solid #eef2f5;
             display: flex;
@@ -263,6 +261,9 @@
             font-weight: 800;
             color: #c85c17;
             margin: 20px 0 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .price small {
             font-size: 0.9rem;
@@ -579,7 +580,6 @@
             padding: 40px 0;
             font-size: 0.9rem;
         }
-        /* Дополнительный стиль для выравнивания иконок в кнопках и ссылках */
         .btn-tg i, .contact-header a i, .quick-btn i {
             vertical-align: middle;
             margin-right: 4px;
@@ -587,7 +587,6 @@
         }
         @media (max-width: 800px) {
             .hero-text h2 { font-size: 2.2rem; }
-            .package-card { flex-basis: 100%; }
             .section-title { font-size: 1.8rem; }
             .header-inner { flex-direction: column; text-align: center; }
             .nav-links { justify-content: center; }
@@ -602,38 +601,6 @@
                 text-align: center;
             }
         }
-        .note-text {
-    font-size: 0.9rem;
-    color: #475569;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin: 0;
-    white-space: normal;
-    text-align: center;
-    justify-content: center;
-}
-.note-text i {
-    font-size: 1.2rem;
-    vertical-align: middle;
-}
-@media (min-width: 768px) {
-    .note-text {
-        white-space: nowrap;
-    }
-}
-   /* Одинаковая высота верхней части карточки */
-.package-card .price {
-    min-height: 110px; /* подберите нужное значение */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-        .package-card .price {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
     </style>
 </head>
 <body>
@@ -723,79 +690,87 @@
     </section>
 
     <section id="packages">
-    <div class="container">
-        <h2 class="section-title">Пакеты услуг</h2>
-        <div class="packages">
-            <div class="package-card">
-    <div class="package-name">Базовый</div>
-    <div class="price">
-        50 000 ₽ +15% <span style="font-size: 1rem; font-weight: 500; color: #6b7280;">или</span> 30%
-        <span style="display:block; font-size:0.9rem; font-weight:normal;">при цене иска до 1 млн ₽</span>
-    </div>
-    <ul class="package-desc">
-        <li>Анализ документов</li>
-        <li>Иск + ведение в суде первой инстанции</li>
-        <li>Апелляция / кассация</li>
-        <li>Исполнительное производство</li>
-        <li>Отчеты в Telegram-боте</li>
-        <li>Два звонка юристу</li>
-    </ul>
-    <a href="https://t.me/Favor_sibir" target="_blank" class="btn-outline">Выбрать</a>
-</div>
+        <div class="container">
+            <h2 class="section-title">Пакеты услуг</h2>
+            <div class="packages">
+                <div class="package-card">
+                    <div class="package-name">Базовый</div>
+                    <div class="price">
+                        50 000 ₽ +15% <span style="font-size: 1rem; font-weight: 500; color: #6b7280;">или</span> 30%
+                        <span style="display:block; font-size:0.9rem; font-weight:normal;">при цене иска до 1 млн ₽</span>
+                    </div>
+                    <ul class="package-desc">
+                        <li>Анализ документов</li>
+                        <li>Иск + ведение в суде первой инстанции</li>
+                        <li>Апелляция / кассация</li>
+                        <li>Исполнительное производство</li>
+                        <li>Отчеты в Telegram-боте</li>
+                        <li>Два звонка юристу</li>
+                    </ul>
+                    <a href="https://t.me/Favor_sibir" target="_blank" class="btn-outline">Выбрать</a>
+                </div>
 
-            <div class="package-card">
-                <div class="package-name">Без оплаты</div>
-                <div class="price">35% от взысканной суммы <span style="display:block; font-size:0.9rem; font-weight:normal;">при цене иска от 1 млн до 10 млн ₽</span></div>
-                <ul class="package-desc">
-                    <li>Анализ документов</li>
-                    <li>Иск + ведение в суде первой инстанции</li>
-                    <li>Апелляция / кассация</li>
-                    <li>Исполнительное производство</li>
-                    <li>Отчеты в Telegram-боте</li>
-                    <li>Два звонка юристу</li>
-                    <li>Оплата только после получения денег</li>
-                </ul>
-                <a href="https://t.me/Favor_sibir" target="_blank" class="btn-outline">Выбрать</a>
+                <div class="package-card">
+                    <div class="package-name">Без оплаты</div>
+                    <div class="price">
+                        35% от взысканной суммы
+                        <span style="display:block; font-size:0.9rem; font-weight:normal;">при цене иска от 1 млн до 10 млн ₽</span>
+                    </div>
+                    <ul class="package-desc">
+                        <li>Анализ документов</li>
+                        <li>Иск + ведение в суде первой инстанции</li>
+                        <li>Апелляция / кассация</li>
+                        <li>Исполнительное производство</li>
+                        <li>Отчеты в Telegram-боте</li>
+                        <li>Два звонка юристу</li>
+                        <li>Оплата только после получения денег</li>
+                    </ul>
+                    <a href="https://t.me/Favor_sibir" target="_blank" class="btn-outline">Выбрать</a>
+                </div>
+
+                <div class="package-card">
+                    <div class="package-name">Решение</div>
+                    <div class="price">
+                        80 000 ₽ +20%
+                        <span style="display:block; font-size:0.9rem; font-weight:normal;">при цене иска от 1 млн до 10 млн ₽</span>
+                    </div>
+                    <ul class="package-desc">
+                        <li>Анализ документов</li>
+                        <li>Иск + ведение в суде первой инстанции</li>
+                        <li>Апелляция / кассация</li>
+                        <li>Исполнительное производство</li>
+                        <li>Отчеты в Telegram-боте</li>
+                        <li>Два звонка юристу</li>
+                    </ul>
+                    <a href="https://t.me/Favor_sibir" target="_blank" class="btn-outline">Выбрать</a>
+                </div>
+
+                <div class="package-card">
+                    <div class="package-name">Персональный</div>
+                    <div class="price">
+                        Индивидуальный расчёт
+                        <span style="display:block; font-size:0.9rem; font-weight:normal;">при цене иска более 10 млн ₽</span>
+                    </div>
+                    <ul class="package-desc">
+                        <li>Полное ведение дела Павлом Машко</li>
+                        <li>Анализ документов</li>
+                        <li>Иск + ведение в суде первой инстанции</li>
+                        <li>Апелляция / кассация</li>
+                        <li>Исполнительное производство</li>
+                        <li>Отчеты в Telegram-боте</li>
+                        <li>Неограниченное количество звонков</li>
+                    </ul>
+                    <a href="https://t.me/Favor_sibir" target="_blank" class="btn-outline">Выбрать</a>
+                </div>
             </div>
 
-            <div class="package-card">
-                <div class="package-name">Решение</div>
-                <div class="price">80 000 ₽ +20% <span style="display:block; font-size:0.9rem; font-weight:normal;">при цене иска от 1 млн до 10 млн ₽</span></div>
-                <ul class="package-desc">
-                    <li>Анализ документов</li>
-                    <li>Иск + ведение в суде первой инстанции</li>
-                    <li>Апелляция / кассация</li>
-                    <li>Исполнительное производство</li>
-                    <li>Отчеты в Telegram-боте</li>
-                    <li>Два звонка юристу</li>
-                </ul>
-                <a href="https://t.me/Favor_sibir" target="_blank" class="btn-outline">Выбрать</a>
-            </div>
-
-            <div class="package-card">
-                <div class="package-name">Персональный</div>
-                <div class="price">Индивидуальный расчёт <span style="display:block; font-size:0.9rem; font-weight:normal;">при цене иска более 10 млн ₽</span></div>
-                <ul class="package-desc">
-                    <li>Полное ведение дела Павлом Машко</li>
-                    <li>Анализ документов</li>
-                    <li>Иск + ведение в суде первой инстанции</li>
-                    <li>Апелляция / кассация</li>
-                    <li>Исполнительное производство</li>
-                    <li>Отчеты в Telegram-боте</li>
-                    <li>Неограниченное количество звонков</li>
-                </ul>
-                <a href="https://t.me/Favor_sibir" target="_blank" class="btn-outline">Выбрать</a>
+            <div class="note-container" style="text-align: center; margin-top: 40px; padding: 20px; background: #f8fafc; border-radius: 20px; max-width: 1000px; width: 100%; margin-left: auto; margin-right: auto;">
+                <i class="ri-information-line" style="font-size: 1.2rem;"></i> 
+                <span>Итоговая стоимость определяется после анализа документов — она зависит от сложности дела и объёма работы.</span>
             </div>
         </div>
+    </section>
 
-        <!-- Блок с примечанием об определении стоимости -->
-        <div class="note-container" style="text-align: center; margin-top: 40px; padding: 20px; background: #f8fafc; border-radius: 20px; max-width: 1000px; width: 100%; margin-left: auto; margin-right: auto;">
-        <i class="ri-information-line" style="font-size: 1.2rem;"></i> 
-        <span>Итоговая стоимость определяется после анализа документов — она зависит от сложности дела и объёма работы.</span>
-    </p>
-</div>
-</section>
-    
     <section id="about" class="about">
         <div class="container about-grid">
             <div class="about-text">
@@ -873,7 +848,7 @@
     </footer>
 
     <script>
-        // Карусель отзывов (ваша текущая)
+        // Карусель отзывов
         const reviewImages = [
             "https://via.placeholder.com/600x400?text=Скриншот+благодарности+1",
             "https://via.placeholder.com/600x400?text=Скриншот+благодарности+2",
@@ -937,70 +912,79 @@
     </script>
 
     <script>
-    // ОТПРАВКА ФОРМЫ НА ВЕБХУК MAKE.COM
-    const form = document.getElementById('tgForm');
-    const submitBtn = document.getElementById('submitBtn');
+        // Отправка формы на вебхук Make.com
+        const form = document.getElementById('tgForm');
+        const submitBtn = document.getElementById('submitBtn');
 
-    form.addEventListener('submit', async function(e) {
-        e.preventDefault();
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
 
-        // Собираем данные
-        const name = document.getElementById('name').value.trim();
-        const phone = document.getElementById('phone').value.trim();
-        const message = document.getElementById('message').value.trim();
-        const consent = document.getElementById('consent').checked;
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const message = document.getElementById('message').value.trim();
+            const consent = document.getElementById('consent').checked;
 
-        if (!name || !phone || !message) {
-            alert('Пожалуйста, заполните все поля');
-            return;
-        }
-        if (!consent) {
-            alert('Необходимо ваше согласие на обработку персональных данных');
-            return;
-        }
-
-        // Формируем объект для отправки
-        const formData = {
-            name: name,
-            phone: phone,
-            message: message,
-            consent: consent
-        };
-
-        // ВАЖНО: ЗАМЕНИТЕ ЭТУ ССЫЛКУ НА ВАШ РЕАЛЬНЫЙ ВЕБХУК ИЗ MAKE.COM
-        const WEBHOOK_URL = 'https://hook.eu1.make.com/zqnio8l4f5q1t1imhbvxjkxmpc3wmslh';
-
-        // Отключаем кнопку на время отправки
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Отправка...';
-
-        try {
-            const response = await fetch(WEBHOOK_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
-
-            if (response.ok) {
-                alert('✅ Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
-                form.reset();
-            } else {
-                alert('❌ Ошибка при отправке. Пожалуйста, попробуйте позже или напишите в Telegram.');
+            if (!name || !phone || !message) {
+                alert('Пожалуйста, заполните все поля');
+                return;
             }
-        } catch (error) {
-            console.error('Ошибка:', error);
-            alert('❌ Не удалось отправить заявку. Проверьте соединение или попробуйте позже.');
-        } finally {
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Перезвоните мне';
-        }
-    });
+            if (!consent) {
+                alert('Необходимо ваше согласие на обработку персональных данных');
+                return;
+            }
+
+            const formData = { name, phone, message, consent };
+            const WEBHOOK_URL = 'https://hook.eu1.make.com/zqnio8l4f5q1t1imhbvxjkxmpc3wmslh';
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Отправка...';
+
+            try {
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+                if (response.ok) {
+                    alert('✅ Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
+                    form.reset();
+                } else {
+                    alert('❌ Ошибка при отправке. Пожалуйста, попробуйте позже или напишите в Telegram.');
+                }
+            } catch (error) {
+                console.error('Ошибка:', error);
+                alert('❌ Не удалось отправить заявку. Проверьте соединение или попробуйте позже.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Перезвоните мне';
+            }
+        });
     </script>
 
-    <!-- Чат-бот (ваш оригинальный, я его не трогал) -->
     <script>
+        // Выравнивание высоты блоков цены в карточках услуг
+        function equalizePriceHeights() {
+            const priceBlocks = document.querySelectorAll('.package-card .price');
+            if (!priceBlocks.length) return;
+            let maxHeight = 0;
+            priceBlocks.forEach(block => {
+                block.style.height = 'auto';
+                block.style.minHeight = '0';
+            });
+            priceBlocks.forEach(block => {
+                const h = block.offsetHeight;
+                if (h > maxHeight) maxHeight = h;
+            });
+            priceBlocks.forEach(block => {
+                block.style.height = maxHeight + 'px';
+            });
+        }
+        window.addEventListener('load', equalizePriceHeights);
+        window.addEventListener('resize', equalizePriceHeights);
+    </script>
+
+    <script>
+    // Чат-бот
     (function() {
         const CONFIG = {
             botName: "Юрист-консультант",
@@ -1309,30 +1293,5 @@
         });
     })();
     </script>
-    
-    <script>
-    // Выравнивание высоты блоков цены в карточках услуг
-    function equalizePriceHeights() {
-        const priceBlocks = document.querySelectorAll('.package-card .price');
-        if (!priceBlocks.length) return;
-        let maxHeight = 0;
-        // Сбросим высоту, чтобы получить реальную
-        priceBlocks.forEach(block => {
-            block.style.height = 'auto';
-            block.style.minHeight = '0';
-        });
-        // Найдём максимальную высоту
-        priceBlocks.forEach(block => {
-            const h = block.offsetHeight;
-            if (h > maxHeight) maxHeight = h;
-        });
-        // Установим одинаковую высоту
-        priceBlocks.forEach(block => {
-            block.style.height = maxHeight + 'px';
-        });
-    }
-    window.addEventListener('load', equalizePriceHeights);
-    window.addEventListener('resize', equalizePriceHeights);
-</script>
 </body>
 </html>
