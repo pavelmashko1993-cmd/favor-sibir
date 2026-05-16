@@ -263,6 +263,7 @@
             margin: 20px 0 12px;
             display: flex;
             flex-direction: column;
+            min-height: 105px;
         }
         .price small {
             font-size: 0.9rem;
@@ -953,28 +954,7 @@
     </script>
 
     <script>
-        function equalizePriceHeights() {
-            const priceBlocks = document.querySelectorAll('.package-card .price');
-            if (!priceBlocks.length) return;
-            let maxHeight = 0;
-            priceBlocks.forEach(block => {
-                block.style.height = 'auto';
-                block.style.minHeight = '0';
-            });
-            priceBlocks.forEach(block => {
-                const h = block.offsetHeight;
-                if (h > maxHeight) maxHeight = h;
-            });
-            priceBlocks.forEach(block => {
-                block.style.height = maxHeight + 'px';
-            });
-        }
-        window.addEventListener('load', equalizePriceHeights);
-        window.addEventListener('resize', equalizePriceHeights);
-    </script>
-
-    <script>
-    // Чат-бот (оригинальный, без изменений)
+    // Чат-бот (оригинальный)
     (function() {
         const CONFIG = {
             botName: "Юрист-консультант",
