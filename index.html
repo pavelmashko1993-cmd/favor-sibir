@@ -263,7 +263,6 @@
             margin: 20px 0 12px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
         }
         .price small {
             font-size: 0.9rem;
@@ -848,7 +847,6 @@
     </footer>
 
     <script>
-        // Карусель отзывов
         const reviewImages = [
             "https://via.placeholder.com/600x400?text=Скриншот+благодарности+1",
             "https://via.placeholder.com/600x400?text=Скриншот+благодарности+2",
@@ -912,18 +910,14 @@
     </script>
 
     <script>
-        // Отправка формы на вебхук Make.com
         const form = document.getElementById('tgForm');
         const submitBtn = document.getElementById('submitBtn');
-
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
-
             const name = document.getElementById('name').value.trim();
             const phone = document.getElementById('phone').value.trim();
             const message = document.getElementById('message').value.trim();
             const consent = document.getElementById('consent').checked;
-
             if (!name || !phone || !message) {
                 alert('Пожалуйста, заполните все поля');
                 return;
@@ -932,13 +926,10 @@
                 alert('Необходимо ваше согласие на обработку персональных данных');
                 return;
             }
-
             const formData = { name, phone, message, consent };
             const WEBHOOK_URL = 'https://hook.eu1.make.com/zqnio8l4f5q1t1imhbvxjkxmpc3wmslh';
-
             submitBtn.disabled = true;
             submitBtn.textContent = 'Отправка...';
-
             try {
                 const response = await fetch(WEBHOOK_URL, {
                     method: 'POST',
@@ -962,7 +953,6 @@
     </script>
 
     <script>
-        // Выравнивание высоты блоков цены в карточках услуг
         function equalizePriceHeights() {
             const priceBlocks = document.querySelectorAll('.package-card .price');
             if (!priceBlocks.length) return;
@@ -984,7 +974,7 @@
     </script>
 
     <script>
-    // Чат-бот
+    // Чат-бот (оригинальный, без изменений)
     (function() {
         const CONFIG = {
             botName: "Юрист-консультант",
