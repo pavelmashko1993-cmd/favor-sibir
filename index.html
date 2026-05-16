@@ -622,8 +622,12 @@
         white-space: nowrap;
     }
 }
-        .package-card .price {
-    min-height: 110px; /* фиксируем минимальную высоту для блока цены */
+   /* Одинаковая высота верхней части карточки */
+.package-card .price {
+    min-height: 105px; /* подберите нужное значение */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
     </style>
 </head>
