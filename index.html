@@ -263,7 +263,6 @@
             margin: 20px 0 12px;
             display: flex;
             flex-direction: column;
-            min-height: 105px;
         }
         .price small {
             font-size: 0.9rem;
@@ -272,7 +271,7 @@
         }
         .package-desc {
             list-style: none;
-            margin: 24px 0;
+            margin: 0 0 24px 0;  /* убран верхний отступ */
             flex-grow: 1;
         }
         .package-desc li {
@@ -954,7 +953,27 @@
     </script>
 
     <script>
-    // Чат-бот (оригинальный)
+        function equalizePriceHeights() {
+            const priceBlocks = document.querySelectorAll('.package-card .price');
+            if (!priceBlocks.length) return;
+            let maxHeight = 0;
+            priceBlocks.forEach(block => {
+                block.style.height = 'auto';
+                block.style.minHeight = '0';
+            });
+            priceBlocks.forEach(block => {
+                const h = block.offsetHeight;
+                if (h > maxHeight) maxHeight = h;
+            });
+            priceBlocks.forEach(block => {
+                block.style.height = maxHeight + 'px';
+            });
+        }
+        window.addEventListener('load', equalizePriceHeights);
+        window.addEventListener('resize', equalizePriceHeights);
+    </script>
+
+    <script>
     (function() {
         const CONFIG = {
             botName: "Юрист-консультант",
