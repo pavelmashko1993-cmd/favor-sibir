@@ -221,12 +221,21 @@
             line-height: 1.4;
         }
         .packages {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
             gap: 30px;
-            justify-content: center;
             align-items: stretch;
         }
+        @media (max-width: 1000px) {
+    .packages {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 640px) {
+    .packages {
+        grid-template-columns: 1fr;
+    }
+}
         .package-card {
             background: white;
             border-radius: 32px;
