@@ -219,11 +219,12 @@
             color: #475569;
             line-height: 1.4;
         }
+        /* Стили для пакетов услуг */
         .packages {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 30px;
-            align-items: stretch;
+            align-items: start;
         }
         @media (max-width: 1000px) {
             .packages {
@@ -238,32 +239,30 @@
         .package-card {
             background: white;
             border-radius: 32px;
-            box-shadow: 0 12px 24px -12px rgba(0,0,0,0.08);
-            padding: 32px 24px;
-            transition: 0.25s ease;
             border: 1px solid #eef2f5;
+            padding: 28px 24px;
+            transition: 0.25s;
             display: flex;
             flex-direction: column;
+            height: 100%;
         }
         .package-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 24px 32px -16px rgba(0,0,0,0.12);
+            transform: translateY(-4px);
             border-color: #c85c17;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.08);
         }
         .package-name {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 800;
-            margin-bottom: 8px;
             color: #0a2a3a;
+            margin-bottom: 16px;
         }
         .price {
             font-size: 2rem;
             font-weight: 800;
             color: #c85c17;
-            margin: 20px 0 12px;
-            display: flex;
-            flex-direction: column;
-            min-height: 105px;
+            margin: 0 0 20px 0;
+            /* высота будет задана скриптом */
         }
         .price small {
             font-size: 0.9rem;
@@ -272,13 +271,16 @@
         }
         .package-desc {
             list-style: none;
-            margin: 24px 0;
+            margin: 0 0 24px 0;
+            padding: 0;
             flex-grow: 1;
         }
         .package-desc li {
             margin-bottom: 12px;
-            padding-left: 28px;
+            padding-left: 26px;
             position: relative;
+            font-size: 0.95rem;
+            line-height: 1.4;
         }
         .package-desc li::before {
             content: "✓";
@@ -294,19 +296,18 @@
             padding: 12px;
             border-radius: 60px;
             font-weight: 700;
-            cursor: pointer;
-            width: 100%;
-            margin-top: auto;
-            transition: 0.2s;
-            font-size: 1rem;
             text-align: center;
             display: block;
+            width: 100%;
             text-decoration: none;
+            transition: 0.2s;
+            margin-top: auto;
         }
         .btn-outline:hover {
             background: #c85c17;
             color: white;
         }
+        /* Остальные стили (таблица, about, форма, карусель) */
         .table-wrapper {
             overflow-x: auto;
             border-radius: 24px;
@@ -693,6 +694,7 @@
         <div class="container">
             <h2 class="section-title">Пакеты услуг</h2>
             <div class="packages">
+                <!-- Базовый -->
                 <div class="package-card">
                     <div class="package-name">Базовый</div>
                     <div class="price">
@@ -709,7 +711,7 @@
                     </ul>
                     <a href="https://t.me/Favor_sibir" target="_blank" class="btn-outline">Выбрать</a>
                 </div>
-
+                <!-- Без оплаты -->
                 <div class="package-card">
                     <div class="package-name">Без оплаты</div>
                     <div class="price">
@@ -727,7 +729,7 @@
                     </ul>
                     <a href="https://t.me/Favor_sibir" target="_blank" class="btn-outline">Выбрать</a>
                 </div>
-
+                <!-- Решение -->
                 <div class="package-card">
                     <div class="package-name">Решение</div>
                     <div class="price">
@@ -744,7 +746,7 @@
                     </ul>
                     <a href="https://t.me/Favor_sibir" target="_blank" class="btn-outline">Выбрать</a>
                 </div>
-
+                <!-- Персональный -->
                 <div class="package-card">
                     <div class="package-name">Персональный</div>
                     <div class="price">
@@ -763,10 +765,8 @@
                     <a href="https://t.me/Favor_sibir" target="_blank" class="btn-outline">Выбрать</a>
                 </div>
             </div>
-
-            <div class="note-container" style="text-align: center; margin-top: 40px; padding: 20px; background: #f8fafc; border-radius: 20px; max-width: 1000px; width: 100%; margin-left: auto; margin-right: auto;">
-                <i class="ri-information-line" style="font-size: 1.2rem;"></i> 
-                <span>Итоговая стоимость определяется после анализа документов — она зависит от сложности дела и объёма работы.</span>
+            <div style="text-align: center; margin-top: 40px; padding: 16px; background: #f8fafc; border-radius: 20px;">
+                <i class="ri-information-line"></i> Итоговая стоимость определяется после анализа документов — зависит от сложности дела и объёма работы.
             </div>
         </div>
     </section>
@@ -848,6 +848,7 @@
     </footer>
 
     <script>
+        // Карусель отзывов
         const reviewImages = [
             "https://via.placeholder.com/600x400?text=Скриншот+благодарности+1",
             "https://via.placeholder.com/600x400?text=Скриншот+благодарности+2",
@@ -954,7 +955,29 @@
     </script>
 
     <script>
-    // Чат-бот (оригинальный)
+        // Выравнивание высоты блоков цены в карточках услуг
+        function equalizePriceHeights() {
+            const priceBlocks = document.querySelectorAll('.package-card .price');
+            if (!priceBlocks.length) return;
+            let maxHeight = 0;
+            priceBlocks.forEach(block => {
+                block.style.height = 'auto';
+                block.style.minHeight = '0';
+            });
+            priceBlocks.forEach(block => {
+                const h = block.offsetHeight;
+                if (h > maxHeight) maxHeight = h;
+            });
+            priceBlocks.forEach(block => {
+                block.style.height = maxHeight + 'px';
+            });
+        }
+        window.addEventListener('load', equalizePriceHeights);
+        window.addEventListener('resize', equalizePriceHeights);
+    </script>
+
+    <!-- Чат-бот (ваш существующий, без изменений) -->
+    <script>
     (function() {
         const CONFIG = {
             botName: "Юрист-консультант",
