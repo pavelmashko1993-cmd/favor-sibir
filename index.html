@@ -6,7 +6,6 @@
     <title>ФАВОР СИБИРЬ | Юридическая компания Павла Машко</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
-    <!-- AOS анимация -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         * {
@@ -314,7 +313,6 @@
             background: #c85c17;
             color: white;
         }
-        /* Карусель для кейсов (аналогично отзывам) */
         .carousel-case-container {
             position: relative;
             max-width: 900px;
@@ -382,7 +380,6 @@
             background-color: #c85c17;
             transform: scale(1.2);
         }
-        /* Таблица сравнения */
         .table-wrapper {
             overflow-x: auto;
             border-radius: 24px;
@@ -457,21 +454,6 @@
             margin-bottom: 20px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 24px;
-            margin-top: 30px;
-        }
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
         .form-card {
             background: white;
             border-radius: 32px;
@@ -545,7 +527,6 @@
         button[type="submit"]:hover {
             background: #c85c17;
         }
-        /* Карусель отзывов */
         .carousel-container {
             position: relative;
             max-width: 900px;
@@ -673,7 +654,6 @@
             margin-right: 4px;
             font-size: 1.1em;
         }
-        /* Анимация AOS */
         [data-aos] {
             opacity: 0;
             transition: opacity 0.6s ease, transform 0.6s ease;
@@ -873,7 +853,6 @@
         </div>
     </section>
 
-    <!-- БЛОК КЕЙСОВ (карусель судебных актов) -->
     <section id="cases">
         <div class="container">
             <h2 class="section-title">Судебные акты / Выигранные дела</h2>
@@ -899,13 +878,6 @@
                     <img src="Павел.jpg" alt="Павел Машко">
                     <p style="margin-top: 16px;"><strong>Павел Машко</strong><br>руководитель практики</p>
                     <p style="font-size: 0.85rem; color: #475569;">Ваше доверие — наша репутация</p>
-                </div>
-            </div>
-            <!-- Видео-приветствие -->
-            <div data-aos="fade-up" style="margin-top: 50px;">
-                <h3 style="text-align: center; margin-bottom: 20px;">Видео-приветствие Павла Машко</h3>
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
@@ -972,16 +944,10 @@
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 100
-        });
-    </script>
+    <script>AOS.init({duration:800,once:true,offset:100});</script>
 
     <script>
-        // ========== КАРУСЕЛЬ КЕЙСОВ (судебные акты) ==========
+        // Карусель кейсов (судебные акты)
         const caseImages = [
             "https://via.placeholder.com/600x400?text=Судебный+акт+1",
             "https://via.placeholder.com/600x400?text=Судебный+акт+2",
@@ -1045,7 +1011,7 @@
     </script>
 
     <script>
-        // ========== КАРУСЕЛЬ ОТЗЫВОВ ==========
+        // Карусель отзывов
         const reviewImages = [
             "https://via.placeholder.com/600x400?text=Скриншот+благодарности+1",
             "https://via.placeholder.com/600x400?text=Скриншот+благодарности+2",
@@ -1109,7 +1075,7 @@
     </script>
 
     <script>
-        // Отправка формы в Make.com
+        // Форма отправки
         const form = document.getElementById('tgForm');
         const submitBtn = document.getElementById('submitBtn');
         form.addEventListener('submit', async function(e) {
@@ -1153,7 +1119,6 @@
     </script>
 
     <script>
-        // Выравнивание высоты блоков цены
         function equalizePriceHeights() {
             const priceBlocks = document.querySelectorAll('.package-card .price');
             if (!priceBlocks.length) return;
@@ -1174,7 +1139,7 @@
         window.addEventListener('resize', equalizePriceHeights);
     </script>
 
-    <!-- Чат-бот (оставлен без изменений) -->
+    <!-- Чат-бот -->
     <script>
     (function() {
         const CONFIG = {
