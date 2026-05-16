@@ -602,6 +602,26 @@
                 text-align: center;
             }
         }
+        .note-text {
+    font-size: 0.9rem;
+    color: #475569;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    white-space: normal;
+    text-align: center;
+    justify-content: center;
+}
+.note-text i {
+    font-size: 1.2rem;
+    vertical-align: middle;
+}
+@media (min-width: 768px) {
+    .note-text {
+        white-space: nowrap;
+    }
+}
     </style>
 </head>
 <body>
@@ -754,8 +774,8 @@
         </div>
 
         <!-- Блок с примечанием об определении стоимости -->
-        <div style="text-align: center; margin-top: 40px; padding: 20px; background: #f8fafc; border-radius: 20px; max-width: 700px; margin-left: auto; margin-right: auto;">
-            <p style="font-size: 0.9rem; color: #475569;"><i class="ri-information-line" style="margin-right: 8px; font-size: 1.2rem; vertical-align: middle;"></i> Итоговая стоимость определяется после анализа документов — она зависит от сложности дела и объёма работы.</p>
+        <div class="note-container" style="text-align: center; margin-top: 40px; padding: 20px; background: #f8fafc; border-radius: 20px; max-width: 700px; margin-left: auto; margin-right: auto;">
+    <p class="note-text"><i class="ri-information-line"></i> Итоговая стоимость уточняется после анализа документов — она зависит от сложности дела и объёма работы.</p>
         </div>
     </div>
 </section>
