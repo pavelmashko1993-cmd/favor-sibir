@@ -6,7 +6,7 @@
     <title>ФАВОР СИБИРЬ | Юридическая компания Павла Машко</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
-    <!-- AOS анимация (для скролла) -->
+    <!-- AOS анимация -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         * {
@@ -314,129 +314,75 @@
             background: #c85c17;
             color: white;
         }
-        .cases-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .case-card {
-            background: white;
-            border-radius: 28px;
-            padding: 28px;
-            border: 1px solid #eef2f5;
-            transition: 0.2s;
-        }
-        .case-card:hover {
-            transform: translateY(-5px);
-            border-color: #c85c17;
-        }
-        .case-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-        .case-desc {
-            color: #475569;
-            margin-bottom: 16px;
-        }
-        .case-amount {
-            font-weight: 700;
-            color: #c85c17;
-            font-size: 1.2rem;
-        }
-        .faq-item {
-            background: white;
-            border-radius: 20px;
-            margin-bottom: 16px;
-            border: 1px solid #eef2f5;
+        /* Карусель для кейсов (аналогично отзывам) */
+        .carousel-case-container {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 32px;
             overflow: hidden;
+            box-shadow: 0 12px 28px -8px rgba(0,0,0,0.1);
         }
-        .faq-question {
-            padding: 20px;
-            font-weight: 600;
-            cursor: pointer;
+        .carousel-case-slides {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #fafcff;
-            transition: 0.2s;
+            transition: transform 0.5s ease;
         }
-        .faq-question:hover {
-            background: #f0f4f9;
-        }
-        .faq-question i {
-            transition: transform 0.3s;
-        }
-        .faq-question.active i {
-            transform: rotate(180deg);
-        }
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            padding: 0 20px;
-            color: #475569;
-            border-top: 0 solid #eef2f5;
-        }
-        .faq-answer.show {
-            max-height: 300px;
-            padding: 0 20px 20px;
-            border-top-width: 1px;
-        }
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
-        }
-        .team-card {
+        .carousel-case-slide {
+            min-width: 100%;
+            box-sizing: border-box;
+            background: white;
+            padding: 40px 20px;
             text-align: center;
         }
-        .team-photo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 0 auto 16px;
-            display: block;
-            background: #eef2f5;
-        }
-        .team-name {
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-        .team-role {
-            color: #64748b;
-            font-size: 0.9rem;
-        }
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
+        .carousel-case-slide img {
+            max-width: 100%;
+            max-height: 500px;
+            object-fit: contain;
             border-radius: 24px;
-            margin-top: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
         }
-        .video-container iframe {
+        .carousel-case-btn {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(10, 42, 58, 0.7);
+            color: white;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 40px;
+            transition: 0.2s;
+            z-index: 2;
         }
-        /* Анимация AOS */
-        [data-aos] {
-            opacity: 0;
-            transition: opacity 0.6s ease, transform 0.6s ease;
+        .carousel-case-btn:hover {
+            background: #c85c17;
         }
-        [data-aos].aos-animate {
-            opacity: 1;
-            transform: translateY(0) !important;
+        .case-prev {
+            left: 20px;
         }
-        [data-aos="fade-up"] {
-            transform: translateY(30px);
+        .case-next {
+            right: 20px;
         }
-        /* остальные стили (таблица, форма, карусель, футер) остаются без изменений */
+        .case-dots {
+            text-align: center;
+            margin-top: 24px;
+        }
+        .case-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: #cbd5e1;
+            border-radius: 50%;
+            margin: 0 6px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .case-dot.active {
+            background-color: #c85c17;
+            transform: scale(1.2);
+        }
+        /* Таблица сравнения */
         .table-wrapper {
             overflow-x: auto;
             border-radius: 24px;
@@ -511,6 +457,21 @@
             margin-bottom: 20px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 24px;
+            margin-top: 30px;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
         .form-card {
             background: white;
             border-radius: 32px;
@@ -584,6 +545,7 @@
         button[type="submit"]:hover {
             background: #c85c17;
         }
+        /* Карусель отзывов */
         .carousel-container {
             position: relative;
             max-width: 900px;
@@ -711,12 +673,25 @@
             margin-right: 4px;
             font-size: 1.1em;
         }
+        /* Анимация AOS */
+        [data-aos] {
+            opacity: 0;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        [data-aos].aos-animate {
+            opacity: 1;
+            transform: translateY(0) !important;
+        }
+        [data-aos="fade-up"] {
+            transform: translateY(30px);
+        }
         @media (max-width: 800px) {
             .hero-text h2 { font-size: 2.2rem; }
             .section-title { font-size: 1.8rem; }
             .header-inner { flex-direction: column; text-align: center; }
             .nav-links { justify-content: center; }
             .carousel-slide img { max-height: 350px; }
+            .carousel-case-slide img { max-height: 350px; }
             .tg-channel-card { padding: 40px 24px; }
             .tg-channel-card h3 { font-size: 1.5rem; }
         }
@@ -740,6 +715,7 @@
                 <a href="#directions">Услуги</a>
                 <a href="#packages">Стоимость</a>
                 <a href="#about">О нас</a>
+                <a href="#cases">Кейсы</a>
                 <a href="#reviews">Отзывы</a>
                 <a href="#tg-channel">Блог</a>
                 <a href="#contact">Контакты</a>
@@ -897,26 +873,15 @@
         </div>
     </section>
 
-    <!-- БЛОК КЕЙСОВ -->
+    <!-- БЛОК КЕЙСОВ (карусель судебных актов) -->
     <section id="cases">
         <div class="container">
-            <h2 class="section-title">Выигранные дела</h2>
-            <div class="cases-grid">
-                <div class="case-card" data-aos="fade-up">
-                    <div class="case-title">Спор с застройщиком</div>
-                    <div class="case-desc">Просрочка передачи ИЖС, взыскание неустойки и штрафа.</div>
-                    <div class="case-amount">Взыскано 2 300 000 ₽</div>
-                </div>
-                <div class="case-card" data-aos="fade-up" data-aos-delay="50">
-                    <div class="case-title">ДТП со страховой</div>
-                    <div class="case-desc">Невыплата по ОСАГО, независимая экспертиза, суд.</div>
-                    <div class="case-amount">Взыскано 850 000 ₽</div>
-                </div>
-                <div class="case-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="case-title">Арбитраж: непоставка товара</div>
-                    <div class="case-desc">Взыскание предоплаты, неустойки и расходов на юриста.</div>
-                    <div class="case-amount">Взыскано 1 450 000 ₽</div>
-                </div>
+            <h2 class="section-title">Судебные акты / Выигранные дела</h2>
+            <div class="carousel-case-container">
+                <div class="carousel-case-slides" id="carouselCaseSlides"></div>
+                <button class="carousel-case-btn case-prev" id="casePrevBtn">❮</button>
+                <button class="carousel-case-btn case-next" id="caseNextBtn">❯</button>
+                <div class="case-dots" id="caseDotsContainer"></div>
             </div>
         </div>
     </section>
@@ -936,71 +901,11 @@
                     <p style="font-size: 0.85rem; color: #475569;">Ваше доверие — наша репутация</p>
                 </div>
             </div>
-            <!-- Фото команды -->
-            <h3 style="text-align: center; margin-top: 60px; font-size: 1.8rem;">Наша команда</h3>
-            <div class="team-grid" data-aos="fade-up">
-                <div class="team-card">
-                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Виолетта" class="team-photo">
-                    <div class="team-name">Виолетта</div>
-                    <div class="team-role">Руководитель юридической практики</div>
-                </div>
-                <div class="team-card">
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Руслан" class="team-photo">
-                    <div class="team-name">Руслан</div>
-                    <div class="team-role">Юрист (судебные дела)</div>
-                </div>
-                <div class="team-card">
-                    <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Елена" class="team-photo">
-                    <div class="team-name">Елена</div>
-                    <div class="team-role">Помощник юриста</div>
-                </div>
-            </div>
             <!-- Видео-приветствие -->
             <div data-aos="fade-up" style="margin-top: 50px;">
                 <h3 style="text-align: center; margin-bottom: 20px;">Видео-приветствие Павла Машко</h3>
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" frameborder="0" allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- БЛОК FAQ -->
-    <section id="faq">
-        <div class="container">
-            <h2 class="section-title">Часто задаваемые вопросы</h2>
-            <div class="faq-list">
-                <div class="faq-item" data-aos="fade-up">
-                    <div class="faq-question">
-                        Как узнать статус моего дела? <i class="ri-arrow-down-s-line"></i>
-                    </div>
-                    <div class="faq-answer">
-                        Вы получаете уникальный код, после чего можете отслеживать ход дела в Telegram-боте. Все даты заседаний, документы и отчёты юриста доступны 24/7.
-                    </div>
-                </div>
-                <div class="faq-item" data-aos="fade-up" data-aos-delay="50">
-                    <div class="faq-question">
-                        Сколько стоит ваша консультация? <i class="ri-arrow-down-s-line"></i>
-                    </div>
-                    <div class="faq-answer">
-                        Первичная консультация — бесплатно. По итогам разговора мы определяем стоимость дальнейшего сопровождения в зависимости от сложности дела.
-                    </div>
-                </div>
-                <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
-                    <div class="faq-question">
-                        Вы работаете только в Новосибирске? <i class="ri-arrow-down-s-line"></i>
-                    </div>
-                    <div class="faq-answer">
-                        Наша основная практика — Новосибирск, но мы успешно ведём арбитражные споры и дела с застройщиками дистанционно по всей России.
-                    </div>
-                </div>
-                <div class="faq-item" data-aos="fade-up" data-aos-delay="150">
-                    <div class="faq-question">
-                        Какой пакет выбрать, если сумма иска больше 10 млн ₽? <i class="ri-arrow-down-s-line"></i>
-                    </div>
-                    <div class="faq-answer">
-                        Для крупных споров (свыше 10 млн) мы предлагаем индивидуальный расчёт и личное ведение дела Павлом Машко. Свяжитесь с нами для обсуждения деталей.
-                    </div>
                 </div>
             </div>
         </div>
@@ -1076,13 +981,77 @@
     </script>
 
     <script>
-        // Карусель отзывов
+        // ========== КАРУСЕЛЬ КЕЙСОВ (судебные акты) ==========
+        const caseImages = [
+            "https://via.placeholder.com/600x400?text=Судебный+акт+1",
+            "https://via.placeholder.com/600x400?text=Судебный+акт+2",
+            "https://via.placeholder.com/600x400?text=Судебный+акт+3"
+        ];
+        let caseIndex = 0;
+        const caseSlidesContainer = document.getElementById('carouselCaseSlides');
+        const caseDotsContainer = document.getElementById('caseDotsContainer');
+        let caseTotal = caseImages.length;
+
+        function buildCaseCarousel() {
+            caseSlidesContainer.innerHTML = '';
+            caseDotsContainer.innerHTML = '';
+            caseImages.forEach((imgSrc, idx) => {
+                const slideDiv = document.createElement('div');
+                slideDiv.className = 'carousel-case-slide';
+                const img = document.createElement('img');
+                img.src = imgSrc;
+                img.alt = `Судебный акт ${idx+1}`;
+                slideDiv.appendChild(img);
+                caseSlidesContainer.appendChild(slideDiv);
+                const dot = document.createElement('div');
+                dot.className = 'case-dot';
+                dot.addEventListener('click', () => goToCaseSlide(idx));
+                caseDotsContainer.appendChild(dot);
+            });
+            caseTotal = caseImages.length;
+            updateCaseDots();
+            updateCaseSlidePosition();
+        }
+
+        function updateCaseSlidePosition() {
+            caseSlidesContainer.style.transform = `translateX(-${caseIndex * 100}%)`;
+            updateCaseDots();
+        }
+
+        function updateCaseDots() {
+            const dots = document.querySelectorAll('.case-dot');
+            dots.forEach((dot, idx) => {
+                if (idx === caseIndex) dot.classList.add('active');
+                else dot.classList.remove('active');
+            });
+        }
+
+        function goToCaseSlide(index) {
+            if (index < 0) index = caseTotal - 1;
+            if (index >= caseTotal) index = 0;
+            caseIndex = index;
+            updateCaseSlidePosition();
+        }
+
+        if (caseImages.length > 0) {
+            buildCaseCarousel();
+            document.getElementById('casePrevBtn').addEventListener('click', () => goToCaseSlide(caseIndex - 1));
+            document.getElementById('caseNextBtn').addEventListener('click', () => goToCaseSlide(caseIndex + 1));
+        } else {
+            caseSlidesContainer.innerHTML = '<div class="carousel-case-slide">Скоро здесь появятся судебные акты</div>';
+            document.getElementById('casePrevBtn').style.display = 'none';
+            document.getElementById('caseNextBtn').style.display = 'none';
+        }
+    </script>
+
+    <script>
+        // ========== КАРУСЕЛЬ ОТЗЫВОВ ==========
         const reviewImages = [
             "https://via.placeholder.com/600x400?text=Скриншот+благодарности+1",
             "https://via.placeholder.com/600x400?text=Скриншот+благодарности+2",
             "https://via.placeholder.com/600x400?text=Скриншот+благодарности+3"
         ];
-        let currentIndex = 0;
+        let reviewIndex = 0;
         const slidesContainer = document.getElementById('carouselSlides');
         const dotsContainer = document.getElementById('dotsContainer');
         let totalSlides = reviewImages.length;
@@ -1109,14 +1078,14 @@
         }
         
         function updateSlidePosition() {
-            slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+            slidesContainer.style.transform = `translateX(-${reviewIndex * 100}%)`;
             updateDots();
         }
         
         function updateDots() {
             const dots = document.querySelectorAll('.dot');
             dots.forEach((dot, idx) => {
-                if (idx === currentIndex) dot.classList.add('active');
+                if (idx === reviewIndex) dot.classList.add('active');
                 else dot.classList.remove('active');
             });
         }
@@ -1124,14 +1093,14 @@
         function goToSlide(index) {
             if (index < 0) index = totalSlides - 1;
             if (index >= totalSlides) index = 0;
-            currentIndex = index;
+            reviewIndex = index;
             updateSlidePosition();
         }
         
         if (reviewImages.length > 0) {
             buildCarousel();
-            document.getElementById('prevBtn').addEventListener('click', () => goToSlide(currentIndex - 1));
-            document.getElementById('nextBtn').addEventListener('click', () => goToSlide(currentIndex + 1));
+            document.getElementById('prevBtn').addEventListener('click', () => goToSlide(reviewIndex - 1));
+            document.getElementById('nextBtn').addEventListener('click', () => goToSlide(reviewIndex + 1));
         } else {
             slidesContainer.innerHTML = '<div class="carousel-slide">Скоро здесь появятся отзывы</div>';
             document.getElementById('prevBtn').style.display = 'none';
@@ -1140,7 +1109,7 @@
     </script>
 
     <script>
-        // Форма отправки в Make.com
+        // Отправка формы в Make.com
         const form = document.getElementById('tgForm');
         const submitBtn = document.getElementById('submitBtn');
         form.addEventListener('submit', async function(e) {
@@ -1203,24 +1172,6 @@
         }
         window.addEventListener('load', equalizePriceHeights);
         window.addEventListener('resize', equalizePriceHeights);
-    </script>
-
-    <script>
-        // FAQ аккордеон
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const answer = question.nextElementSibling;
-                const isActive = question.classList.contains('active');
-                document.querySelectorAll('.faq-question').forEach(q => {
-                    q.classList.remove('active');
-                    q.nextElementSibling.classList.remove('show');
-                });
-                if (!isActive) {
-                    question.classList.add('active');
-                    answer.classList.add('show');
-                }
-            });
-        });
     </script>
 
     <!-- Чат-бот (оставлен без изменений) -->
