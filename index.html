@@ -16,8 +16,8 @@
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.5;
-            color: #1e293b;
-            background-color: #ffffff;
+            color: #e2e8f0;
+            background-color: #0f172a;
             scroll-behavior: smooth;
         }
         .container {
@@ -25,30 +25,30 @@
             margin: 0 auto;
             padding: 0 24px;
         }
-        h1, h2, h3 {
-            font-weight: 700;
+        h1, h2, h3, .section-title, .package-name, .direction-text h3, .case-title, .tg-channel-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
             letter-spacing: -0.02em;
         }
         .section-title {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 48px;
             text-align: center;
-            color: #0a2a3a;
+            color: #f1f5f9;
             position: relative;
         }
         .section-title:after {
             content: '';
             display: block;
-            width: 64px;
-            height: 4px;
+            width: 80px;
+            height: 2px;
             background: #c85c17;
-            margin: 16px auto 0;
-            border-radius: 2px;
+            margin: 20px auto 0;
         }
         .header {
             background-color: #0a2a3a;
             color: white;
-            padding: 16px 0;
+            padding: 20px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -66,7 +66,7 @@
         .logo h1 {
             font-size: 1.8rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -128,8 +128,9 @@
             background: #a44510;
         }
         .hero {
-            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
-            padding: 80px 0;
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.92)), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070&auto=format') center/cover no-repeat;
+            padding: 140px 0 120px;
+            color: white;
         }
         .hero-grid {
             display: flex;
@@ -142,18 +143,18 @@
             flex: 1.2;
         }
         .hero-text h2 {
-            font-size: 3rem;
+            font-size: 4rem;
+            line-height: 1.1;
+            color: white;
             margin-bottom: 24px;
-            color: #0a2a3a;
-            line-height: 1.2;
         }
         .hero-text p {
             font-size: 1.2rem;
+            color: rgba(255,255,255,0.85);
             margin-bottom: 32px;
-            color: #2d3e50;
         }
         .btn-primary {
-            background: linear-gradient(95deg, #c85c17 0%, #e07a2c 100%);
+            background: #c85c17;
             color: white;
             border: none;
             padding: 14px 34px;
@@ -166,24 +167,24 @@
             align-items: center;
             gap: 10px;
             transition: 0.2s;
-            box-shadow: 0 8px 20px rgba(200, 92, 23, 0.3);
+            box-shadow: none;
         }
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 28px rgba(200, 92, 23, 0.4);
+            background: #a44510;
+            transform: translateY(-2px);
         }
         .hero-stats {
-            background: white;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(8px);
             padding: 32px;
             border-radius: 32px;
-            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
             flex: 0 0 300px;
-            border: 1px solid rgba(0,0,0,0.05);
+            border: 1px solid rgba(255,255,255,0.15);
         }
         .hero-stats div {
             margin-bottom: 20px;
             font-size: 1rem;
-            border-bottom: 1px solid #eef2f5;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
             padding-bottom: 12px;
         }
         .hero-stats strong {
@@ -202,34 +203,35 @@
             margin-top: 20px;
         }
         .direction-card {
-            background: #f8fafc;
-            border-radius: 28px;
-            padding: 28px 24px;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 24px;
+            padding: 32px 28px;
             transition: 0.25s;
-            border: 1px solid #eef2f5;
             display: flex;
             gap: 16px;
             align-items: flex-start;
         }
         .direction-card:hover {
-            transform: translateY(-5px);
-            background: white;
-            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.08);
+            transform: translateY(-4px);
             border-color: #c85c17;
+            background: #0f172a;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.3);
         }
         .direction-icon {
             font-size: 2.2rem;
             flex-shrink: 0;
             line-height: 1;
+            color: #c85c17;
         }
         .direction-text h3 {
             font-size: 1.25rem;
             margin-bottom: 8px;
-            color: #0a2a3a;
+            color: #f1f5f9;
         }
         .direction-text p {
             font-size: 0.9rem;
-            color: #475569;
+            color: #94a3b8;
             line-height: 1.4;
         }
         .packages {
@@ -249,9 +251,9 @@
             }
         }
         .package-card {
-            background: white;
-            border-radius: 32px;
-            border: 1px solid #eef2f5;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 28px;
             padding: 28px 24px;
             transition: 0.25s;
             display: flex;
@@ -259,18 +261,18 @@
             height: 100%;
         }
         .package-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-6px);
             border-color: #c85c17;
-            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.08);
+            box-shadow: 0 24px 36px -12px rgba(0,0,0,0.3);
         }
         .package-name {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 800;
-            color: #0a2a3a;
             margin-bottom: 16px;
+            color: #f1f5f9;
         }
         .price {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 800;
             color: #c85c17;
             margin: 0 0 20px 0;
@@ -287,6 +289,7 @@
             position: relative;
             font-size: 0.95rem;
             line-height: 1.4;
+            color: #cbd5e1;
         }
         .package-desc li::before {
             content: "✓";
@@ -311,7 +314,7 @@
         }
         .btn-outline:hover {
             background: #c85c17;
-            color: white;
+            color: #0f172a;
         }
         .carousel-case-container {
             position: relative;
@@ -319,7 +322,7 @@
             margin: 0 auto;
             border-radius: 32px;
             overflow: hidden;
-            box-shadow: 0 12px 28px -8px rgba(0,0,0,0.1);
+            box-shadow: 0 12px 28px -8px rgba(0,0,0,0.3);
         }
         .carousel-case-slides {
             display: flex;
@@ -328,7 +331,7 @@
         .carousel-case-slide {
             min-width: 100%;
             box-sizing: border-box;
-            background: white;
+            background: #1e293b;
             padding: 40px 20px;
             text-align: center;
         }
@@ -337,13 +340,13 @@
             max-height: 500px;
             object-fit: contain;
             border-radius: 24px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
         .carousel-case-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(10, 42, 58, 0.7);
+            background: rgba(0,0,0,0.6);
             color: white;
             border: none;
             font-size: 2rem;
@@ -370,7 +373,7 @@
             display: inline-block;
             width: 12px;
             height: 12px;
-            background-color: #cbd5e1;
+            background-color: #475569;
             border-radius: 50%;
             margin: 0 6px;
             cursor: pointer;
@@ -383,8 +386,8 @@
         .table-wrapper {
             overflow-x: auto;
             border-radius: 24px;
-            background: white;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            background: #1e293b;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
         .compare-table {
             width: 100%;
@@ -392,7 +395,7 @@
             font-size: 0.95rem;
         }
         .compare-table th, .compare-table td {
-            border: 1px solid #e2e8f0;
+            border: 1px solid #334155;
             padding: 16px 12px;
             text-align: left;
             vertical-align: top;
@@ -405,21 +408,21 @@
             font-size: 1rem;
         }
         .compare-table td:first-child {
-            background-color: #f9fafb;
+            background-color: #0f172a;
             font-weight: 600;
         }
         .check-yes {
-            color: #2b7e3a;
+            color: #c85c17;
             font-weight: bold;
             text-align: center;
             font-size: 1.1rem;
         }
         .check-no {
-            color: #94a3b8;
+            color: #64748b;
             text-align: center;
         }
         .about {
-            background-color: #fafcff;
+            background-color: #0f172a;
         }
         .about-grid {
             display: flex;
@@ -433,18 +436,23 @@
         .about-text h2 {
             font-size: 2rem;
             margin-bottom: 20px;
+            color: #f1f5f9;
         }
         .about-text h3 {
             font-size: 1.4rem;
             margin: 28px 0 12px;
+            color: #f1f5f9;
+        }
+        .about-text p {
+            color: #cbd5e1;
         }
         .about-photo {
             flex: 1;
             text-align: center;
-            background: linear-gradient(145deg, #eef2f5, #ffffff);
+            background: #1e293b;
             border-radius: 40px;
             padding: 32px 24px;
-            box-shadow: 0 12px 28px rgba(0,0,0,0.05);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.2);
         }
         .about-photo img {
             width: 180px;
@@ -452,31 +460,34 @@
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
         .form-card {
-            background: white;
+            background: #1e293b;
+            border: 1px solid #334155;
             border-radius: 32px;
             padding: 44px;
             max-width: 680px;
             margin: 0 auto;
-            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.08);
-            border: 1px solid #eef2f5;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
         }
         .form-card label {
             display: block;
             margin-bottom: 4px;
             font-weight: 500;
+            color: #e2e8f0;
         }
         input, textarea {
             width: 100%;
             padding: 14px 18px;
             margin: 8px 0 20px;
-            border: 1.5px solid #e2e8f0;
+            border: 1.5px solid #334155;
             border-radius: 28px;
             font-family: inherit;
             font-size: 1rem;
             transition: 0.2s;
+            background: #0f172a;
+            color: white;
         }
         input:focus, textarea:focus {
             outline: none;
@@ -500,7 +511,7 @@
         }
         .checkbox-group label {
             cursor: pointer;
-            color: #475569;
+            color: #cbd5e1;
             margin: 0;
         }
         .checkbox-group a {
@@ -512,7 +523,7 @@
             text-decoration: underline;
         }
         button[type="submit"] {
-            background: #0a2a3a;
+            background: #c85c17;
             color: white;
             border: none;
             padding: 14px;
@@ -525,7 +536,7 @@
             margin-top: 10px;
         }
         button[type="submit"]:hover {
-            background: #c85c17;
+            background: #a44510;
         }
         .carousel-container {
             position: relative;
@@ -533,7 +544,7 @@
             margin: 0 auto;
             border-radius: 32px;
             overflow: hidden;
-            box-shadow: 0 12px 28px -8px rgba(0,0,0,0.1);
+            box-shadow: 0 12px 28px -8px rgba(0,0,0,0.3);
         }
         .carousel-slides {
             display: flex;
@@ -542,7 +553,7 @@
         .carousel-slide {
             min-width: 100%;
             box-sizing: border-box;
-            background: white;
+            background: #1e293b;
             padding: 40px 20px;
             text-align: center;
         }
@@ -551,13 +562,13 @@
             max-height: 500px;
             object-fit: contain;
             border-radius: 24px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
         .carousel-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(10, 42, 58, 0.7);
+            background: rgba(0,0,0,0.6);
             color: white;
             border: none;
             font-size: 2rem;
@@ -580,7 +591,7 @@
             display: inline-block;
             width: 12px;
             height: 12px;
-            background-color: #cbd5e1;
+            background-color: #475569;
             border-radius: 50%;
             margin: 0 6px;
             cursor: pointer;
@@ -591,7 +602,7 @@
             transform: scale(1.2);
         }
         .tg-channel-card {
-            background: linear-gradient(135deg, #0a2a3a 0%, #1a4a6a 100%);
+            background: linear-gradient(135deg, #0a2a3a, #0f172a);
             border-radius: 48px;
             padding: 60px 40px;
             text-align: center;
@@ -609,8 +620,8 @@
             opacity: 0.9;
         }
         .tg-channel-card .btn-tg {
-            background: #26A5E4;
-            color: white;
+            background: #c85c17;
+            color: #0f172a;
             border: none;
             padding: 16px 40px;
             font-size: 1.2rem;
@@ -625,29 +636,20 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
         .tg-channel-card .btn-tg:hover {
-            background: #1e8bc4;
+            background: #a44510;
             transform: translateY(-3px);
-        }
-        .channel-features {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 32px;
-            margin-top: 40px;
-        }
-        .channel-feature {
-            background: rgba(255,255,255,0.1);
-            border-radius: 60px;
-            padding: 8px 24px;
-            font-size: 0.9rem;
-            backdrop-filter: blur(4px);
+            color: white;
         }
         footer {
-            background-color: #0a2a3a;
-            color: #cbd5e1;
+            background-color: #0a0c10;
+            color: #94a3b8;
             text-align: center;
             padding: 40px 0;
             font-size: 0.9rem;
+        }
+        footer a {
+            color: #c85c17;
+            text-decoration: none;
         }
         .btn-tg i, .contact-header a i, .quick-btn i {
             vertical-align: middle;
@@ -665,6 +667,10 @@
         [data-aos="fade-up"] {
             transform: translateY(30px);
         }
+        /* Отступ при якорной прокрутке */
+        section[id] {
+            scroll-margin-top: 85px;
+        }
         @media (max-width: 800px) {
             .hero-text h2 { font-size: 2.2rem; }
             .section-title { font-size: 1.8rem; }
@@ -674,6 +680,9 @@
             .carousel-case-slide img { max-height: 350px; }
             .tg-channel-card { padding: 40px 24px; }
             .tg-channel-card h3 { font-size: 1.5rem; }
+            section[id] {
+                scroll-margin-top: 70px;
+            }
         }
         @media (max-width: 640px) {
             .direction-card {
@@ -682,15 +691,6 @@
                 text-align: center;
             }
         }
-        /* Отступ при якорной прокрутке, чтобы шапка не перекрывала заголовки */
-section[id] {
-    scroll-margin-top: 85px;
-}
-@media (max-width: 800px) {
-    section[id] {
-        scroll-margin-top: 70px;
-    }
-}
     </style>
 </head>
 <body>
@@ -708,7 +708,7 @@ section[id] {
                 <a href="#reviews">Отзывы</a>
                 <a href="#tg-channel">Блог</a>
                 <a href="#contact">Контакты</a>
-                <a href="https://t.me/Favor_sibir" target="_blank" style="display: inline-flex; align-items: center; gap: 4px; text-decoration: none;"><i class="ri-telegram-line"></i> Telegram</a>
+                <a href="https://t.me/Favor_sibir" target="_blank" style="display: inline-flex; align-items: center; gap: 4px; text-decoration: none; color: white;"><i class="ri-telegram-line"></i> Telegram</a>
                 <a href="#contact" class="btn-scroll">Оставить заявку</a>
                 <a href="#contact" class="contact-header">+7 913 376 18 60</a>
             </div>
@@ -789,7 +789,7 @@ section[id] {
                 <div class="package-card" data-aos="fade-up">
                     <div class="package-name">Базовый</div>
                     <div class="price">
-                        50 000 ₽ +15% <span style="font-size: 1rem; font-weight: 500; color: #6b7280;">или</span> 30%
+                        50 000 ₽ +15% <span style="font-size: 1rem; font-weight: 500; color: #cbd5e1;">или</span> 30%
                         <span style="display:block; font-size:0.9rem; font-weight:normal;">при цене иска до 1 млн ₽</span>
                     </div>
                     <ul class="package-desc">
@@ -856,7 +856,7 @@ section[id] {
                     <a href="https://t.me/Favor_sibir" target="_blank" class="btn-outline">Выбрать</a>
                 </div>
             </div>
-            <div style="text-align: center; margin-top: 40px; padding: 16px; background: #f8fafc; border-radius: 20px;" data-aos="fade-up">
+            <div style="text-align: center; margin-top: 40px; padding: 16px; background: #1e293b; border-radius: 20px; color: #94a3b8;" data-aos="fade-up">
                 <i class="ri-information-line"></i> Итоговая стоимость определяется после анализа документов — зависит от сложности дела и объёма работы.
             </div>
         </div>
@@ -885,8 +885,8 @@ section[id] {
                 </div>
                 <div class="about-photo" data-aos="fade-left">
                     <img src="Павел.jpg" alt="Павел Машко">
-                    <p style="margin-top: 16px;"><strong>Павел Машко</strong><br></p>
-                    <p style="font-size: 0.85rem; color: #475569;">Ваше доверие — наша репутация</p>
+                    <p style="margin-top: 16px;"><strong>Павел Машко</strong><br>руководитель практики</p>
+                    <p style="font-size: 0.85rem; color: #94a3b8;">Ваше доверие — наша репутация</p>
                 </div>
             </div>
         </div>
@@ -905,16 +905,16 @@ section[id] {
     </section>
 
     <section id="tg-channel">
-    <div class="container">
-        <div class="tg-channel-card" data-aos="fade-up">
-            <h3><i class="ri-telegram-line"></i> Авторский Telegram-канал Павла Машко</h3>
-            <p>Разборы судебных дел, внутренняя кухня юриспруденции, новости законодательства, видео-блоги и экспертные комментарии. Подпишитесь, чтобы быть в курсе.</p>
-            <a href="https://t.me/pavelmashko" target="_blank" class="btn-tg">
-                <i class="ri-telegram-line"></i> Подписаться → @pavelmashko
-            </a>
+        <div class="container">
+            <div class="tg-channel-card" data-aos="fade-up">
+                <h3><i class="ri-telegram-line"></i> Авторский Telegram-канал Павла Машко</h3>
+                <p>Разборы судебных дел, внутренняя кухня юриспруденции, новости законодательства, видео-блоги и экспертные комментарии. Подпишитесь, чтобы быть в курсе.</p>
+                <a href="https://t.me/pavelmashko" target="_blank" class="btn-tg">
+                    <i class="ri-telegram-line"></i> Подписаться → @pavelmashko
+                </a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <section id="contact">
         <div class="container">
@@ -932,7 +932,7 @@ section[id] {
                         <label for="consent">Я согласен на <a href="#">обработку персональных данных</a> в соответствии с политикой обработки персональных данных</label>
                     </div>
                     <button type="submit" id="submitBtn">Перезвоните мне</button>
-                    <p style="font-size: 12px; margin-top: 20px; text-align:center;">Нажимая на кнопку, вы соглашаетесь с обработкой данных. Свяжемся в течение суток.</p>
+                    <p style="font-size: 12px; margin-top: 20px; text-align:center; color:#94a3b8;">Нажимая на кнопку, вы соглашаетесь с обработкой данных. Свяжемся в течение суток.</p>
                 </form>
             </div>
         </div>
@@ -1174,7 +1174,7 @@ section[id] {
                 background: ${CONFIG.primaryColor};
                 border-radius: 50%;
                 cursor: pointer;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -1196,15 +1196,15 @@ section[id] {
                 width: 350px;
                 max-width: calc(100vw - 40px);
                 height: 500px;
-                background: white;
+                background: #1e293b;
                 border-radius: 20px;
-                box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+                box-shadow: 0 10px 25px rgba(0,0,0,0.3);
                 display: flex;
                 flex-direction: column;
                 overflow: hidden;
                 z-index: 10000;
                 font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-                border: 1px solid #eef2f5;
+                border: 1px solid #334155;
             }
             .chat-widget-window.closed {
                 display: none;
@@ -1220,16 +1220,16 @@ section[id] {
             }
             .chat-header h4 { margin: 0; font-size: 1rem; }
             .chat-header button { background: none; border: none; color: white; font-size: 20px; cursor: pointer; }
-            .chat-messages { flex: 1; overflow-y: auto; padding: 15px; background: #f9fafb; display: flex; flex-direction: column; gap: 10px; }
+            .chat-messages { flex: 1; overflow-y: auto; padding: 15px; background: #0f172a; display: flex; flex-direction: column; gap: 10px; }
             .message { max-width: 85%; padding: 8px 12px; border-radius: 18px; font-size: 14px; line-height: 1.4; word-wrap: break-word; }
-            .message.bot { background: #eef2f5; color: #1e293b; align-self: flex-start; border-bottom-left-radius: 4px; }
+            .message.bot { background: #1e293b; color: #e2e8f0; align-self: flex-start; border-bottom-left-radius: 4px; }
             .message.user { background: ${CONFIG.primaryColor}; color: white; align-self: flex-end; border-bottom-right-radius: 4px; }
-            .chat-input-area { display: flex; padding: 10px; border-top: 1px solid #e2e8f0; background: white; }
-            .chat-input-area input { flex: 1; border: 1px solid #cbd5e1; border-radius: 24px; padding: 8px 12px; font-size: 14px; outline: none; }
+            .chat-input-area { display: flex; padding: 10px; border-top: 1px solid #334155; background: #1e293b; }
+            .chat-input-area input { flex: 1; border: 1px solid #334155; border-radius: 24px; padding: 8px 12px; font-size: 14px; outline: none; background: #0f172a; color: white; }
             .chat-input-area button { background: ${CONFIG.primaryColor}; border: none; color: white; border-radius: 24px; padding: 8px 16px; margin-left: 8px; cursor: pointer; font-weight: bold; }
-            .quick-buttons { display: flex; flex-wrap: wrap; gap: 8px; padding: 8px 12px; background: #f9fafb; }
-            .quick-btn { background: white; border: 1px solid ${CONFIG.primaryColor}; border-radius: 20px; padding: 6px 12px; font-size: 12px; cursor: pointer; color: ${CONFIG.primaryColor}; transition: 0.2s; display: inline-flex; align-items: center; gap: 4px; }
-            .quick-btn:hover { background: ${CONFIG.primaryColor}; color: white; }
+            .quick-buttons { display: flex; flex-wrap: wrap; gap: 8px; padding: 8px 12px; background: #0f172a; }
+            .quick-btn { background: #1e293b; border: 1px solid ${CONFIG.primaryColor}; border-radius: 20px; padding: 6px 12px; font-size: 12px; cursor: pointer; color: ${CONFIG.primaryColor}; transition: 0.2s; display: inline-flex; align-items: center; gap: 4px; }
+            .quick-btn:hover { background: ${CONFIG.primaryColor}; color: #0f172a; }
             @media (max-width: 480px) {
                 .chat-widget-window { width: 100vw; height: 100vh; bottom: 0; right: 0; border-radius: 0; }
                 .chat-widget-btn { bottom: 15px; right: 15px; }
