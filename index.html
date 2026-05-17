@@ -682,6 +682,15 @@
                 text-align: center;
             }
         }
+        /* Отступ при якорной прокрутке, чтобы шапка не перекрывала заголовки */
+section[id] {
+    scroll-margin-top: 85px;
+}
+@media (max-width: 800px) {
+    section[id] {
+        scroll-margin-top: 70px;
+    }
+}
     </style>
 </head>
 <body>
