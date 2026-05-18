@@ -335,16 +335,21 @@
             background: #1e293b;
             padding: 40px 20px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 550px;
         }
         .carousel-case-slide img {
             max-width: 100%;
-            max-height: 400px;
+            max-height: 350px;
             object-fit: contain;
             border-radius: 24px;
+            margin-bottom: 20px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
         .case-description {
-            margin-top: 24px;
+            margin-top: 0;
             text-align: left;
         }
         .case-description h4 {
@@ -365,7 +370,7 @@
         }
         .carousel-case-btn {
             position: absolute;
-            top: 50%;
+            top: 30%;
             transform: translateY(-50%);
             background: rgba(0,0,0,0.6);
             color: white;
@@ -688,25 +693,9 @@
         [data-aos="fade-up"] {
             transform: translateY(30px);
         }
-        /* Отступ при якорной прокрутке */
         section[id] {
             scroll-margin-top: 85px;
         }
-        .carousel-case-slide {
-    min-height: 550px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-bottom: 20px;
-}
-.carousel-case-slide img {
-    max-height: 350px;
-    margin-bottom: 20px;
-}
-.carousel-case-btn {
-    top: 28%;
-    transform: translateY(-50%);
-}
         @media (max-width: 800px) {
             .hero-text h2 { font-size: 2.2rem; }
             .section-title { font-size: 1.8rem; }
@@ -714,6 +703,8 @@
             .nav-links { justify-content: center; }
             .carousel-slide img { max-height: 350px; }
             .carousel-case-slide img { max-height: 300px; }
+            .carousel-case-slide { min-height: 480px; }
+            .carousel-case-btn { top: 25%; }
             .tg-channel-card { padding: 40px 24px; }
             .tg-channel-card h3 { font-size: 1.5rem; }
             section[id] {
@@ -1070,7 +1061,7 @@
     </script>
 
     <script>
-        // Карусель отзывов (без изменений)
+        // Карусель отзывов
         const reviewImages = [
             "https://via.placeholder.com/600x400?text=Скриншот+благодарности+1",
             "https://via.placeholder.com/600x400?text=Скриншот+благодарности+2",
@@ -1198,7 +1189,7 @@
         window.addEventListener('resize', equalizePriceHeights);
     </script>
 
-    <!-- Чат-бот (без изменений) -->
+    <!-- Чат-бот -->
     <script>
     (function() {
         const CONFIG = {
