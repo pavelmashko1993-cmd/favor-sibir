@@ -316,6 +316,7 @@
             background: #c85c17;
             color: #0f172a;
         }
+        /* Карусель кейсов с описанием */
         .carousel-case-container {
             position: relative;
             max-width: 900px;
@@ -337,10 +338,30 @@
         }
         .carousel-case-slide img {
             max-width: 100%;
-            max-height: 500px;
+            max-height: 400px;
             object-fit: contain;
             border-radius: 24px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .case-description {
+            margin-top: 24px;
+            text-align: left;
+        }
+        .case-description h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #f1f5f9;
+        }
+        .case-description p {
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            margin-bottom: 12px;
+        }
+        .case-description .case-amount {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #c85c17;
         }
         .carousel-case-btn {
             position: absolute;
@@ -677,7 +698,7 @@
             .header-inner { flex-direction: column; text-align: center; }
             .nav-links { justify-content: center; }
             .carousel-slide img { max-height: 350px; }
-            .carousel-case-slide img { max-height: 350px; }
+            .carousel-case-slide img { max-height: 300px; }
             .tg-channel-card { padding: 40px 24px; }
             .tg-channel-card h3 { font-size: 1.5rem; }
             section[id] {
@@ -951,34 +972,53 @@
     <script>AOS.init({duration:800,once:true,offset:100});</script>
 
     <script>
-        // Карусель кейсов (судебные акты)
-        const caseImages = [
-            "https://via.placeholder.com/600x400?text=Судебный+акт+1",
-            "https://via.placeholder.com/600x400?text=Судебный+акт+2",
-            "https://via.placeholder.com/600x400?text=Судебный+акт+3"
+        // Карусель кейсов (судебные акты с описанием)
+        const caseData = [
+            {
+                img: "https://via.placeholder.com/600x400?text=Кейс+1",
+                title: "Спор с застройщиком «Расцветай»",
+                description: "Расторжение ДДУ, взыскание рыночной стоимости квартиры + неустойка, штраф, моральный вред.",
+                amount: "Взыскано 36 млн ₽"
+            },
+            {
+                img: "https://via.placeholder.com/600x400?text=Кейс+2",
+                title: "Неустойка за просрочку ИЖС",
+                description: "Взыскание неустойки, штрафа и морального вреда за срыв сроков строительства дома.",
+                amount: "Взыскано 1 850 000 ₽"
+            },
+            {
+                img: "https://via.placeholder.com/600x400?text=Кейс+3",
+                title: "Дефекты квартиры",
+                description: "Взыскание стоимости устранения строительных недостатков и расходов на экспертизу.",
+                amount: "Взыскано 890 000 ₽"
+            }
         ];
         let caseIndex = 0;
         const caseSlidesContainer = document.getElementById('carouselCaseSlides');
         const caseDotsContainer = document.getElementById('caseDotsContainer');
-        let caseTotal = caseImages.length;
+        let caseTotal = caseData.length;
 
         function buildCaseCarousel() {
             caseSlidesContainer.innerHTML = '';
             caseDotsContainer.innerHTML = '';
-            caseImages.forEach((imgSrc, idx) => {
+            caseData.forEach((item, idx) => {
                 const slideDiv = document.createElement('div');
                 slideDiv.className = 'carousel-case-slide';
-                const img = document.createElement('img');
-                img.src = imgSrc;
-                img.alt = `Судебный акт ${idx+1}`;
-                slideDiv.appendChild(img);
+                slideDiv.innerHTML = `
+                    <img src="${item.img}" alt="Судебный акт ${idx+1}">
+                    <div class="case-description">
+                        <h4>${item.title}</h4>
+                        <p>${item.description}</p>
+                        <div class="case-amount">${item.amount}</div>
+                    </div>
+                `;
                 caseSlidesContainer.appendChild(slideDiv);
                 const dot = document.createElement('div');
                 dot.className = 'case-dot';
                 dot.addEventListener('click', () => goToCaseSlide(idx));
                 caseDotsContainer.appendChild(dot);
             });
-            caseTotal = caseImages.length;
+            caseTotal = caseData.length;
             updateCaseDots();
             updateCaseSlidePosition();
         }
@@ -1003,7 +1043,7 @@
             updateCaseSlidePosition();
         }
 
-        if (caseImages.length > 0) {
+        if (caseData.length > 0) {
             buildCaseCarousel();
             document.getElementById('casePrevBtn').addEventListener('click', () => goToCaseSlide(caseIndex - 1));
             document.getElementById('caseNextBtn').addEventListener('click', () => goToCaseSlide(caseIndex + 1));
@@ -1015,7 +1055,7 @@
     </script>
 
     <script>
-        // Карусель отзывов
+        // Карусель отзывов (без изменений)
         const reviewImages = [
             "https://via.placeholder.com/600x400?text=Скриншот+благодарности+1",
             "https://via.placeholder.com/600x400?text=Скриншот+благодарности+2",
@@ -1143,7 +1183,7 @@
         window.addEventListener('resize', equalizePriceHeights);
     </script>
 
-    <!-- Чат-бот -->
+    <!-- Чат-бот (без изменений) -->
     <script>
     (function() {
         const CONFIG = {
