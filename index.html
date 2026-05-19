@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>ФАВОР СИБИРЬ | Юридическая компания Павла Машко</title>
+    <!-- SEO метатеги -->
+    <meta name="description" content="Юридическая компания Павла Машко: споры с застройщиками, ДДУ, ИЖС, ДТП, семейные, арбитраж. 12 лет практики, выигранные дела на сумму более 200 млн ₽. Бесплатная консультация.">
+    <meta name="keywords" content="юрист по ДДУ, споры с застройщиком, неустойка, расторжение договора, юридическая помощь Новосибирск, взыскание страховых выплат, арбитражные споры, семейный юрист">
+    <meta name="author" content="Павел Машко">
     <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -488,81 +492,30 @@
             margin-bottom: 20px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
-        .form-card {
+        /* Временная заглушка для формы */
+        .form-placeholder {
             background: #1e293b;
             border: 1px solid #334155;
             border-radius: 32px;
             padding: 44px;
             max-width: 680px;
             margin: 0 auto;
+            text-align: center;
             box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
         }
-        .form-card label {
-            display: block;
-            margin-bottom: 4px;
-            font-weight: 500;
-            color: #e2e8f0;
+        .form-placeholder p {
+            font-size: 1.1rem;
+            margin-bottom: 16px;
         }
-        input, textarea {
-            width: 100%;
-            padding: 14px 18px;
-            margin: 8px 0 20px;
-            border: 1.5px solid #334155;
-            border-radius: 28px;
-            font-family: inherit;
-            font-size: 1rem;
-            transition: 0.2s;
-            background: #0f172a;
-            color: white;
+        .form-placeholder i {
+            font-size: 2.5rem;
+            color: #c85c17;
+            margin-bottom: 16px;
+            display: inline-block;
         }
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: #c85c17;
-            box-shadow: 0 0 0 3px rgba(200,92,23,0.1);
-        }
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin: 20px 0;
-            font-size: 0.85rem;
-        }
-        .checkbox-group input {
-            width: 20px;
-            height: 20px;
-            margin: 0;
-            cursor: pointer;
-            accent-color: #c85c17;
-            flex-shrink: 0;
-        }
-        .checkbox-group label {
-            cursor: pointer;
-            color: #cbd5e1;
-            margin: 0;
-        }
-        .checkbox-group a {
+        .form-placeholder a {
             color: #c85c17;
             text-decoration: none;
-            white-space: nowrap;
-        }
-        .checkbox-group a:hover {
-            text-decoration: underline;
-        }
-        button[type="submit"] {
-            background: #c85c17;
-            color: white;
-            border: none;
-            padding: 14px;
-            width: 100%;
-            font-size: 1rem;
-            border-radius: 60px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.2s;
-            margin-top: 10px;
-        }
-        button[type="submit"]:hover {
-            background: #a44510;
         }
         .carousel-container {
             position: relative;
@@ -944,9 +897,20 @@
         </div>
     </section>
 
-    <!--<section id="contact">
+    <section id="contact">
         <div class="container">
             <h2 class="section-title">Получите консультацию</h2>
+            <!-- ВРЕМЕННАЯ ЗАГЛУШКА: форма будет восстановлена после добавления политики конфиденциальности -->
+            <div class="form-placeholder" data-aos="fade-up">
+                <i class="ri-shield-check-line"></i>
+                <p>Форма обратной связи временно недоступна.<br>Пожалуйста, напишите нам в Telegram:</p>
+                <a href="https://t.me/Favor_sibir" target="_blank" class="btn-tg" style="display: inline-flex; margin-top: 16px;">
+                    <i class="ri-telegram-line"></i> Написать в Telegram
+                </a>
+                <p style="margin-top: 24px; font-size: 0.85rem;">Или позвоните: <a href="tel:+79133761860" style="color:#c85c17;">+7 913 376 18 60</a></p>
+            </div>
+            <!-- Оригинальная форма (закомментирована до добавления политики) -->
+            <!--
             <div class="form-card" data-aos="fade-up">
                 <form id="tgForm">
                     <label>Ваше имя</label>
@@ -963,9 +927,10 @@
                     <p style="font-size: 12px; margin-top: 20px; text-align:center; color:#94a3b8;">Нажимая на кнопку, вы соглашаетесь с обработкой данных. Свяжемся в течение суток.</p>
                 </form>
             </div>
+            -->
         </div>
     </section>
--->
+
     <footer>
         <div class="container">
             <p><i class="ri-mail-line"></i> favorsibir@mail.ru | <i class="ri-phone-line"></i> +7 913 376 18 60 | <i class="ri-telegram-line"></i> Telegram: @Favor_sibir</p>
@@ -1124,8 +1089,9 @@
         }
     </script>
 
-    <<script>
-        // Форма отправки
+    <!-- Форма отправки (скрипт пока закомментирован вместе с формой) -->
+    <!--
+    <script>
         const form = document.getElementById('tgForm');
         const submitBtn = document.getElementById('submitBtn');
         form.addEventListener('submit', async function(e) {
@@ -1167,6 +1133,7 @@
             }
         });
     </script>
+    -->
 
     <script>
         function equalizePriceHeights() {
