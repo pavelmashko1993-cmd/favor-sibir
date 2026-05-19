@@ -188,30 +188,28 @@
             gap: 0;
         }
         .hero-stats div {
-            font-size: 1rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding: 12px 0;
-        }
-        .hero-stats strong {
-            font-size: 2rem;
-            color: #c85c17;
-            display: block;
-            line-height: 1.2;
-        }
-        .hero-stats .cases-link {
-            margin: 12px 0;
-            display: inline-block;
-            background: #c85c17;
-            color: #0f172a;
-            padding: 8px 16px;
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            text-decoration: none;
-            transition: 0.2s;
-            text-align: center;
-            align-self: flex-start;
-        }
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 12px 0;
+}
+.hero-stats div:last-child {
+    border-bottom: none;  /* убираем линию у последнего блока (Telegram-бот) */
+}
+.hero-stats .cases-link {
+    margin: 12px 0;
+    display: inline-block;
+    background: #c85c17;
+    color: #0f172a;
+    padding: 8px 16px;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: 0.2s;
+    text-align: center;
+    align-self: flex-start;
+    border-bottom: none;  /* у кнопки нет линии */
+}
         .hero-stats .cases-link:hover {
             background: #a44510;
             transform: translateY(-2px);
