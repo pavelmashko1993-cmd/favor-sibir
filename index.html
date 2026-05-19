@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>ФАВОР СИБИРЬ | Юридическая компания Павла Машко</title>
-    <!-- SEO метатеги -->
     <meta name="description" content="Юридическая компания Павла Машко: споры с застройщиками, ДДУ, ИЖС, ДТП, семейные, арбитраж. 12 лет практики, выигранные дела на сумму более 200 млн ₽. Бесплатная консультация.">
     <meta name="keywords" content="юрист по ДДУ, споры с застройщиком, неустойка, расторжение договора, юридическая помощь Новосибирск, взыскание страховых выплат, арбитражные споры, семейный юрист">
     <meta name="author" content="Павел Машко">
@@ -94,7 +93,6 @@
         .nav-links a:hover {
             color: #c85c17;
         }
-        /* Исправленные стили для contact-header — теперь это класс на ссылке */
         .contact-header {
             color: white;
             text-decoration: none;
@@ -187,13 +185,12 @@
             border: 1px solid rgba(255,255,255,0.15);
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 0;
         }
         .hero-stats div {
-            margin-bottom: 0;
             font-size: 1rem;
             border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 12px;
+            padding: 12px 0;
         }
         .hero-stats strong {
             font-size: 2rem;
@@ -202,8 +199,7 @@
             line-height: 1.2;
         }
         .hero-stats .cases-link {
-            margin-top: 4px;
-            margin-bottom: 8px;
+            margin: 12px 0;
             display: inline-block;
             background: #c85c17;
             color: #0f172a;
@@ -344,7 +340,6 @@
             background: #c85c17;
             color: #0f172a;
         }
-        /* Карусель кейсов с описанием */
         .carousel-case-container {
             position: relative;
             max-width: 900px;
@@ -516,7 +511,6 @@
             margin-bottom: 20px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
-        /* Временная заглушка для формы */
         .form-placeholder {
             background: #1e293b;
             border: 1px solid #334155;
@@ -722,8 +716,8 @@
     <div class="hero">
         <div class="container hero-grid">
             <div class="hero-text" data-aos="fade-up">
-                <h2>Юридическая защита в сложных судебных спорах</h2>
-                <p>Защищаем интересы клиентов в спорах с застройщиками, по ИЖС, ДТП, семейным и коммерческим делам. Более 12 лет судебной практики, сотни выигранных процессов и прозрачная работа на каждом этапе дела.</p>
+                <h2>Защищаем интересы клиентов в судах по всей России</h2>
+                <p>Споры с застройщиками, ИЖС, ДТП, семейные, наследственные, трудовые споры, помощь бизнесу. Команда профессионалов под руководством Павла Машко. 12 лет реальной судебной практики, 500+ клиентов.</p>
                 <a href="https://t.me/Favor_sibir" target="_blank" class="btn-primary">Бесплатная консультация →</a>
             </div>
             <div class="hero-stats" data-aos="fade-up" data-aos-delay="200">
@@ -790,7 +784,6 @@
         <div class="container">
             <h2 class="section-title">Пакеты услуг</h2>
             <div class="packages">
-                <!-- Базовый -->
                 <div class="package-card" data-aos="fade-up">
                     <div class="package-name">Базовый</div>
                     <div class="price">
@@ -808,7 +801,6 @@
                     </ul>
                     <a href="https://t.me/Favor_sibir" target="_blank" class="btn-outline">Выбрать</a>
                 </div>
-                <!-- Без оплаты -->
                 <div class="package-card" data-aos="fade-up" data-aos-delay="50">
                     <div class="package-name">Без оплаты</div>
                     <div class="price">
@@ -826,7 +818,6 @@
                     </ul>
                     <a href="https://t.me/Favor_sibir" target="_blank" class="btn-outline">Выбрать</a>
                 </div>
-                <!-- Решение -->
                 <div class="package-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="package-name">Решение</div>
                     <div class="price">
@@ -843,7 +834,6 @@
                     </ul>
                     <a href="https://t.me/Favor_sibir" target="_blank" class="btn-outline">Выбрать</a>
                 </div>
-                <!-- Персональный -->
                 <div class="package-card" data-aos="fade-up" data-aos-delay="150">
                     <div class="package-name">Персональный</div>
                     <div class="price">
@@ -925,7 +915,6 @@
     <section id="contact">
         <div class="container">
             <h2 class="section-title">Получите консультацию</h2>
-            <!-- ВРЕМЕННАЯ ЗАГЛУШКА: форма будет восстановлена после добавления политики конфиденциальности -->
             <div class="form-placeholder" data-aos="fade-up">
                 <i class="ri-shield-check-line"></i>
                 <p>Форма обратной связи временно недоступна.<br>Пожалуйста, напишите нам в Telegram:</p>
@@ -934,25 +923,6 @@
                 </a>
                 <p style="margin-top: 24px; font-size: 0.85rem;">Или позвоните: <a href="tel:+79133761860" style="color:#c85c17;">+7 913 376 18 60</a></p>
             </div>
-            <!-- Оригинальная форма (закомментирована до добавления политики) -->
-            <!--
-            <div class="form-card" data-aos="fade-up">
-                <form id="tgForm">
-                    <label>Ваше имя</label>
-                    <input type="text" id="name" name="name" placeholder="Иван Иванов" required>
-                    <label>Телефон</label>
-                    <input type="tel" id="phone" name="phone" placeholder="+7 913 376 18 60" required>
-                    <label>Коротко опишите ситуацию</label>
-                    <textarea id="message" name="message" rows="3" placeholder="Например: построили дом/квартиру с дефектами..." required></textarea>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="consent" name="consent" required>
-                        <label for="consent">Я согласен на <a href="#">обработку персональных данных</a> в соответствии с политикой обработки персональных данных</label>
-                    </div>
-                    <button type="submit" id="submitBtn">Перезвоните мне</button>
-                    <p style="font-size: 12px; margin-top: 20px; text-align:center; color:#94a3b8;">Нажимая на кнопку, вы соглашаетесь с обработкой данных. Свяжемся в течение суток.</p>
-                </form>
-            </div>
-            -->
         </div>
     </section>
 
@@ -968,7 +938,6 @@
     <script>AOS.init({duration:800,once:true,offset:100});</script>
 
     <script>
-        // Карусель кейсов (судебные акты с описанием)
         const caseData = [
             {
                 img: "https://via.placeholder.com/600x400?text=Кейс+1",
@@ -1051,7 +1020,6 @@
     </script>
 
     <script>
-        // Карусель отзывов
         const reviewImages = [
             "https://via.placeholder.com/600x400?text=Скриншот+благодарности+1",
             "https://via.placeholder.com/600x400?text=Скриншот+благодарности+2",
@@ -1113,52 +1081,6 @@
             document.getElementById('nextBtn').style.display = 'none';
         }
     </script>
-
-    <!-- Форма отправки (скрипт пока закомментирован вместе с формой) -->
-    <!--
-    <script>
-        const form = document.getElementById('tgForm');
-        const submitBtn = document.getElementById('submitBtn');
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const message = document.getElementById('message').value.trim();
-            const consent = document.getElementById('consent').checked;
-            if (!name || !phone || !message) {
-                alert('Пожалуйста, заполните все поля');
-                return;
-            }
-            if (!consent) {
-                alert('Необходимо ваше согласие на обработку персональных данных');
-                return;
-            }
-            const formData = { name, phone, message, consent };
-            const WEBHOOK_URL = 'https://hook.eu1.make.com/zqnio8l4f5q1t1imhbvxjkxmpc3wmslh';
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Отправка...';
-            try {
-                const response = await fetch(WEBHOOK_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData)
-                });
-                if (response.ok) {
-                    alert('✅ Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
-                    form.reset();
-                } else {
-                    alert('❌ Ошибка при отправке. Пожалуйста, попробуйте позже или напишите в Telegram.');
-                }
-            } catch (error) {
-                console.error('Ошибка:', error);
-                alert('❌ Не удалось отправить заявку. Проверьте соединение или попробуйте позже.');
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Перезвоните мне';
-            }
-        });
-    </script>
-    -->
 
     <script>
         function equalizePriceHeights() {
