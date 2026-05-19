@@ -184,9 +184,12 @@
             border-radius: 32px;
             flex: 0 0 300px;
             border: 1px solid rgba(255,255,255,0.15);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
         .hero-stats div {
-            margin-bottom: 20px;
+            margin-bottom: 0;
             font-size: 1rem;
             border-bottom: 1px solid rgba(255,255,255,0.1);
             padding-bottom: 12px;
@@ -196,6 +199,24 @@
             color: #c85c17;
             display: block;
             line-height: 1.2;
+        }
+        .hero-stats .cases-link {
+            margin-top: 8px;
+            display: inline-block;
+            background: #c85c17;
+            color: #0f172a;
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: 0.2s;
+            text-align: center;
+        }
+        .hero-stats .cases-link:hover {
+            background: #a44510;
+            transform: translateY(-2px);
+            color: white;
         }
         section {
             padding: 80px 0;
@@ -690,7 +711,7 @@
                 <a href="#contact">Контакты</a>
                 <a href="https://t.me/Favor_sibir" target="_blank" style="display: inline-flex; align-items: center; gap: 4px; text-decoration: none;"><i class="ri-telegram-line"></i> Telegram</a>
                 <a href="#contact" class="btn-scroll">Оставить заявку</a>
-                <a href="#contact" class="contact-header">+7 913 376 18 60</a>
+                <a href="tel:+79133761860" class="contact-header">+7 913 376 18 60</a>
             </div>
         </div>
     </div>
@@ -706,7 +727,7 @@
                 <div><strong>12 лет</strong> юридической практики</div>
                 <div><strong>500+</strong> клиентов с 2021</div>
                 <div><strong>>200 000 000₽</strong> взыскано за 2025 год</div>
-                <div><strong>100%</strong> прозрачность: <br> Telegram-бот с отчетами</div>
+                <a href="#cases" class="cases-link">Смотреть дела →</a>
             </div>
         </div>
     </div>
@@ -933,7 +954,7 @@
 
     <footer>
         <div class="container">
-            <p><i class="ri-mail-line"></i> favorsibir@mail.ru | <i class="ri-phone-line"></i> +7 913 376 18 60 | <i class="ri-telegram-line"></i> Telegram: @Favor_sibir</p>
+            <p><i class="ri-mail-line"></i> favorsibir@mail.ru | <i class="ri-phone-line"></i> <a href="tel:+79133761860">+7 913 376 18 60</a> | <i class="ri-telegram-line"></i> Telegram: @Favor_sibir</p>
             <p>ИП Машко Павел Игоревич | ОГРНИП: 321665800167760 | ИНН: 661588362049</p>
             <p>© 2026 «ФАВОР СИБИРЬ» — юридическая помощь со всей ответственностью.</p>
         </div>
