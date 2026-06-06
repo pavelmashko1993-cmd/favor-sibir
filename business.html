@@ -107,29 +107,32 @@
             background: #a44510;
             transform: translateY(-2px);
         }
-        .btn-primary {
+        /* Кнопка в стиле "Подписаться" с главного сайта */
+        .btn-tg {
             background: #c85c17;
-            color: white;
+            color: #0f172a;
             border: none;
-            padding: 10px 24px;
-            font-size: 1rem;
+            padding: 16px 40px;
+            font-size: 1.2rem;
+            font-weight: 700;
             border-radius: 60px;
             cursor: pointer;
-            font-weight: 600;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
             transition: 0.2s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
             line-height: 1.2;
         }
-        .btn-primary:hover {
+        .btn-tg:hover {
             background: #a44510;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            color: white;
         }
-        .btn-primary i, .btn-outline i, .contact-header i {
+        .btn-tg i {
+            font-size: 1.2rem;
             vertical-align: middle;
-            font-size: 1.1em;
         }
         .hero {
             background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.92)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format') center/cover no-repeat;
@@ -145,6 +148,25 @@
             max-width: 700px;
             margin: 0 auto 30px;
             color: rgba(255,255,255,0.85);
+        }
+        .btn-primary {
+            background: #c85c17;
+            color: white;
+            border: none;
+            padding: 14px 34px;
+            font-size: 1.1rem;
+            border-radius: 60px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.2s;
+        }
+        .btn-primary:hover {
+            background: #a44510;
+            transform: translateY(-2px);
         }
         .packages {
             display: grid;
@@ -290,6 +312,7 @@
             .section-title { font-size: 2rem; }
             .header-inner { flex-direction: column; text-align: center; }
             .nav-links { justify-content: center; }
+            .btn-tg { padding: 12px 24px; font-size: 1rem; }
         }
     </style>
 </head>
@@ -401,7 +424,7 @@
             <div class="form-placeholder" data-aos="fade-up">
                 <i class="ri-customer-service-line"></i>
                 <p>Оставьте заявку, и мы подберём оптимальный пакет для вашего бизнеса.</p>
-                <a href="https://t.me/Favor_sibir" target="_blank" class="btn-primary" style="margin-top: 20px;">
+                <a href="https://t.me/Favor_sibir" target="_blank" class="btn-tg" style="margin-top: 20px;">
                     <i class="ri-telegram-line"></i> Написать в Telegram
                 </a>
                 <p style="margin-top: 24px; font-size: 0.85rem;">Или позвоните: <a href="tel:+79133761860" style="color:#c85c17;">+7 913 376 18 60</a></p>
