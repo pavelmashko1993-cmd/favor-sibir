@@ -46,7 +46,6 @@
             background: #c85c17;
             margin: 20px auto 0;
         }
-        /* Отступы между блоками, как на главной странице */
         section {
             padding: 80px 0;
         }
@@ -111,7 +110,6 @@
             background: #a44510;
             transform: translateY(-2px);
         }
-        /* Кнопка в стиле "Подписаться" с главного сайта */
         .btn-tg {
             background: #c85c17;
             color: #0f172a;
@@ -122,9 +120,8 @@
             border-radius: 60px;
             cursor: pointer;
             text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
+            display: inline-block;
+            text-align: center;
             transition: 0.2s;
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
             line-height: 1.2;
@@ -133,10 +130,6 @@
             background: #a44510;
             transform: translateY(-3px);
             color: white;
-        }
-        .btn-tg i {
-            font-size: 1.2rem;
-            vertical-align: middle;
         }
         .hero {
             background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.92)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format') center/cover no-repeat;
@@ -431,8 +424,9 @@
             <div class="form-placeholder" data-aos="fade-up">
                 <i class="ri-customer-service-line"></i>
                 <p>Оставьте заявку, и мы подберём оптимальный пакет для вашего бизнеса.</p>
+                <!-- Кнопка без иконки, текст по центру -->
                 <a href="https://t.me/Favor_sibir" target="_blank" class="btn-tg" style="margin-top: 20px;">
-                    <i class="ri-telegram-line"></i> Написать в Telegram
+                    Написать в Telegram
                 </a>
                 <p style="margin-top: 24px; font-size: 0.85rem;">Или позвоните: <a href="tel:+79133761860" style="color:#c85c17;">+7 913 376 18 60</a></p>
             </div>
