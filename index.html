@@ -78,6 +78,7 @@
             font-size: 0.8rem;
             opacity: 0.8;
         }
+        /* Десктопное меню */
         .nav-links {
             display: flex;
             gap: 24px;
@@ -93,6 +94,7 @@
         .nav-links a:hover {
             color: #c85c17;
         }
+        /* Бургер-меню (скрыто на десктопе) */
         .burger-menu {
             display: none;
             cursor: pointer;
@@ -130,6 +132,7 @@
         .mobile-nav.show {
             display: flex;
         }
+        /* остальные стили как в вашем коде, только футер и фото увеличены */
         .contact-header {
             color: white;
             text-decoration: none;
@@ -145,6 +148,15 @@
         .contact-header:hover {
             background: #a44510;
             transform: translateY(-2px);
+        }
+        .tg-header {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 10px 18px;
+        }
+        .tg-header:hover {
+            background: #26A5E4;
+            border-color: #26A5E4;
         }
         .btn-scroll {
             background: #c85c17;
@@ -198,6 +210,7 @@
             align-items: center;
             gap: 10px;
             transition: 0.2s;
+            box-shadow: none;
         }
         .btn-primary:hover {
             background: #a44510;
@@ -435,8 +448,12 @@
         .carousel-case-btn:hover {
             background: #c85c17;
         }
-        .case-prev { left: 20px; }
-        .case-next { right: 20px; }
+        .case-prev {
+            left: 20px;
+        }
+        .case-next {
+            right: 20px;
+        }
         .case-dots {
             text-align: center;
             margin-top: 24px;
@@ -454,6 +471,44 @@
         .case-dot.active {
             background-color: #c85c17;
             transform: scale(1.2);
+        }
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 24px;
+            background: #1e293b;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+        .compare-table th, .compare-table td {
+            border: 1px solid #334155;
+            padding: 16px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        .compare-table th {
+            background-color: #0a2a3a;
+            color: white;
+            font-weight: 600;
+            text-align: center;
+            font-size: 1rem;
+        }
+        .compare-table td:first-child {
+            background-color: #0f172a;
+            font-weight: 600;
+        }
+        .check-yes {
+            color: #c85c17;
+            font-weight: bold;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        .check-no {
+            color: #64748b;
+            text-align: center;
         }
         .about {
             background-color: #0f172a;
@@ -489,8 +544,8 @@
             box-shadow: 0 12px 28px rgba(0,0,0,0.2);
         }
         .about-photo img {
-            width: 180px;
-            height: 180px;
+            width: 300px;
+            height: 300px;
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 20px;
@@ -523,6 +578,7 @@
             background: #0f172a;
             color: white;
             resize: none;
+            overflow: auto;
         }
         input:focus, textarea:focus {
             outline: none;
@@ -676,6 +732,7 @@
             transform: translateY(-3px);
             color: white;
         }
+        /* Cookie баннер */
         .cookie-banner {
             position: fixed;
             bottom: 0;
@@ -760,6 +817,8 @@
             .tg-channel-card { padding: 40px 24px; }
             .tg-channel-card h3 { font-size: 1.5rem; }
             section[id] { scroll-margin-top: 70px; }
+            .about-photo img { width: 200px; height: 200px; }
+            .about-photo { padding: 30px 20px; }
         }
         @media (max-width: 640px) {
             .direction-card { flex-direction: column; align-items: center; text-align: center; }
@@ -773,6 +832,7 @@
                 <h1>ФАВОР СИБИРЬ</h1>
                 <p>юридическая защита с 2014 года</p>
             </div>
+            <!-- Десктопное меню -->
             <div class="nav-links">
                 <a href="#directions">Услуги</a>
                 <a href="#packages">Стоимость</a>
@@ -786,8 +846,10 @@
                 <a href="#contact" class="btn-scroll">Оставить заявку</a>
                 <a href="tel:+79133761860" class="contact-header">+7 913 376 18 60</a>
             </div>
+            <!-- Кнопка бургер-меню (мобильная) -->
             <button class="burger-menu" id="burgerBtn">☰</button>
         </div>
+        <!-- Мобильное меню (скрытое) -->
         <div class="mobile-nav" id="mobileNav">
             <a href="#directions">Услуги</a>
             <a href="#packages">Стоимость</a>
@@ -876,7 +938,10 @@
             <div class="packages">
                 <div class="package-card" data-aos="fade-up">
                     <div class="package-name">Базовый</div>
-                    <div class="price">50 000 ₽ +15% <span style="font-size: 1rem; font-weight: 500; color: #cbd5e1;">или</span> 30% от взысканной суммы<br><span style="display:block; font-size:0.9rem; font-weight:normal;">при цене иска до 1 млн ₽</span></div>
+                    <div class="price">
+                        50 000 ₽ +15% <span style="font-size: 1rem; font-weight: 500; color: #cbd5e1;">или</span> 30% от взысканной суммы
+                        <span style="display:block; font-size:0.9rem; font-weight:normal;">при цене иска до 1 млн ₽</span>
+                    </div>
                     <ul class="package-desc">
                         <li>Анализ документов</li>
                         <li>Иск + ведение в суде первой инстанции</li>
@@ -890,7 +955,10 @@
                 </div>
                 <div class="package-card" data-aos="fade-up" data-aos-delay="50">
                     <div class="package-name">Без оплаты</div>
-                    <div class="price">35% от взысканной суммы<br><span style="display:block; font-size:0.9rem; font-weight:normal;">при цене иска от 1 до 10 млн ₽</span></div>
+                    <div class="price">
+                        35% от взысканной суммы
+                        <span style="display:block; font-size:0.9rem; font-weight:normal;">при цене иска от 1 до 10 млн ₽</span>
+                    </div>
                     <ul class="package-desc">
                         <li>Анализ документов</li>
                         <li>Иск + ведение в суде первой инстанции</li>
@@ -904,7 +972,10 @@
                 </div>
                 <div class="package-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="package-name">Решение</div>
-                    <div class="price">80 000 ₽ +20% от взысканной суммы<br><span style="display:block; font-size:0.9rem; font-weight:normal;">при цене иска от 1 до 10 млн ₽</span></div>
+                    <div class="price">
+                        80 000 ₽ +20% от взысканной суммы
+                        <span style="display:block; font-size:0.9rem; font-weight:normal;">при цене иска от 1 до 10 млн ₽</span>
+                    </div>
                     <ul class="package-desc">
                         <li>Анализ документов</li>
                         <li>Иск + ведение в суде первой инстанции</li>
@@ -917,7 +988,10 @@
                 </div>
                 <div class="package-card" data-aos="fade-up" data-aos-delay="150">
                     <div class="package-name">Персональный</div>
-                    <div class="price">Индивидуальный расчёт<br><span style="display:block; font-size:0.9rem; font-weight:normal;">при цене иска более 10 млн ₽</span></div>
+                    <div class="price">
+                        Индивидуальный расчёт
+                        <span style="display:block; font-size:0.9rem; font-weight:normal;">при цене иска более 10 млн ₽</span>
+                    </div>
                     <ul class="package-desc">
                         <li>Полное ведение дела Павлом Машко</li>
                         <li>Анализ документов</li>
@@ -957,7 +1031,7 @@
                 <p>Ваши права защищают сильнейшие юристы своей отрасли совместно с экспертами по строительству и автоэкспертами. Вместе мы закрываем споры с застройщиками и подрядчиками; споры по ДТП, споры по трудовым, наследственным делам. Защищаем предпринимателей.</p>
             </div>
             <div class="about-photo" data-aos="fade-left">
-                <img src="Павел.jpg" alt="Павел Машко">
+                <img src="pavel.jpg" alt="Павел Машко">
                 <p style="margin-top: 16px;"><strong>Павел Машко</strong><br></p>
                 <p style="font-size: 0.85rem; color: #94a3b8;">Ваше доверие — наша репутация</p>
             </div>
@@ -1016,11 +1090,12 @@
         <div class="container">
             <p><i class="ri-mail-line"></i> favorsibir@mail.ru | <i class="ri-phone-line"></i> <a href="tel:+79133761860">+7 913 376 18 60</a> | <i class="ri-telegram-line"></i> Telegram: @Favor_sibir</p>
             <p>ИП Машко Павел Игоревич | ОГРНИП: 321665800167760 | ИНН: 661588362049</p>
-            <p>© <span id="currentYear"></span> «ФАВОР СИБИРЬ» — юридическая помощь со всей ответственностью.</p>
+            <p>© 2026 «ФАВОР СИБИРЬ» — юридическая помощь со всей ответственностью.</p>
             <p>Информация на сайте не является публичной офертой.</p>
         </div>
     </footer>
 
+    <!-- Cookie баннер -->
     <div id="cookieBanner" class="cookie-banner">
         <p>Мы используем файлы cookie для улучшения работы сайта. <a href="privacy2.html" target="_blank">Подробнее о политике обработки данных</a></p>
         <button id="acceptCookies" class="btn-cookie">Принять</button>
@@ -1028,11 +1103,8 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // AOS инициализация
-        AOS.init({ duration: 800, once: true, offset: 100 });
-        // Текущий год в футере
-        document.getElementById('currentYear').innerText = new Date().getFullYear();
-        // Cookie-баннер
+        AOS.init({duration:800,once:true,offset:100});
+        // Куки-баннер
         if (!localStorage.getItem('cookiesAccepted')) {
             document.getElementById('cookieBanner').style.display = 'flex';
         }
@@ -1043,60 +1115,121 @@
         // Бургер-меню
         const burgerBtn = document.getElementById('burgerBtn');
         const mobileNav = document.getElementById('mobileNav');
-        burgerBtn.addEventListener('click', () => mobileNav.classList.toggle('show'));
+        burgerBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('show');
+        });
+        // Закрыть меню при клике на ссылку
         document.querySelectorAll('.mobile-nav a').forEach(link => {
-            link.addEventListener('click', () => mobileNav.classList.remove('show'));
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('show');
+            });
         });
     </script>
 
     <!-- Карусель кейсов -->
     <script>
         const caseData = [
-            { img: "https://via.placeholder.com/600x400?text=Кейс+1", title: "Спор с застройщиком «Расцветай»", description: "Расторжение ДДУ, взыскание рыночной стоимости квартиры + неустойка, штраф, моральный вред.", amount: "Взыскано 36 млн ₽" },
-            { img: "https://via.placeholder.com/600x400?text=Кейс+2", title: "Неустойка за просрочку ИЖС", description: "Взыскание неустойки, штрафа и морального вреда за срыв сроков строительства дома.", amount: "Взыскано 1 850 000 ₽" },
-            { img: "https://via.placeholder.com/600x400?text=Кейс+3", title: "Дефекты квартиры", description: "Взыскание стоимости устранения строительных недостатков и расходов на экспертизу.", amount: "Взыскано 890 000 ₽" }
+            {
+                img: "https://via.placeholder.com/600x400?text=Кейс+1",
+                title: "Спор с застройщиком «Расцветай»",
+                description: "Расторжение ДДУ, взыскание рыночной стоимости квартиры + неустойка, штраф, моральный вред.",
+                amount: "Взыскано 36 млн ₽"
+            },
+            {
+                img: "https://via.placeholder.com/600x400?text=Кейс+2",
+                title: "Неустойка за просрочку ИЖС",
+                description: "Взыскание неустойки, штрафа и морального вреда за срыв сроков строительства дома.",
+                amount: "Взыскано 1 850 000 ₽"
+            },
+            {
+                img: "https://via.placeholder.com/600x400?text=Кейс+3",
+                title: "Дефекты квартиры",
+                description: "Взыскание стоимости устранения строительных недостатков и расходов на экспертизу.",
+                amount: "Взыскано 890 000 ₽"
+            }
         ];
         let caseIndex = 0;
         const caseSlidesContainer = document.getElementById('carouselCaseSlides');
         const caseDotsContainer = document.getElementById('caseDotsContainer');
+        let caseTotal = caseData.length;
+
         function buildCaseCarousel() {
             caseSlidesContainer.innerHTML = '';
             caseDotsContainer.innerHTML = '';
             caseData.forEach((item, idx) => {
                 const slideDiv = document.createElement('div');
                 slideDiv.className = 'carousel-case-slide';
-                slideDiv.innerHTML = `<img src="${item.img}" alt="Судебный акт ${idx+1}"><div class="case-description"><h4>${item.title}</h4><p>${item.description}</p><div class="case-amount">${item.amount}</div></div>`;
+                slideDiv.innerHTML = `
+                    <img src="${item.img}" alt="Судебный акт ${idx+1}">
+                    <div class="case-description">
+                        <h4>${item.title}</h4>
+                        <p>${item.description}</p>
+                        <div class="case-amount">${item.amount}</div>
+                    </div>
+                `;
                 caseSlidesContainer.appendChild(slideDiv);
                 const dot = document.createElement('div');
                 dot.className = 'case-dot';
                 dot.addEventListener('click', () => goToCaseSlide(idx));
                 caseDotsContainer.appendChild(dot);
             });
+            caseTotal = caseData.length;
             updateCaseDots();
             updateCaseSlidePosition();
         }
-        function updateCaseSlidePosition() { caseSlidesContainer.style.transform = `translateX(-${caseIndex * 100}%)`; updateCaseDots(); }
-        function updateCaseDots() { document.querySelectorAll('.case-dot').forEach((dot, idx) => idx === caseIndex ? dot.classList.add('active') : dot.classList.remove('active')); }
-        function goToCaseSlide(index) { caseIndex = (index + caseData.length) % caseData.length; updateCaseSlidePosition(); }
-        buildCaseCarousel();
-        document.getElementById('casePrevBtn').addEventListener('click', () => goToCaseSlide(caseIndex - 1));
-        document.getElementById('caseNextBtn').addEventListener('click', () => goToCaseSlide(caseIndex + 1));
+
+        function updateCaseSlidePosition() {
+            caseSlidesContainer.style.transform = `translateX(-${caseIndex * 100}%)`;
+            updateCaseDots();
+        }
+
+        function updateCaseDots() {
+            const dots = document.querySelectorAll('.case-dot');
+            dots.forEach((dot, idx) => {
+                if (idx === caseIndex) dot.classList.add('active');
+                else dot.classList.remove('active');
+            });
+        }
+
+        function goToCaseSlide(index) {
+            if (index < 0) index = caseTotal - 1;
+            if (index >= caseTotal) index = 0;
+            caseIndex = index;
+            updateCaseSlidePosition();
+        }
+
+        if (caseData.length > 0) {
+            buildCaseCarousel();
+            document.getElementById('casePrevBtn').addEventListener('click', () => goToCaseSlide(caseIndex - 1));
+            document.getElementById('caseNextBtn').addEventListener('click', () => goToCaseSlide(caseIndex + 1));
+        } else {
+            caseSlidesContainer.innerHTML = '<div class="carousel-case-slide">Скоро здесь появятся судебные акты</div>';
+            document.getElementById('casePrevBtn').style.display = 'none';
+            document.getElementById('caseNextBtn').style.display = 'none';
+        }
     </script>
 
     <!-- Карусель отзывов -->
     <script>
-        const reviewImages = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg", "9.jpg", "10.jpg", "11.jpg", "12.jpg", "13.jpg", "14.jpg", "15.jpg", "16.jpg", "17.jpg", "18.jpg"];
+        const reviewImages = [
+            "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg",
+            "6.jpg", "7.jpg", "8.jpg", "9.jpg", "10.jpg",
+            "11.jpg", "12.jpg", "13.jpg", "14.jpg", "15.jpg",
+            "16.jpg", "17.jpg", "18.jpg"
+        ];
         let reviewIndex = 0;
         const slidesContainer = document.getElementById('carouselSlides');
         const dotsContainer = document.getElementById('dotsContainer');
+        let totalSlides = reviewImages.length;
+
         function buildCarousel() {
             slidesContainer.innerHTML = '';
             dotsContainer.innerHTML = '';
-            reviewImages.forEach((src, idx) => {
+            reviewImages.forEach((imgSrc, idx) => {
                 const slideDiv = document.createElement('div');
                 slideDiv.className = 'carousel-slide';
                 const img = document.createElement('img');
-                img.src = src;
+                img.src = imgSrc;
                 img.alt = `Отзыв клиента ${idx+1}`;
                 slideDiv.appendChild(img);
                 slidesContainer.appendChild(slideDiv);
@@ -1105,32 +1238,56 @@
                 dot.addEventListener('click', () => goToSlide(idx));
                 dotsContainer.appendChild(dot);
             });
+            totalSlides = reviewImages.length;
             updateDots();
             updateSlidePosition();
         }
-        function updateSlidePosition() { slidesContainer.style.transform = `translateX(-${reviewIndex * 100}%)`; updateDots(); }
-        function updateDots() { document.querySelectorAll('.dot').forEach((dot, idx) => idx === reviewIndex ? dot.classList.add('active') : dot.classList.remove('active')); }
-        function goToSlide(index) { reviewIndex = (index + reviewImages.length) % reviewImages.length; updateSlidePosition(); }
-        if (reviewImages.length) buildCarousel();
-        document.getElementById('prevBtn').addEventListener('click', () => goToSlide(reviewIndex - 1));
-        document.getElementById('nextBtn').addEventListener('click', () => goToSlide(reviewIndex + 1));
+        
+        function updateSlidePosition() {
+            slidesContainer.style.transform = `translateX(-${reviewIndex * 100}%)`;
+            updateDots();
+        }
+        
+        function updateDots() {
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, idx) => {
+                if (idx === reviewIndex) dot.classList.add('active');
+                else dot.classList.remove('active');
+            });
+        }
+        
+        function goToSlide(index) {
+            if (index < 0) index = totalSlides - 1;
+            if (index >= totalSlides) index = 0;
+            reviewIndex = index;
+            updateSlidePosition();
+        }
+        
+        if (reviewImages.length > 0) {
+            buildCarousel();
+            document.getElementById('prevBtn').addEventListener('click', () => goToSlide(reviewIndex - 1));
+            document.getElementById('nextBtn').addEventListener('click', () => goToSlide(reviewIndex + 1));
+        } else {
+            slidesContainer.innerHTML = '<div class="carousel-slide">Скоро здесь появятся отзывы</div>';
+            document.getElementById('prevBtn').style.display = 'none';
+            document.getElementById('nextBtn').style.display = 'none';
+        }
     </script>
 
-    <!-- Отправка формы в Telegram -->
+    <!-- Отправка формы -->
     <script>
         const form = document.getElementById('tgForm');
         const submitBtn = document.getElementById('submitBtn');
-        const BOT_TOKEN = '8809527400:AAF38_28VZ5fC7YdGHwhZrrFd2NVUKTIrzM';
-        const CHAT_ID = '5362106992';
+        const WEBHOOK_URL = 'https://hook.eu1.make.com/zqnio8l4f5q1t1imhbvxjkxmpc3wmslh';
 
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
             const name = document.getElementById('name').value.trim();
             const phone = document.getElementById('phone').value.trim();
-            const messageText = document.getElementById('message').value.trim();
+            const message = document.getElementById('message').value.trim();
             const consent = document.getElementById('consent').checked;
 
-            if (!name || !phone || !messageText) {
+            if (!name || !phone || !message) {
                 alert('Пожалуйста, заполните все поля');
                 return;
             }
@@ -1139,28 +1296,25 @@
                 return;
             }
 
-            const text = `📩 *Новая заявка с сайта*\n\n👤 Имя: ${name}\n📞 Телефон: ${phone}\n📝 Сообщение: ${messageText}`;
-            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+            const formData = { name, phone, message, consent };
 
             submitBtn.disabled = true;
             submitBtn.textContent = 'Отправка...';
 
             try {
-                const response = await fetch(url, {
+                const response = await fetch(WEBHOOK_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ chat_id: CHAT_ID, text: text, parse_mode: 'Markdown' })
+                    body: JSON.stringify(formData)
                 });
                 if (response.ok) {
                     alert('✅ Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
                     form.reset();
                 } else {
-                    const error = await response.json();
-                    console.error(error);
                     alert('❌ Ошибка при отправке. Пожалуйста, попробуйте позже или напишите в Telegram.');
                 }
             } catch (error) {
-                console.error(error);
+                console.error('Ошибка:', error);
                 alert('❌ Не удалось отправить заявку. Проверьте соединение или попробуйте позже.');
             } finally {
                 submitBtn.disabled = false;
@@ -1169,7 +1323,29 @@
         });
     </script>
 
-    <!-- Чат-бот (один экземпляр) -->
+    <!-- Выравнивание высоты блоков цены -->
+    <script>
+        function equalizePriceHeights() {
+            const priceBlocks = document.querySelectorAll('.package-card .price');
+            if (!priceBlocks.length) return;
+            let maxHeight = 0;
+            priceBlocks.forEach(block => {
+                block.style.height = 'auto';
+                block.style.minHeight = '0';
+            });
+            priceBlocks.forEach(block => {
+                const h = block.offsetHeight;
+                if (h > maxHeight) maxHeight = h;
+            });
+            priceBlocks.forEach(block => {
+                block.style.height = maxHeight + 'px';
+            });
+        }
+        window.addEventListener('load', equalizePriceHeights);
+        window.addEventListener('resize', equalizePriceHeights);
+    </script>
+
+    <!-- Чат-бот -->
     <script>
     (function() {
         const CONFIG = {
@@ -1192,25 +1368,49 @@
         const style = document.createElement('style');
         style.textContent = `
             .chat-widget-btn {
-                position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px;
-                background: ${CONFIG.primaryColor}; border-radius: 50%; cursor: pointer;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.3); display: flex; align-items: center;
-                justify-content: center; z-index: 9999; transition: all 0.2s;
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                width: 60px;
+                height: 60px;
+                background: ${CONFIG.primaryColor};
+                border-radius: 50%;
+                cursor: pointer;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 9999;
+                transition: all 0.2s;
             }
             .chat-widget-btn:hover { transform: scale(1.05); }
             .chat-widget-btn svg { width: 32px; height: 32px; fill: white; }
             .chat-widget-window {
-                position: fixed; bottom: 90px; right: 20px; width: 350px;
-                max-width: calc(100vw - 40px); height: 500px; background: #1e293b;
-                border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-                display: flex; flex-direction: column; overflow: hidden; z-index: 10000;
+                position: fixed;
+                bottom: 90px;
+                right: 20px;
+                width: 350px;
+                max-width: calc(100vw - 40px);
+                height: 500px;
+                background: #1e293b;
+                border-radius: 20px;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+                z-index: 10000;
                 font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
                 border: 1px solid #334155;
             }
             .chat-widget-window.closed { display: none; }
             .chat-header {
-                background: ${CONFIG.secondaryColor}; color: white; padding: 15px;
-                font-weight: bold; display: flex; justify-content: space-between; align-items: center;
+                background: ${CONFIG.secondaryColor};
+                color: white;
+                padding: 15px;
+                font-weight: bold;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
             }
             .chat-header h4 { margin: 0; font-size: 1rem; }
             .chat-header button { background: none; border: none; color: white; font-size: 20px; cursor: pointer; }
@@ -1230,6 +1430,7 @@
             }
         `;
         document.head.appendChild(style);
+
         const widgetHTML = `
             <div class="chat-widget-btn" id="chatBtn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg></div>
             <div class="chat-widget-window closed" id="chatWindow">
@@ -1246,6 +1447,7 @@
             </div>
         `;
         document.body.insertAdjacentHTML('beforeend', widgetHTML);
+
         const btn = document.getElementById('chatBtn');
         const windowDiv = document.getElementById('chatWindow');
         const closeBtn = document.getElementById('closeChatBtn');
@@ -1261,16 +1463,40 @@
             messagesDiv.appendChild(msgDiv);
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
         }
+
         async function getBotReply(userMessage) {
-            const lowerMsg = userMessage.toLowerCase();
-            let bestAnswer = null, maxMatches = 0;
-            for (const item of CONFIG.faq) {
-                let matches = 0;
-                for (const kw of item.keywords) if (lowerMsg.includes(kw)) matches++;
-                if (matches > maxMatches) { maxMatches = matches; bestAnswer = item.answer; }
+            if (CONFIG.useAI && CONFIG.openaiApiKey) {
+                try {
+                    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${CONFIG.openaiApiKey}` },
+                        body: JSON.stringify({
+                            model: "gpt-3.5-turbo",
+                            messages: [
+                                { role: "system", content: "Ты юрист-консультант, специализирующийся на спорах с застройщиками, ДТП, семейных, арбитражных и трудовых спорах. Отвечай кратко и по делу. Не давай гарантий результата, предлагай записаться на консультацию." },
+                                { role: "user", content: userMessage }
+                            ],
+                            temperature: 0.7,
+                            max_tokens: 500
+                        })
+                    });
+                    const data = await response.json();
+                    if (data.choices && data.choices[0]) return data.choices[0].message.content;
+                    else return "Извините, сейчас сервис временно недоступен. Пожалуйста, напишите в Telegram: https://t.me/Favor_sibir";
+                } catch (e) { return "Ошибка связи с ИИ. Пожалуйста, напишите вопрос в Telegram: https://t.me/Favor_sibir"; }
+            } else {
+                const lowerMsg = userMessage.toLowerCase();
+                let bestAnswer = null, maxMatches = 0;
+                for (const item of CONFIG.faq) {
+                    let matches = 0;
+                    for (const kw of item.keywords) if (lowerMsg.includes(kw)) matches++;
+                    if (matches > maxMatches) { maxMatches = matches; bestAnswer = item.answer; }
+                }
+                if (bestAnswer) return bestAnswer;
+                return "Спасибо за вопрос. Чтобы получить точную консультацию, напишите, пожалуйста, в Telegram: https://t.me/Favor_sibir или оставьте свой номер телефона (я свяжусь с вами).";
             }
-            return bestAnswer || "Спасибо за вопрос. Чтобы получить точную консультацию, напишите, пожалуйста, в Telegram: https://t.me/Favor_sibir или оставьте свой номер телефона (я свяжусь с вами).";
         }
+
         async function handleSend() {
             const text = input.value.trim();
             if (text === "") return;
@@ -1281,9 +1507,12 @@
             messagesDiv.removeChild(messagesDiv.lastChild);
             addMessage(reply, false);
             if (text.toLowerCase().includes("записаться") || text.toLowerCase().includes("консультация") || reply.toLowerCase().includes("телефон")) {
-                setTimeout(() => addMessage("Вы можете оставить свой номер телефона, и я передам его юристу. Или напишите напрямую в Telegram: https://t.me/Favor_sibir", false), 500);
+                setTimeout(() => {
+                    addMessage("Вы можете оставить свой номер телефона, и я передам его юристу. Или напишите напрямую в Telegram: https://t.me/Favor_sibir", false);
+                }, 500);
             }
         }
+
         function onQuickQuestion(question) { input.value = question; handleSend(); }
         btn.addEventListener('click', () => windowDiv.classList.toggle('closed'));
         closeBtn.addEventListener('click', () => windowDiv.classList.add('closed'));
