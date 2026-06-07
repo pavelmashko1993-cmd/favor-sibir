@@ -259,6 +259,28 @@
             margin-bottom: 16px;
             display: inline-block;
         }
+        /* Исправленная кнопка Telegram — белый текст, яркий фон */
+        .btn-tg {
+            background: #c85c17;
+            color: #ffffff;
+            border: none;
+            padding: 16px 40px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 60px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            transition: 0.2s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            line-height: 1.2;
+        }
+        .btn-tg:hover {
+            background: #a44510;
+            transform: translateY(-3px);
+            color: #ffffff;
+        }
         footer {
             background-color: #0a0c10;
             color: #94a3b8;
@@ -286,6 +308,7 @@
             .section-title { font-size: 2rem; }
             .header-inner { flex-direction: column; text-align: center; }
             .nav-links { justify-content: center; }
+            .btn-tg { padding: 12px 24px; font-size: 1rem; }
             section { padding: 60px 0; }
         }
     </style>
@@ -298,7 +321,7 @@
                 <p>юридическая защита бизнеса с 2014 года</p>
             </div>
             <div class="nav-links">
-                <a href="index.html">Главная</a>
+                <a href="business.html">Главная</a>
                 <a href="business.html#packages">Тарифы</a>
                 <a href="business.html#benefits">Преимущества</a>
                 <a href="https://t.me/Favor_sibir" target="_blank"><i class="ri-telegram-line"></i> Telegram</a>
