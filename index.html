@@ -511,7 +511,6 @@
             margin-bottom: 20px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
-        /* рабочая форма */
         .form-card {
             background: #1e293b;
             border: 1px solid #334155;
@@ -538,7 +537,7 @@
             transition: 0.2s;
             background: #0f172a;
             color: white;
-            resize: none;          /* отключаем изменение размера */
+            resize: none;
             overflow: auto;
         }
         input:focus, textarea:focus {
@@ -552,7 +551,7 @@
             gap: 12px;
             margin: 20px 0;
             font-size: 0.85rem;
-            flex-wrap: nowrap;     /* чекбокс и текст в одну строку */
+            flex-wrap: nowrap;
         }
         .checkbox-group input {
             width: 20px;
@@ -693,6 +692,47 @@
             transform: translateY(-3px);
             color: white;
         }
+        /* Cookie баннер */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #1e293b;
+            border-top: 1px solid #334155;
+            padding: 16px 24px;
+            z-index: 1000;
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            backdrop-filter: blur(4px);
+        }
+        .cookie-banner p {
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            margin: 0;
+        }
+        .cookie-banner a {
+            color: #c85c17;
+            text-decoration: none;
+        }
+        .cookie-banner .btn-cookie {
+            background: #c85c17;
+            color: #0f172a;
+            border: none;
+            padding: 8px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.85rem;
+        }
+        .cookie-banner .btn-cookie:hover {
+            background: #a44510;
+            color: white;
+        }
         footer {
             background-color: #0a0c10;
             color: #94a3b8;
@@ -736,6 +776,10 @@
             .tg-channel-card h3 { font-size: 1.5rem; }
             section[id] {
                 scroll-margin-top: 70px;
+            }
+            .cookie-banner {
+                flex-direction: column;
+                text-align: center;
             }
         }
         @media (max-width: 640px) {
@@ -937,7 +981,7 @@
                     <p>Ваши права защищают сильнейшие юристы своей отрасли совместно с экспертами по строительству и автоэкспертами. Вместе мы закрываем споры с застройщиками и подрядчиками; споры по ДТП, споры по трудовым, наследственным делам. Защищаем предпринимателей.</p>
                 </div>
                 <div class="about-photo" data-aos="fade-left">
-                    <img src="Павел.jpg" alt="Павел Машко">
+                    <img src="pavel.jpg" alt="Павел Машко">
                     <p style="margin-top: 16px;"><strong>Павел Машко</strong><br></p>
                     <p style="font-size: 0.85rem; color: #94a3b8;">Ваше доверие — наша репутация</p>
                 </div>
@@ -1001,8 +1045,25 @@
         </div>
     </footer>
 
+    <!-- Cookie баннер -->
+    <div id="cookieBanner" class="cookie-banner">
+        <p>Мы используем файлы cookie для улучшения работы сайта. <a href="privacy2.html" target="_blank">Подробнее о политике обработки данных</a></p>
+        <button id="acceptCookies" class="btn-cookie">Принять</button>
+    </div>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({duration:800,once:true,offset:100});</script>
+    <script>
+        AOS.init({duration:800,once:true,offset:100});
+        
+        // Cookie баннер
+        if (!localStorage.getItem('cookiesAccepted')) {
+            document.getElementById('cookieBanner').style.display = 'flex';
+        }
+        document.getElementById('acceptCookies').addEventListener('click', function() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookieBanner').style.display = 'none';
+        });
+    </script>
 
     <script>
         const caseData = [
