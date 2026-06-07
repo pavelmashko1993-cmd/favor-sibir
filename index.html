@@ -274,6 +274,15 @@
                 grid-template-columns: 1fr;
             }
         }
+        @media (max-width: 640px) {
+    .about-photo img {
+        width: 200px;
+        height: 200px;
+    }
+    .about-photo {
+        padding: 30px 16px;
+    }
+}
         .package-card {
             background: #1e293b;
             border: 1px solid #334155;
@@ -496,21 +505,21 @@
             color: #cbd5e1;
         }
         .about-photo {
-            flex: 1;
-            text-align: center;
-            background: #1e293b;
-            border-radius: 40px;
-            padding: 32px 24px;
-            box-shadow: 0 12px 28px rgba(0,0,0,0.2);
-        }
-        .about-photo img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
+    flex: 1;
+    text-align: center;
+    background: #1e293b;
+    border-radius: 40px;
+    padding: 40px 20px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+}
+.about-photo img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
         .form-card {
             background: #1e293b;
             border: 1px solid #334155;
@@ -972,22 +981,20 @@
     </section>
 
     <section id="about" class="about">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-text" data-aos="fade-right">
-                    <h2>Павел Машко — основатель и руководитель</h2>
-                    <p>12 лет в юриспруденции. В 2021 году открыл собственную частную практику. Помог больше 500 клиентам. Убеждён: юридическая помощь должна быть прозрачной. Каждый клиент получает доступ в Telegram-бот, где видит все этапы дела — от подачи иска до отчета о заседании.</p>
-                    <h3>Команда</h3>
-                    <p>Ваши права защищают сильнейшие юристы своей отрасли совместно с экспертами по строительству и автоэкспертами. Вместе мы закрываем споры с застройщиками и подрядчиками; споры по ДТП, споры по трудовым, наследственным делам. Защищаем предпринимателей.</p>
-                </div>
-                <div class="about-photo" data-aos="fade-left">
-                    <img src="pavel.jpg" alt="Павел Машко">
-                    <p style="margin-top: 16px;"><strong>Павел Машко</strong><br></p>
-                    <p style="font-size: 0.85rem; color: #94a3b8;">Ваше доверие — наша репутация</p>
-                </div>
-            </div>
+    <div class="container about-grid">
+        <div class="about-text" data-aos="fade-right">
+            <h2>Павел Машко — основатель и руководитель</h2>
+            <p>12 лет в юриспруденции. В 2021 году открыл собственную частную практику. Помог больше 500 клиентам. Убеждён: юридическая помощь должна быть прозрачной. Каждый клиент получает доступ в Telegram-бот, где видит все этапы дела — от подачи иска до отчета о заседании.</p>
+            <h3>Команда</h3>
+            <p>Ваши права защищают сильнейшие юристы своей отрасли совместно с экспертами по строительству и автоэкспертами. Вместе мы закрываем споры с застройщиками и подрядчиками; споры по ДТП, споры по трудовым, наследственным делам. Защищаем предпринимателей.</p>
         </div>
-    </section>
+        <div class="about-photo" data-aos="fade-left">
+            <img src="pavel.jpg" alt="Павел Машко">
+            <p style="margin-top: 16px;"><strong>Павел Машко</strong><br></p>
+            <p style="font-size: 0.85rem; color: #94a3b8;">Ваше доверие — наша репутация</p>
+        </div>
+    </div>
+</section>
 
     <section id="reviews">
         <div class="container">
