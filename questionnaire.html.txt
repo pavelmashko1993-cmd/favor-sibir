@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Анкета клиента | ФАВОР СИБИРЬ</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            color: #e2e8f0;
+            background-color: #0f172a;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+        .header {
+            background-color: #0a2a3a;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+            background-color: rgba(10, 42, 58, 0.95);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .logo p {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .nav-links a:hover {
+            color: #c85c17;
+        }
+        .contact-header {
+            color: white;
+            text-decoration: none;
+            background: #c85c17;
+            padding: 10px 22px;
+            border-radius: 40px;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+        .contact-header:hover {
+            background: #a44510;
+        }
+        .form-card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 32px;
+            padding: 40px 32px;
+            margin: 60px 0;
+        }
+        .form-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 8px;
+            color: #f1f5f9;
+        }
+        .form-subtitle {
+            text-align: center;
+            color: #94a3b8;
+            margin-bottom: 32px;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 24px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #cbd5e1;
+        }
+        label .required {
+            color: #c85c17;
+            margin-left: 4px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 14px 18px;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 20px;
+            color: #f1f5f9;
+            font-size: 1rem;
+            transition: 0.2s;
+            font-family: inherit;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #c85c17;
+            box-shadow: 0 0 0 3px rgba(200,92,23,0.2);
+        }
+        .radio-group {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            margin-top: 8px;
+        }
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: normal;
+            margin-bottom: 0;
+            cursor: pointer;
+        }
+        .radio-group input {
+            width: auto;
+            margin: 0;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .btn-submit {
+            background: #c85c17;
+            border: none;
+            color: #0f172a;
+            padding: 16px 28px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 60px;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.2s;
+            margin-top: 16px;
+            font-family: inherit;
+        }
+        .btn-submit:hover {
+            background: #a44510;
+            transform: translateY(-2px);
+            color: white;
+        }
+        footer {
+            background-color: #0a0c10;
+            color: #94a3b8;
+            text-align: center;
+            padding: 40px 0;
+            font-size: 0.9rem;
+        }
+        footer a {
+            color: #c85c17;
+            text-decoration: none;
+        }
+        .package-badge {
+            background: #c85c17;
+            color: #0f172a;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 20px;
+            text-align: center;
+            width: auto;
+        }
+        .package-info {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        @media (max-width: 640px) {
+            .form-card {
+                padding: 24px 20px;
+            }
+            .form-title {
+                font-size: 1.6rem;
+            }
+            .radio-group {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            .header-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+            .nav-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container header-inner">
+            <div class="logo">
+                <h1>ФАВОР СИБИРЬ</h1>
+                <p>юридическая защита с 2014 года</p>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Главная</a>
+                <a href="index.html#packages">Тарифы</a>
+                <a href="index.html#benefits">Преимущества</a>
+                <a href="https://t.me/Favor_sibir" target="_blank"><i class="ri-telegram-line"></i> Telegram</a>
+                <a href="tel:+79133761860" class="contact-header">+7 913 376 18 60</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="form-card" data-aos="fade-up">
+            <div class="package-info">
+                <span class="package-badge" id="selectedPackageDisplay">Базовый</span>
+                <h1 class="form-title">Подберём идеальное решение</h1>
+                <p class="form-subtitle">Ответьте на 8 коротких вопросов — мы подготовим индивидуальное предложение</p>
+            </div>
+            
+            <form id="questionnaireForm">
+                <!-- Скрытое поле для пакета -->
+                <input type="hidden" id="package" name="package" value="Базовый">
+                
+                <div class="form-group">
+                    <label>1. Сколько договоров в месяц нужно анализировать? <span class="required">*</span></label>
+                    <input type="number" id="contractsCount" name="contractsCount" placeholder="Например, 15" required>
+                </div>
+
+                <div class="form-group">
+                    <label>2. Штат сотрудников в вашей компании <span class="required">*</span></label>
+                    <input type="number" id="staffCount" name="staffCount" placeholder="Количество человек" required>
+                </div>
+
+                <div class="form-group">
+                    <label>3. Есть ли действующие судебные производства?</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="legalDisputes" value="Нет"> Нет</label>
+                        <label><input type="radio" name="legalDisputes" value="Да, 1-2"> Да, 1-2</label>
+                        <label><input type="radio" name="legalDisputes" value="Да, более 2"> Да, более 2</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>4. Нужна ли помощь по налоговым спорам / проверкам?</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="taxHelp" value="Нет"> Нет</label>
+                        <label><input type="radio" name="taxHelp" value="Только консультации"> Только консультации</label>
+                        <label><input type="radio" name="taxHelp" value="Полное сопровождение"> Полное сопровождение</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>5. Требуется ли сопровождение кадрового делопроизводства?</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="hrSupport" value="Нет"> Нет</label>
+                        <label><input type="radio" name="hrSupport" value="Частично (договоры, приказы)"> Частично (договоры, приказы)</label>
+                        <label><input type="radio" name="hrSupport" value="Полностью (кадровый аудит, споры)"> Полностью (кадровый аудит, споры)</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>6. Планируете ли вы заключать крупные сделки или контракты в ближайшие 3 месяца?</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="bigDeals" value="Нет"> Нет</label>
+                        <label><input type="radio" name="bigDeals" value="Да, до 3 сделок"> Да, до 3 сделок</label>
+                        <label><input type="radio" name="bigDeals" value="Да, более 3"> Да, более 3</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>7. Когда планируете начать сотрудничество?</label>
+                    <select name="startTiming">
+                        <option value="Как можно скорее">Как можно скорее</option>
+                        <option value="В течение 2 недель">В течение 2 недель</option>
+                        <option value="Через месяц">Через месяц</option>
+                        <option value="Нужно обсудить индивидуально">Нужно обсудить индивидуально</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>8. Ваш комментарий или дополнительные пожелания</label>
+                    <textarea name="comment" placeholder="Напишите, что ещё важно для вас..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    <i class="ri-send-plane-line" style="margin-right: 8px;"></i> Отправить в Telegram
+                </button>
+                <p style="font-size: 0.8rem; text-align: center; margin-top: 20px; color: #94a3b8;">
+                    После отправки вы перейдёте в чат с @Favor_sibir — просто нажмите «Отправить» ещё раз. Мы ответим в течение 2 часов.
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p><i class="ri-mail-line"></i> favorsibir@mail.ru | <i class="ri-phone-line"></i> <a href="tel:+79133761860">+7 913 376 18 60</a> | <i class="ri-telegram-line"></i> Telegram: @Favor_sibir</p>
+            <p>ИП Машко Павел Игоревич | ОГРНИП: 321665800167760 | ИНН: 661588362049</p>
+            <p>© 2026 «ФАВОР СИБИРЬ» — юридическая помощь бизнесу.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 700, once: true });
+
+        // Получаем выбранный пакет из URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const selectedPackage = urlParams.get('package');
+        if (selectedPackage) {
+            document.getElementById('selectedPackageDisplay').innerText = selectedPackage;
+            document.getElementById('package').value = selectedPackage;
+        } else {
+            document.getElementById('selectedPackageDisplay').innerText = 'не выбран';
+        }
+
+        // Обработка отправки формы
+        document.getElementById('questionnaireForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Проверка обязательных полей
+            const contracts = document.getElementById('contractsCount').value.trim();
+            const staff = document.getElementById('staffCount').value.trim();
+            if (!contracts || !staff) {
+                alert('Пожалуйста, заполните обязательные поля (договоры и штат сотрудников)');
+                return;
+            }
+
+            // Собираем данные
+            const packageName = document.getElementById('package').value;
+            const contractsCount = contracts;
+            const staffCount = staff;
+            
+            const legalDisputes = document.querySelector('input[name="legalDisputes"]:checked');
+            const legalDisputesValue = legalDisputes ? legalDisputes.value : 'Не указано';
+            
+            const taxHelp = document.querySelector('input[name="taxHelp"]:checked');
+            const taxHelpValue = taxHelp ? taxHelp.value : 'Не указано';
+            
+            const hrSupport = document.querySelector('input[name="hrSupport"]:checked');
+            const hrSupportValue = hrSupport ? hrSupport.value : 'Не указано';
+            
+            const bigDeals = document.querySelector('input[name="bigDeals"]:checked');
+            const bigDealsValue = bigDeals ? bigDeals.value : 'Не указано';
+            
+            const startTiming = document.querySelector('select[name="startTiming"]').value;
+            const comment = document.querySelector('textarea[name="comment"]').value.trim() || '—';
+
+            // Формируем текст сообщения
+            const message = `📋 *НОВАЯ ЗАЯВКА НА АБОНЕНТСКОЕ ОБСЛУЖИВАНИЕ*
+            
+🎁 Выбранный пакет: *${packageName}*
+
+📊 *Ответы на анкету:*
+1️⃣ Договоров на анализ: ${contractsCount} шт/мес
+2️⃣ Штат сотрудников: ${staffCount} чел
+3️⃣ Судебные производства: ${legalDisputesValue}
+4️⃣ Налоговые споры: ${taxHelpValue}
+5️⃣ Кадровое делопроизводство: ${hrSupportValue}
+6️⃣ Крупные сделки (3 мес): ${bigDealsValue}
+7️⃣ Желаемый старт: ${startTiming}
+8️⃣ Комментарий: ${comment}
+
+🌐 *Отправлено с сайта favor-sibir.ru*`;
+
+            // Кодируем для Telegram (URL encode)
+            const encodedMessage = encodeURIComponent(message);
+            const telegramUrl = `https://t.me/Favor_sibir?text=${encodedMessage}`;
+            
+            // Открываем Telegram (или WebApp) с предзаполненным текстом
+            window.open(telegramUrl, '_blank');
+            
+            // Показываем уведомление и очищать форму не будем, чтобы пользователь мог скопировать данные
+            setTimeout(() => {
+                alert('✅ Спасибо! Откроется Telegram. Отправьте сообщение, нажав Enter. Наш специалист свяжется с вами в ближайшее время.');
+            }, 100);
+        });
+    </script>
+</body>
+</html>
