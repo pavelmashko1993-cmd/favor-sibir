@@ -511,7 +511,7 @@
             margin-bottom: 20px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
-        /* Рабочая форма */
+        /* рабочая форма */
         .form-card {
             background: #1e293b;
             border: 1px solid #334155;
@@ -538,6 +538,8 @@
             transition: 0.2s;
             background: #0f172a;
             color: white;
+            resize: none;          /* отключаем изменение размера */
+            overflow: auto;
         }
         input:focus, textarea:focus {
             outline: none;
@@ -550,7 +552,7 @@
             gap: 12px;
             margin: 20px 0;
             font-size: 0.85rem;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;     /* чекбокс и текст в одну строку */
         }
         .checkbox-group input {
             width: 20px;
@@ -935,7 +937,7 @@
                     <p>Ваши права защищают сильнейшие юристы своей отрасли совместно с экспертами по строительству и автоэкспертами. Вместе мы закрываем споры с застройщиками и подрядчиками; споры по ДТП, споры по трудовым, наследственным делам. Защищаем предпринимателей.</p>
                 </div>
                 <div class="about-photo" data-aos="fade-left">
-                    <img src="pavel.jpg" alt="Павел Машко">
+                    <img src="Павел.jpg" alt="Павел Машко">
                     <p style="margin-top: 16px;"><strong>Павел Машко</strong><br></p>
                     <p style="font-size: 0.85rem; color: #94a3b8;">Ваше доверие — наша репутация</p>
                 </div>
@@ -967,7 +969,6 @@
         </div>
     </section>
 
-    <!-- РАБОЧАЯ ФОРМА С ДВУМЯ ССЫЛКАМИ НА ЮРИДИЧЕСКИЕ ДОКУМЕНТЫ -->
     <section id="contact">
         <div class="container">
             <h2 class="section-title">Получите консультацию</h2>
@@ -978,7 +979,7 @@
                     <label>Телефон</label>
                     <input type="tel" id="phone" name="phone" placeholder="+7 913 376 18 60" required>
                     <label>Коротко опишите ситуацию</label>
-                    <textarea id="message" name="message" rows="3" placeholder="Например: построили дом/квартиру с дефектами..." required></textarea>
+                    <textarea id="message" name="message" rows="3" placeholder="Например: построили дом/квартиру с дефектами..."></textarea>
                     <div class="checkbox-group">
                         <input type="checkbox" id="consent" required>
                         <label for="consent">
@@ -1004,7 +1005,6 @@
     <script>AOS.init({duration:800,once:true,offset:100});</script>
 
     <script>
-        // Карусель кейсов
         const caseData = [
             {
                 img: "https://via.placeholder.com/600x400?text=Кейс+1",
@@ -1087,7 +1087,6 @@
     </script>
 
     <script>
-        // Отзывы клиентов — 18 изображений (1.jpg … 18.jpg)
         const reviewImages = [
             "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg",
             "6.jpg", "7.jpg", "8.jpg", "9.jpg", "10.jpg",
@@ -1152,10 +1151,9 @@
     </script>
 
     <script>
-        // Отправка формы в Make.com
         const form = document.getElementById('tgForm');
         const submitBtn = document.getElementById('submitBtn');
-        const WEBHOOK_URL = 'https://hook.eu1.make.com/zqnio8l4f5q1t1imhbvxjkxmpc3wmslh';  // ваш вебхук
+        const WEBHOOK_URL = 'https://hook.eu1.make.com/zqnio8l4f5q1t1imhbvxjkxmpc3wmslh';
 
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -1221,7 +1219,7 @@
         window.addEventListener('resize', equalizePriceHeights);
     </script>
 
-    <!-- Чат-бот (полностью сохранён) -->
+    <!-- Чат-бот -->
     <script>
     (function() {
         const CONFIG = {
