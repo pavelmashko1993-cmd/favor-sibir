@@ -511,29 +511,83 @@
             margin-bottom: 20px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
-        .form-placeholder {
+        /* Рабочая форма */
+        .form-card {
             background: #1e293b;
             border: 1px solid #334155;
             border-radius: 32px;
             padding: 44px;
             max-width: 680px;
             margin: 0 auto;
-            text-align: center;
             box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
         }
-        .form-placeholder p {
-            font-size: 1.1rem;
-            margin-bottom: 16px;
+        .form-card label {
+            display: block;
+            margin-bottom: 4px;
+            font-weight: 500;
+            color: #e2e8f0;
         }
-        .form-placeholder i {
-            font-size: 2.5rem;
-            color: #c85c17;
-            margin-bottom: 16px;
-            display: inline-block;
+        input, textarea {
+            width: 100%;
+            padding: 14px 18px;
+            margin: 8px 0 20px;
+            border: 1.5px solid #334155;
+            border-radius: 28px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: 0.2s;
+            background: #0f172a;
+            color: white;
         }
-        .form-placeholder a {
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #c85c17;
+            box-shadow: 0 0 0 3px rgba(200,92,23,0.1);
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 20px 0;
+            font-size: 0.85rem;
+            flex-wrap: wrap;
+        }
+        .checkbox-group input {
+            width: 20px;
+            height: 20px;
+            margin: 0;
+            cursor: pointer;
+            accent-color: #c85c17;
+            flex-shrink: 0;
+        }
+        .checkbox-group label {
+            cursor: pointer;
+            color: #cbd5e1;
+            margin: 0;
+        }
+        .checkbox-group a {
             color: #c85c17;
             text-decoration: none;
+            white-space: nowrap;
+        }
+        .checkbox-group a:hover {
+            text-decoration: underline;
+        }
+        button[type="submit"] {
+            background: #c85c17;
+            color: white;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            font-size: 1rem;
+            border-radius: 60px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 10px;
+        }
+        button[type="submit"]:hover {
+            background: #a44510;
         }
         .carousel-container {
             position: relative;
@@ -913,16 +967,27 @@
         </div>
     </section>
 
+    <!-- РАБОЧАЯ ФОРМА С ДВУМЯ ССЫЛКАМИ НА ЮРИДИЧЕСКИЕ ДОКУМЕНТЫ -->
     <section id="contact">
         <div class="container">
             <h2 class="section-title">Получите консультацию</h2>
-            <div class="form-placeholder" data-aos="fade-up">
-                <i class="ri-shield-check-line"></i>
-                <p>Форма обратной связи временно недоступна.<br>Пожалуйста, напишите нам в Telegram:</p>
-                <a href="https://t.me/Favor_sibir" target="_blank" class="btn-tg" style="display: inline-flex; margin-top: 16px;">
-                    <i class="ri-telegram-line"></i> Написать в Telegram
-                </a>
-                <p style="margin-top: 24px; font-size: 0.85rem;">Или позвоните: <a href="tel:+79133761860" style="color:#c85c17;">+7 913 376 18 60</a></p>
+            <div class="form-card" data-aos="fade-up">
+                <form id="tgForm">
+                    <label>Ваше имя</label>
+                    <input type="text" id="name" name="name" placeholder="Иван Иванов" required>
+                    <label>Телефон</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+7 913 376 18 60" required>
+                    <label>Коротко опишите ситуацию</label>
+                    <textarea id="message" name="message" rows="3" placeholder="Например: построили дом/квартиру с дефектами..." required></textarea>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="consent" required>
+                        <label for="consent">
+                            Я согласен на <a href="privacy.html" target="_blank">обработку персональных данных</a> и ознакомлен с <a href="privacy2.html" target="_blank">политикой конфиденциальности</a>
+                        </label>
+                    </div>
+                    <button type="submit" id="submitBtn">Перезвоните мне</button>
+                    <p style="font-size: 12px; margin-top: 20px; text-align:center; color:#94a3b8;">Нажимая на кнопку, вы соглашаетесь с обработкой данных. Свяжемся в течение суток.</p>
+                </form>
             </div>
         </div>
     </section>
@@ -939,6 +1004,7 @@
     <script>AOS.init({duration:800,once:true,offset:100});</script>
 
     <script>
+        // Карусель кейсов
         const caseData = [
             {
                 img: "https://via.placeholder.com/600x400?text=Кейс+1",
@@ -1086,6 +1152,55 @@
     </script>
 
     <script>
+        // Отправка формы в Make.com
+        const form = document.getElementById('tgForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const WEBHOOK_URL = 'https://hook.eu1.make.com/zqnio8l4f5q1t1imhbvxjkxmpc3wmslh';  // ваш вебхук
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const message = document.getElementById('message').value.trim();
+            const consent = document.getElementById('consent').checked;
+
+            if (!name || !phone || !message) {
+                alert('Пожалуйста, заполните все поля');
+                return;
+            }
+            if (!consent) {
+                alert('Необходимо ваше согласие на обработку персональных данных');
+                return;
+            }
+
+            const formData = { name, phone, message, consent };
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Отправка...';
+
+            try {
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+                if (response.ok) {
+                    alert('✅ Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
+                    form.reset();
+                } else {
+                    alert('❌ Ошибка при отправке. Пожалуйста, попробуйте позже или напишите в Telegram.');
+                }
+            } catch (error) {
+                console.error('Ошибка:', error);
+                alert('❌ Не удалось отправить заявку. Проверьте соединение или попробуйте позже.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Перезвоните мне';
+            }
+        });
+    </script>
+
+    <script>
         function equalizePriceHeights() {
             const priceBlocks = document.querySelectorAll('.package-card .price');
             if (!priceBlocks.length) return;
@@ -1106,7 +1221,7 @@
         window.addEventListener('resize', equalizePriceHeights);
     </script>
 
-    <!-- Чат-бот -->
+    <!-- Чат-бот (полностью сохранён) -->
     <script>
     (function() {
         const CONFIG = {
