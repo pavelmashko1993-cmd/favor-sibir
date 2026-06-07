@@ -7,6 +7,7 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- EmailJS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <style>
         * {
@@ -165,18 +166,12 @@
             height: 16px;
             flex-shrink: 0;
         }
-        textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
         .checkbox-group {
             display: flex;
             align-items: center;
             gap: 12px;
-            margin: 20px 0;
-            font-size: 0.85rem;
+            margin-top: 8px;
             flex-wrap: wrap;
-            line-height: 1.3;
         }
         .checkbox-group input {
             width: 20px;
@@ -185,13 +180,13 @@
             cursor: pointer;
             accent-color: #c85c17;
             flex-shrink: 0;
-            transition: none;
         }
         .checkbox-group label {
+            font-weight: normal;
+            margin: 0;
             cursor: pointer;
             color: #cbd5e1;
-            margin: 0;
-            font-weight: normal;
+            font-size: 0.9rem;
         }
         .checkbox-group a {
             color: #c85c17;
@@ -278,9 +273,6 @@
             .double-buttons {
                 flex-direction: column;
             }
-            .checkbox-group {
-                flex-wrap: wrap;
-            }
         }
     </style>
 </head>
@@ -305,25 +297,25 @@
         <div class="form-card" data-aos="fade-up">
             <div class="package-info">
                 <span class="package-badge" id="selectedPackageDisplay">Базовый</span>
-                <h1 class="form-title">Поможем выбрать лучший тариф</h1>
-                <p class="form-subtitle">Заполните контактные данные и ответьте на 7 вопросов</p>
+                <h1 class="form-title">Подбор тарифа для бизнеса</h1>
+                <p class="form-subtitle">Заполните контактные данные и ответьте на вопросы</p>
             </div>
             
             <form id="questionnaireForm">
                 <input type="hidden" id="package" name="package" value="Базовый">
 
-                <!-- Контактные данные -->
+                <!-- ===== КОНТАКТНЫЕ ДАННЫЕ ===== -->
                 <div class="form-group">
                     <label>Ваше ФИО <span class="required">*</span></label>
                     <input type="text" id="fullName" name="fullName" placeholder="Иванов Иван Иванович" required>
                 </div>
                 <div class="form-group">
                     <label>Название организации</label>
-                    <input type="text" id="company" name="company" placeholder="ООО «Ромашка»">
+                    <input type="text" id="company" name="company" placeholder="ООО «ФАВОР»">
                 </div>
                 <div class="form-group">
-                    <label>Сфера деятельности / чем занимается компания</label>
-                    <input type="text" id="businessType" name="businessType" placeholder="Например: оптовая торговля, строительство, IT-услуги">
+                    <label>Сфера деятельности</label>
+                    <input type="text" id="activity" name="activity" placeholder="Юридические услуги, строительство, IT...">
                 </div>
                 <div class="form-group">
                     <label>Телефон <span class="required">*</span></label>
@@ -334,7 +326,7 @@
                     <input type="email" id="email" name="email" placeholder="company@example.ru">
                 </div>
 
-                <!-- Вопросы -->
+                <!-- ===== ВОПРОСЫ ===== -->
                 <div class="form-group">
                     <label>1. Сколько договоров в месяц вы заключаете? <span class="required">*</span></label>
                     <input type="number" id="contractsCount" name="contractsCount" placeholder="Например, 15" required>
@@ -388,10 +380,10 @@
                     </div>
                 </div>
 
-                <!-- Согласие -->
+                <!-- Чекбокс согласия -->
                 <div class="checkbox-group">
-                    <input type="checkbox" id="consent" required>
-                    <label for="consent">
+                    <input type="checkbox" id="consentCheckbox" required>
+                    <label for="consentCheckbox">
                         Я согласен на <a href="privacy.html" target="_blank">обработку персональных данных</a> и ознакомлен с <a href="privacy2.html" target="_blank">политикой конфиденциальности</a>
                     </label>
                 </div>
@@ -433,21 +425,19 @@
             document.getElementById('selectedPackageDisplay').innerText = 'не выбран';
         }
 
-        // === НАСТРОЙКА EMAILJS ===
+        // === ВАШИ КЛЮЧИ EMAILJS ===
         const EMAILJS_PUBLIC_KEY = 'xKJbzElJOq1DMFUou';
         const EMAILJS_SERVICE_ID = 'service_tymezcm';
         const EMAILJS_TEMPLATE_ID = 'template_h5mei8j';
 
-        if (EMAILJS_PUBLIC_KEY && EMAILJS_PUBLIC_KEY !== 'ВАШ_PUBLIC_KEY') {
-            emailjs.init(EMAILJS_PUBLIC_KEY);
-        }
+        emailjs.init(EMAILJS_PUBLIC_KEY);
 
-        // Функция сбора данных из формы (включая контактные)
+        // Функция сбора данных из формы
         function getFormData() {
             const packageName = document.getElementById('package').value;
             const fullName = document.getElementById('fullName').value.trim();
             const company = document.getElementById('company').value.trim();
-            const businessType = document.getElementById('businessType').value.trim();
+            const activity = document.getElementById('activity').value.trim();
             const phone = document.getElementById('phone').value.trim();
             const email = document.getElementById('email').value.trim();
             const contractsCount = document.getElementById('contractsCount').value.trim();
@@ -468,19 +458,9 @@
             const priority = priorityElem ? priorityElem.value : 'Не указано';
 
             return {
-                packageName,
-                fullName,
-                company,
-                businessType,
-                phone,
-                email,
-                contractsCount,
-                budget,
-                currentSolution,
-                losses,
-                activeProcesses,
-                claimsFrequency,
-                priority
+                packageName, fullName, company, activity, phone, email,
+                contractsCount, budget, currentSolution, losses,
+                activeProcesses, claimsFrequency, priority
             };
         }
 
@@ -489,7 +469,7 @@
             const phone = document.getElementById('phone').value.trim();
             const contracts = document.getElementById('contractsCount').value.trim();
             const budget = document.getElementById('budget').value.trim();
-            const consent = document.getElementById('consent').checked;
+            const consent = document.getElementById('consentCheckbox').checked;
 
             if (!fullName) {
                 alert('Пожалуйста, укажите ваше ФИО');
@@ -500,11 +480,11 @@
                 return false;
             }
             if (!contracts) {
-                alert('Пожалуйста, укажите количество договоров в месяц (вопрос №1)');
+                alert('Пожалуйста, укажите количество договоров в месяц');
                 return false;
             }
             if (!budget) {
-                alert('Пожалуйста, укажите комфортный бюджет на юруслуги (вопрос №6)');
+                alert('Пожалуйста, укажите комфортный бюджет');
                 return false;
             }
             if (!consent) {
@@ -515,28 +495,28 @@
         }
 
         // Отправка в Telegram
-        document.getElementById('sendTelegramBtn').addEventListener('click', function(e) {
+        document.getElementById('sendTelegramBtn').addEventListener('click', function() {
             if (!validateForm()) return;
 
             const data = getFormData();
             const message = `📋 *НОВАЯ ЗАЯВКА НА АБОНЕНТСКОЕ ОБСЛУЖИВАНИЕ БИЗНЕСА*
-            
-🎁 Выбранный пакет: *${data.packageName}*
 
 👤 *Контактные данные:*
 ФИО: ${data.fullName}
 Организация: ${data.company || '—'}
-Сфера деятельности: ${data.businessType || '—'}
+Сфера деятельности: ${data.activity || '—'}
 Телефон: ${data.phone}
 Email: ${data.email || '—'}
 
+🎁 *Выбранный пакет:* ${data.packageName}
+
 📊 *Ответы на вопросы:*
-1️⃣ Договоров в месяц: *${data.contractsCount}*
+1️⃣ Договоров в месяц: ${data.contractsCount}
 2️⃣ Сейчас решают юрвопросы: ${data.currentSolution}
 3️⃣ Убытки из‑за юр ошибок: ${data.losses}
 4️⃣ Активных судов: ${data.activeProcesses}
 5️⃣ Частота претензий/проверок: ${data.claimsFrequency}
-6️⃣ Комфортный бюджет: *${data.budget}*
+6️⃣ Комфортный бюджет: ${data.budget}
 7️⃣ Приоритет: ${data.priority}
 
 🌐 *Отправлено с сайта favor-sibir.ru (раздел для бизнеса)*`;
@@ -554,26 +534,20 @@ Email: ${data.email || '—'}
         document.getElementById('sendEmailBtn').addEventListener('click', function() {
             if (!validateForm()) return;
 
-            if (EMAILJS_PUBLIC_KEY === 'ВАШ_PUBLIC_KEY' || EMAILJS_SERVICE_ID === 'ВАШ_SERVICE_ID' || EMAILJS_TEMPLATE_ID === 'ВАШ_TEMPLATE_ID') {
-                alert('❌ Отправка на почту временно недоступна. Пожалуйста, воспользуйтесь Telegram или свяжитесь с нами напрямую: favorsibir@mail.ru');
-                return;
-            }
-
             const data = getFormData();
             const templateParams = {
-                to_email: 'favorsibir@mail.ru',
-                package: data.packageName,
                 fullName: data.fullName,
-                company: data.company,
-                businessType: data.businessType,
+                company: data.company || '—',
+                activity: data.activity || '—',
                 phone: data.phone,
-                email: data.email,
+                email: data.email || '—',
+                package: data.packageName,
                 contractsCount: data.contractsCount,
-                budget: data.budget,
                 currentSolution: data.currentSolution,
                 losses: data.losses,
                 activeProcesses: data.activeProcesses,
                 claimsFrequency: data.claimsFrequency,
+                budget: data.budget,
                 priority: data.priority
             };
 
