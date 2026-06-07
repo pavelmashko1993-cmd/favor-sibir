@@ -7,7 +7,6 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- EmailJS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <style>
         * {
@@ -170,6 +169,37 @@
             resize: vertical;
             min-height: 100px;
         }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 20px 0;
+            font-size: 0.85rem;
+            flex-wrap: wrap;
+            line-height: 1.3;
+        }
+        .checkbox-group input {
+            width: 20px;
+            height: 20px;
+            margin: 0;
+            cursor: pointer;
+            accent-color: #c85c17;
+            flex-shrink: 0;
+            transition: none;
+        }
+        .checkbox-group label {
+            cursor: pointer;
+            color: #cbd5e1;
+            margin: 0;
+            font-weight: normal;
+        }
+        .checkbox-group a {
+            color: #c85c17;
+            text-decoration: none;
+        }
+        .checkbox-group a:hover {
+            text-decoration: underline;
+        }
         .double-buttons {
             display: flex;
             gap: 20px;
@@ -248,6 +278,9 @@
             .double-buttons {
                 flex-direction: column;
             }
+            .checkbox-group {
+                flex-wrap: wrap;
+            }
         }
     </style>
 </head>
@@ -273,12 +306,35 @@
             <div class="package-info">
                 <span class="package-badge" id="selectedPackageDisplay">Базовый</span>
                 <h1 class="form-title">Поможем выбрать лучший тариф</h1>
-                <p class="form-subtitle">Ответьте на 7 вопросов — мы подготовим персональное предложение</p>
+                <p class="form-subtitle">Заполните контактные данные и ответьте на 7 вопросов</p>
             </div>
             
             <form id="questionnaireForm">
                 <input type="hidden" id="package" name="package" value="Базовый">
-                
+
+                <!-- Контактные данные -->
+                <div class="form-group">
+                    <label>Ваше ФИО <span class="required">*</span></label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Иванов Иван Иванович" required>
+                </div>
+                <div class="form-group">
+                    <label>Название организации</label>
+                    <input type="text" id="company" name="company" placeholder="ООО «Ромашка»">
+                </div>
+                <div class="form-group">
+                    <label>Сфера деятельности / чем занимается компания</label>
+                    <input type="text" id="businessType" name="businessType" placeholder="Например: оптовая торговля, строительство, IT-услуги">
+                </div>
+                <div class="form-group">
+                    <label>Телефон <span class="required">*</span></label>
+                    <input type="tel" id="phone" name="phone" placeholder="+7 913 376 18 60" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="email" name="email" placeholder="company@example.ru">
+                </div>
+
+                <!-- Вопросы -->
                 <div class="form-group">
                     <label>1. Сколько договоров в месяц вы заключаете? <span class="required">*</span></label>
                     <input type="number" id="contractsCount" name="contractsCount" placeholder="Например, 15" required>
@@ -332,6 +388,14 @@
                     </div>
                 </div>
 
+                <!-- Согласие -->
+                <div class="checkbox-group">
+                    <input type="checkbox" id="consent" required>
+                    <label for="consent">
+                        Я согласен на <a href="privacy.html" target="_blank">обработку персональных данных</a> и ознакомлен с <a href="privacy2.html" target="_blank">политикой конфиденциальности</a>
+                    </label>
+                </div>
+
                 <div class="double-buttons">
                     <button type="button" id="sendTelegramBtn" class="btn-submit">
                         <i class="ri-send-plane-line"></i> Отправить в Telegram
@@ -369,18 +433,23 @@
             document.getElementById('selectedPackageDisplay').innerText = 'не выбран';
         }
 
-        // === НАСТРОЙКА EMAILJS (замените на свои данные) ===
-        const EMAILJS_PUBLIC_KEY = 'xKJbzElJOq1DMFUou';      // например "user_abc123"
-        const EMAILJS_SERVICE_ID = 'service_tymezcm';      // например "service_xyz"
-        const EMAILJS_TEMPLATE_ID = 'template_h5mei8j';    // например "template_abc"
+        // === НАСТРОЙКА EMAILJS ===
+        const EMAILJS_PUBLIC_KEY = 'xKJbzElJOq1DMFUou';
+        const EMAILJS_SERVICE_ID = 'service_tymezcm';
+        const EMAILJS_TEMPLATE_ID = 'template_h5mei8j';
 
-        if (EMAILJS_PUBLIC_KEY !== 'ВАШ_PUBLIC_KEY') {
+        if (EMAILJS_PUBLIC_KEY && EMAILJS_PUBLIC_KEY !== 'ВАШ_PUBLIC_KEY') {
             emailjs.init(EMAILJS_PUBLIC_KEY);
         }
 
-        // Функция сбора данных из формы
+        // Функция сбора данных из формы (включая контактные)
         function getFormData() {
             const packageName = document.getElementById('package').value;
+            const fullName = document.getElementById('fullName').value.trim();
+            const company = document.getElementById('company').value.trim();
+            const businessType = document.getElementById('businessType').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
             const contractsCount = document.getElementById('contractsCount').value.trim();
             const budget = document.getElementById('budget').value.trim();
             
@@ -400,6 +469,11 @@
 
             return {
                 packageName,
+                fullName,
+                company,
+                businessType,
+                phone,
+                email,
                 contractsCount,
                 budget,
                 currentSolution,
@@ -411,14 +485,30 @@
         }
 
         function validateForm() {
+            const fullName = document.getElementById('fullName').value.trim();
+            const phone = document.getElementById('phone').value.trim();
             const contracts = document.getElementById('contractsCount').value.trim();
             const budget = document.getElementById('budget').value.trim();
+            const consent = document.getElementById('consent').checked;
+
+            if (!fullName) {
+                alert('Пожалуйста, укажите ваше ФИО');
+                return false;
+            }
+            if (!phone) {
+                alert('Пожалуйста, укажите телефон для связи');
+                return false;
+            }
             if (!contracts) {
                 alert('Пожалуйста, укажите количество договоров в месяц (вопрос №1)');
                 return false;
             }
             if (!budget) {
                 alert('Пожалуйста, укажите комфортный бюджет на юруслуги (вопрос №6)');
+                return false;
+            }
+            if (!consent) {
+                alert('Необходимо ваше согласие на обработку персональных данных');
                 return false;
             }
             return true;
@@ -432,6 +522,13 @@
             const message = `📋 *НОВАЯ ЗАЯВКА НА АБОНЕНТСКОЕ ОБСЛУЖИВАНИЕ БИЗНЕСА*
             
 🎁 Выбранный пакет: *${data.packageName}*
+
+👤 *Контактные данные:*
+ФИО: ${data.fullName}
+Организация: ${data.company || '—'}
+Сфера деятельности: ${data.businessType || '—'}
+Телефон: ${data.phone}
+Email: ${data.email || '—'}
 
 📊 *Ответы на вопросы:*
 1️⃣ Договоров в месяц: *${data.contractsCount}*
@@ -466,12 +563,17 @@
             const templateParams = {
                 to_email: 'favorsibir@mail.ru',
                 package: data.packageName,
+                fullName: data.fullName,
+                company: data.company,
+                businessType: data.businessType,
+                phone: data.phone,
+                email: data.email,
                 contractsCount: data.contractsCount,
+                budget: data.budget,
                 currentSolution: data.currentSolution,
                 losses: data.losses,
                 activeProcesses: data.activeProcesses,
                 claimsFrequency: data.claimsFrequency,
-                budget: data.budget,
                 priority: data.priority
             };
 
