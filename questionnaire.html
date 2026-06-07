@@ -124,32 +124,45 @@
             border-radius: 20px;
             color: #f1f5f9;
             font-size: 1rem;
-            transition: 0.2s;
             font-family: inherit;
+            /* Убираем плавные переходы, чтобы не прыгало */
+            transition: none;
         }
         input:focus, select:focus, textarea:focus {
             outline: none;
             border-color: #c85c17;
             box-shadow: 0 0 0 3px rgba(200,92,23,0.2);
+            /* Не меняем размеры */
         }
-        .radio-group, .checkbox-group {
+        /* Стабилизируем радио-группы */
+        .radio-group {
             display: flex;
             gap: 24px;
             align-items: center;
             flex-wrap: wrap;
             margin-top: 8px;
+            /* Фиксируем поведение */
+            line-height: 1.2;
         }
-        .radio-group label, .checkbox-group label {
-            display: flex;
+        .radio-group label {
+            display: inline-flex;
             align-items: center;
             gap: 8px;
             font-weight: normal;
             margin-bottom: 0;
             cursor: pointer;
+            /* Отключаем любые трансформации */
+            transition: none;
+            transform: none;
         }
-        .radio-group input, .checkbox-group input {
+        .radio-group input {
             width: auto;
             margin: 0;
+            padding: 0;
+            /* Фиксированный размер радио-кнопки */
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
         }
         textarea {
             resize: vertical;
@@ -200,6 +213,11 @@
             text-align: center;
             margin-bottom: 24px;
         }
+        /* Отключаем AOS для формы, чтобы не прыгало */
+        .no-aos {
+            opacity: 1 !important;
+            transform: none !important;
+        }
         @media (max-width: 640px) {
             .form-card {
                 padding: 24px 20px;
@@ -207,7 +225,7 @@
             .form-title {
                 font-size: 1.6rem;
             }
-            .radio-group, .checkbox-group {
+            .radio-group {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 12px;
@@ -240,7 +258,8 @@
     </div>
 
     <div class="container">
-        <div class="form-card" data-aos="fade-up">
+        <!-- Убираем AOS с формы, добавляем класс no-aos -->
+        <div class="form-card" data-aos="none">
             <div class="package-info">
                 <span class="package-badge" id="selectedPackageDisplay">Базовый</span>
                 <h1 class="form-title">Поможем выбрать лучший тариф</h1>
@@ -250,13 +269,11 @@
             <form id="questionnaireForm">
                 <input type="hidden" id="package" name="package" value="Базовый">
                 
-                <!-- Вопрос 1 (обязательный) -->
                 <div class="form-group">
                     <label>1. Сколько договоров в месяц вы заключаете? <span class="required">*</span></label>
                     <input type="number" id="contractsCount" name="contractsCount" placeholder="Например, 15" required>
                 </div>
 
-                <!-- Вопрос 2 -->
                 <div class="form-group">
                     <label>2. Как вы сейчас решаете юридические вопросы?</label>
                     <div class="radio-group">
@@ -267,7 +284,6 @@
                     </div>
                 </div>
 
-                <!-- Вопрос 3 -->
                 <div class="form-group">
                     <label>3. Были ли за последний год убытки из‑за юридических ошибок?</label>
                     <div class="radio-group">
@@ -277,13 +293,11 @@
                     </div>
                 </div>
 
-                <!-- Вопрос 4 -->
                 <div class="form-group">
                     <label>4. Сколько активных судебных процессов у компании сейчас?</label>
                     <input type="text" name="activeProcesses" placeholder="Например: 2, ни одного, не знаю">
                 </div>
 
-                <!-- Вопрос 5 -->
                 <div class="form-group">
                     <label>5. Как часто к вам приходят претензии или проверки?</label>
                     <div class="radio-group">
@@ -293,13 +307,11 @@
                     </div>
                 </div>
 
-                <!-- Вопрос 6 (обязательный) -->
                 <div class="form-group">
                     <label>6. Какой бюджет на юруслуги в месяц вы считаете комфортным? <span class="required">*</span></label>
                     <input type="text" id="budget" name="budget" placeholder="Например: 50 000 ₽, 100–150 тыс. ₽" required>
                 </div>
 
-                <!-- Вопрос 7 -->
                 <div class="form-group">
                     <label>7. Что для вас важнее: скорость ответа, цена или опыт в вашей отрасли?</label>
                     <div class="radio-group">
@@ -310,7 +322,6 @@
                     </div>
                 </div>
 
-                <!-- Вопрос 8 -->
                 <div class="form-group">
                     <label>8. Когда планируете принять решение?</label>
                     <select name="decisionTiming">
@@ -341,9 +352,9 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 700, once: true });
+        // Инициализируем AOS, но на форме он отключён атрибутом data-aos="none"
+        AOS.init({ duration: 800, once: true });
 
-        // Получаем выбранный пакет из URL
         const urlParams = new URLSearchParams(window.location.search);
         const selectedPackage = urlParams.get('package');
         if (selectedPackage) {
@@ -353,11 +364,9 @@
             document.getElementById('selectedPackageDisplay').innerText = 'не выбран';
         }
 
-        // Обработка отправки формы
         document.getElementById('questionnaireForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // Проверка обязательных полей (договоры и бюджет)
             const contracts = document.getElementById('contractsCount').value.trim();
             const budget = document.getElementById('budget').value.trim();
             if (!contracts) {
@@ -369,7 +378,6 @@
                 return;
             }
 
-            // Собираем данные
             const packageName = document.getElementById('package').value;
             const contractsCount = contracts;
             const budgetValue = budget;
@@ -390,7 +398,6 @@
 
             const decisionTiming = document.querySelector('select[name="decisionTiming"]').value;
 
-            // Формируем текст сообщения
             const message = `📋 *НОВАЯ ЗАЯВКА НА АБОНЕНТСКОЕ ОБСЛУЖИВАНИЕ*
             
 🎁 Выбранный пакет: *${packageName}*
@@ -407,15 +414,12 @@
 
 🌐 *Отправлено с сайта favor-sibir.ru*`;
 
-            // Кодируем для Telegram
             const encodedMessage = encodeURIComponent(message);
             const telegramUrl = `https://t.me/Favor_sibir?text=${encodedMessage}`;
-            
-            // Открываем Telegram
             window.open(telegramUrl, '_blank');
             
             setTimeout(() => {
-                alert('✅ Спасибо! Откроется Telegram. Отправьте сообщение — и наш специалист свяжется с вами в ближайшее время.');
+                alert('✅ Спасибо! Откроется Telegram. Отправьте сообщение — и наш специалист свяжется с вами.');
             }, 100);
         });
     </script>
