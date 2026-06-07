@@ -7,7 +7,6 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- EmailJS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <style>
         * {
@@ -170,8 +169,9 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            margin-top: 8px;
-            flex-wrap: wrap;
+            margin: 20px 0;
+            font-size: 0.85rem;
+            flex-wrap: nowrap;
         }
         .checkbox-group input {
             width: 20px;
@@ -182,18 +182,21 @@
             flex-shrink: 0;
         }
         .checkbox-group label {
-            font-weight: normal;
-            margin: 0;
             cursor: pointer;
             color: #cbd5e1;
-            font-size: 0.9rem;
+            margin: 0;
         }
         .checkbox-group a {
             color: #c85c17;
             text-decoration: none;
+            white-space: nowrap;
         }
         .checkbox-group a:hover {
             text-decoration: underline;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 100px;
         }
         .double-buttons {
             display: flex;
@@ -241,21 +244,6 @@
             color: #c85c17;
             text-decoration: none;
         }
-        .package-badge {
-            background: #c85c17;
-            color: #0f172a;
-            padding: 6px 16px;
-            border-radius: 40px;
-            font-weight: 700;
-            display: inline-block;
-            margin-bottom: 20px;
-            text-align: center;
-            width: auto;
-        }
-        .package-info {
-            text-align: center;
-            margin-bottom: 24px;
-        }
         @media (max-width: 640px) {
             .form-card {
                 padding: 24px 20px;
@@ -272,6 +260,9 @@
             }
             .double-buttons {
                 flex-direction: column;
+            }
+            .checkbox-group {
+                flex-wrap: wrap;
             }
         }
     </style>
@@ -295,15 +286,10 @@
 
     <div class="container">
         <div class="form-card" data-aos="fade-up">
-            <div class="package-info">
-                <span class="package-badge" id="selectedPackageDisplay">Базовый</span>
-                <h1 class="form-title">Подбор тарифа для бизнеса</h1>
-                <p class="form-subtitle">Заполните контактные данные и ответьте на вопросы</p>
-            </div>
+            <h1 class="form-title">Подбор тарифа для бизнеса</h1>
+            <p class="form-subtitle">Заполните контактные данные и ответьте на вопросы</p>
             
             <form id="questionnaireForm">
-                <input type="hidden" id="package" name="package" value="Базовый">
-
                 <!-- ===== КОНТАКТНЫЕ ДАННЫЕ ===== -->
                 <div class="form-group">
                     <label>Ваше ФИО <span class="required">*</span></label>
@@ -311,7 +297,7 @@
                 </div>
                 <div class="form-group">
                     <label>Название организации</label>
-                    <input type="text" id="company" name="company" placeholder="ООО «Ромашка»">
+                    <input type="text" id="company" name="company" placeholder="ООО «ФАВОР»">
                 </div>
                 <div class="form-group">
                     <label>Сфера деятельности</label>
@@ -415,13 +401,6 @@
     <script>
         AOS.init({ duration: 700, once: true });
 
-        // Получаем выбранный пакет из URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const selectedPackage = urlParams.get('package');
-        } else {
-    document.getElementById('selectedPackageDisplay').innerText = '';
-}
-
         // === ВАШИ КЛЮЧИ EMAILJS ===
         const EMAILJS_PUBLIC_KEY = 'xKJbzElJOq1DMFUou';
         const EMAILJS_SERVICE_ID = 'service_tymezcm';
@@ -429,9 +408,8 @@
 
         emailjs.init(EMAILJS_PUBLIC_KEY);
 
-        // Функция сбора данных из формы
+        // Функция сбора данных из формы (без пакета)
         function getFormData() {
-            const packageName = document.getElementById('package').value;
             const fullName = document.getElementById('fullName').value.trim();
             const company = document.getElementById('company').value.trim();
             const activity = document.getElementById('activity').value.trim();
@@ -455,7 +433,7 @@
             const priority = priorityElem ? priorityElem.value : 'Не указано';
 
             return {
-                packageName, fullName, company, activity, phone, email,
+                fullName, company, activity, phone, email,
                 contractsCount, budget, currentSolution, losses,
                 activeProcesses, claimsFrequency, priority
             };
@@ -505,8 +483,6 @@
 Телефон: ${data.phone}
 Email: ${data.email || '—'}
 
-🎁 *Выбранный пакет:* ${data.packageName}
-
 📊 *Ответы на вопросы:*
 1️⃣ Договоров в месяц: ${data.contractsCount}
 2️⃣ Сейчас решают юрвопросы: ${data.currentSolution}
@@ -538,7 +514,6 @@ Email: ${data.email || '—'}
                 activity: data.activity || '—',
                 phone: data.phone,
                 email: data.email || '—',
-                package: data.packageName,
                 contractsCount: data.contractsCount,
                 currentSolution: data.currentSolution,
                 losses: data.losses,
