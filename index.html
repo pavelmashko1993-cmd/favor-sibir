@@ -721,7 +721,6 @@
         section[id] {
             scroll-margin-top: 85px;
         }
-        /* Cookie-баннер — фиксированный внизу */
         .cookie-banner {
             position: fixed;
             bottom: 0;
@@ -1061,12 +1060,37 @@
             document.getElementById('cookieBanner').style.display = 'none';
         });
 
-        // Бургер-меню
+        // Бургер-меню с переключением иконки ☰ / ✕
         const burgerBtn = document.getElementById('burgerBtn');
         const mobileNav = document.getElementById('mobileNav');
-        burgerBtn.addEventListener('click', () => mobileNav.classList.toggle('show'));
+
+        function updateBurgerIcon() {
+            if (mobileNav.classList.contains('show')) {
+                burgerBtn.innerHTML = '✕';
+            } else {
+                burgerBtn.innerHTML = '☰';
+            }
+        }
+
+        burgerBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('show');
+            updateBurgerIcon();
+        });
+
+        // Закрыть меню при клике на любую ссылку внутри и сбросить иконку
         document.querySelectorAll('.mobile-nav a').forEach(link => {
-            link.addEventListener('click', () => mobileNav.classList.remove('show'));
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('show');
+                updateBurgerIcon();
+            });
+        });
+
+        // При изменении размера окна на десктоп (ширина > 800px) скрыть меню и сбросить иконку
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 800 && mobileNav.classList.contains('show')) {
+                mobileNav.classList.remove('show');
+                updateBurgerIcon();
+            }
         });
 
         // Карусель кейсов
