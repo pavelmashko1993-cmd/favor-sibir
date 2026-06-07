@@ -132,7 +132,6 @@
         .mobile-nav.show {
             display: flex;
         }
-        /* остальные стили как в вашем коде, только футер и фото увеличены */
         .contact-header {
             color: white;
             text-decoration: none;
@@ -732,47 +731,6 @@
             transform: translateY(-3px);
             color: white;
         }
-        /* Cookie баннер */
-        .cookie-banner {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: #1e293b;
-            border-top: 1px solid #334155;
-            padding: 16px 24px;
-            z-index: 1000;
-            display: none;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
-            backdrop-filter: blur(4px);
-        }
-        .cookie-banner p {
-            font-size: 0.85rem;
-            color: #cbd5e1;
-            margin: 0;
-        }
-        .cookie-banner a {
-            color: #c85c17;
-            text-decoration: none;
-        }
-        .cookie-banner .btn-cookie {
-            background: #c85c17;
-            color: #0f172a;
-            border: none;
-            padding: 8px 24px;
-            border-radius: 40px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-            font-size: 0.85rem;
-        }
-        .cookie-banner .btn-cookie:hover {
-            background: #a44510;
-            color: white;
-        }
         footer {
             background-color: #0a0c10;
             color: #94a3b8;
@@ -934,7 +892,7 @@
 
     <section id="packages">
         <div class="container">
-            <h2 class="section-title">Пакеты услуг</h2>
+            <h2 class="section-title">Пакеты услуг для физических лиц</h2>
             <div class="packages">
                 <div class="package-card" data-aos="fade-up">
                     <div class="package-name">Базовый</div>
@@ -1006,6 +964,12 @@
             </div>
             <div style="text-align: center; margin-top: 40px; padding: 16px; background: #1e293b; border-radius: 20px; color: #94a3b8;" data-aos="fade-up">
                 <i class="ri-information-line"></i> Итоговая стоимость определяется после консультации и анализа документов — зависит от сложности дела и объёма работы.
+            </div>
+            <!-- Новая кнопка для перехода к бизнес-пакетам -->
+            <div style="text-align: center; margin-top: 40px;" data-aos="fade-up">
+                <a href="business.html#packages" class="btn-primary" style="background: #c85c17; color: white; padding: 14px 34px; font-size: 1.1rem;">
+                    Пакеты услуг для юридических лиц и предпринимателей →
+                </a>
             </div>
         </div>
     </section>
