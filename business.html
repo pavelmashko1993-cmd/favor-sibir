@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Абонентское обслуживание бизнеса | ФАВОР СИБИРЬ</title>
-    <meta name="description" content="Юридическое сопровождение бизнеса на ежемесячной основе. Предсказуемый доход, фиксированная стоимость, полный спектр услуг для вашей компании.">
+    <meta name="description" content="Юридическое сопровождение бизнеса на ежемесячной основе. Фиксированная стоимость, полный спектр услуг для вашей компании.">
     <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -49,9 +49,12 @@
         section {
             padding: 80px 0;
         }
+        /* Исправление для якорей: чтобы шапка не перекрывала заголовки */
+        #packages, #benefits, #contact {
+            scroll-margin-top: 100px;
+        }
         .header {
             background-color: #0a2a3a;
-            color: white;
             padding: 20px 0;
             position: sticky;
             top: 0;
@@ -321,13 +324,13 @@
         <div class="container header-inner">
             <div class="logo">
                 <h1>ФАВОР СИБИРЬ</h1>
-                <p>юридическая защита с 2014 года</p>
+                <p>юридическая защита бизнеса с 2014 года</p>
             </div>
             <div class="nav-links">
-                <a href="index.html">Главная</a>
-                <a href="#packages">Тарифы</a>
-                <a href="#benefits">Преимущества</a>
-                <a href="https://t.me/Favor_sibir" target="_blank" style="display: inline-flex; align-items: center; gap: 4px; text-decoration: none;"><i class="ri-telegram-line"></i> Telegram</a>
+                <a href="business.html">Главная</a>
+                <a href="business.html#packages">Тарифы</a>
+                <a href="business.html#benefits">Преимущества</a>
+                <a href="https://t.me/Favor_sibir" target="_blank" style="display: inline-flex; align-items: center; gap: 4px;"><i class="ri-telegram-line"></i> Telegram</a>
                 <a href="tel:+79133761860" class="contact-header">+7 913 376 18 60</a>
             </div>
         </div>
@@ -336,8 +339,8 @@
     <div class="hero">
         <div class="container">
             <h2 data-aos="fade-up">Юридическое сопровождение бизнеса</h2>
-            <p data-aos="fade-up" data-aos-delay="100">Фиксированная ежемесячная плата за полный спектр юридических услуг. Предсказуемые расходы, профессиональная защита, никаких сюрпризов.</p>
-            <a href="#contact" class="btn-primary" data-aos="fade-up" data-aos-delay="200">Оставить заявку →</a>
+            <p data-aos="fade-up" data-aos-delay="100">Фиксированная ежемесячная плата за полный спектр юридических услуг. Предсказуемые расходы, профессиональная защита.</p>
+            <a href="business.html#contact" class="btn-primary" data-aos="fade-up" data-aos-delay="200">Оставить заявку →</a>
         </div>
     </div>
 
@@ -356,7 +359,7 @@
                         <li>Проверка контрагентов (до 5 в месяц)</li>
                         <li>Ежемесячный отчёт в Telegram-боте</li>
                     </ul>
-                    <a href="questionnaire.html?package=Базовый" class="btn-outline">Выбрать</a>
+                    <a href="business-questionnaire.html?package=Базовый" class="btn-outline">Выбрать</a>
                 </div>
                 <div class="package-card" data-aos="fade-up" data-aos-delay="50">
                     <div class="package-name">Стандарт</div>
@@ -366,11 +369,11 @@
                         <li>Анализ договоров (до 10 шт./мес)</li>
                         <li>Составление договоров (до 7 шт./мес)</li>
                         <li>Претензионная работа (до 5 претензий/мес)</li>
-                        <li><strong>Ведение одного судебного дела в месяц</strong> (арбитраж/общей юрисдикции)</li>
+                        <li><strong>Ведение одного судебного дела в месяц</strong></li>
                         <li>Представительство в госорганах</li>
                         <li>Приоритетное рассмотрение запросов</li>
                     </ul>
-                    <a href="questionnaire.html?package=Стандарт" class="btn-outline">Выбрать</a>
+                    <a href="business-questionnaire.html?package=Стандарт" class="btn-outline">Выбрать</a>
                 </div>
                 <div class="package-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="package-name">Премиум</div>
@@ -384,7 +387,7 @@
                         <li>Стратегические сессии (раз в месяц)</li>
                         <li>Персональный куратор — Павел Машко</li>
                     </ul>
-                    <a href="questionnaire.html?package=Премиум" class="btn-outline">Выбрать</a>
+                    <a href="business-questionnaire.html?package=Премиум" class="btn-outline">Выбрать</a>
                 </div>
             </div>
         </div>
@@ -397,51 +400,19 @@
                 <div class="feature-item" data-aos="fade-up">
                     <div class="feature-icon"><i class="ri-shield-check-line"></i></div>
                     <h3>Фиксированная цена</h3>
-                    <p>Вы точно знаете, сколько тратите на юриста каждый месяц. Никаких почасовых ставок и непредвиденных счетов.</p>
+                    <p>Вы точно знаете, сколько тратите на юриста каждый месяц. Никаких почасовых ставок.</p>
                 </div>
                 <div class="feature-item" data-aos="fade-up" data-aos-delay="50">
                     <div class="feature-icon"><i class="ri-time-line"></i></div>
                     <h3>Экономия времени</h3>
-                    <p>Сконцентрируйтесь на бизнесе — юридические вопросы решает наша команда. Среднее время ответа — 2 часа.</p>
+                    <p>Сконцентрируйтесь на бизнесе — юридические вопросы решает наша команда. Ответ — до 2 часов.</p>
                 </div>
                 <div class="feature-item" data-aos="fade-up" data-aos-delay="100">
                     <div class="feature-icon"><i class="ri-bar-chart-2-line"></i></div>
                     <h3>Прозрачность</h3>
-                    <p>Отслеживайте статус всех обращений и дел в Telegram-боте. Вы всегда знаете, на какой стадии ваш вопрос.</p>
+                    <p>Статус всех обращений и дел в Telegram-боте. Вы всегда в курсе.</p>
                 </div>
                 <div class="feature-item" data-aos="fade-up" data-aos-delay="150">
                     <div class="feature-icon"><i class="ri-briefcase-line"></i></div>
                     <h3>12 лет на рынке</h3>
-                    <p>Более 500 клиентов, выигранные дела на сумму более 200 млн ₽. Ваш бизнес в надёжных руках.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title">Начните сотрудничество</h2>
-            <div class="form-placeholder" data-aos="fade-up">
-                <i class="ri-customer-service-line"></i>
-                <p>Оставьте заявку, и мы подберём оптимальный пакет для вашего бизнеса.</p>
-                <!-- Кнопка без иконки, текст по центру -->
-                <a href="https://t.me/Favor_sibir" target="_blank" class="btn-tg" style="margin-top: 20px;">
-                    Написать в Telegram
-                </a>
-                <p style="margin-top: 24px; font-size: 0.85rem;">Или позвоните: <a href="tel:+79133761860" style="color:#c85c17;">+7 913 376 18 60</a></p>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p><i class="ri-mail-line"></i> favorsibir@mail.ru | <i class="ri-phone-line"></i> <a href="tel:+79133761860">+7 913 376 18 60</a> | <i class="ri-telegram-line"></i> Telegram: @Favor_sibir</p>
-            <p>ИП Машко Павел Игоревич | ОГРНИП: 321665800167760 | ИНН: 661588362049</p>
-            <p>© 2026 «ФАВОР СИБИРЬ» — юридическая помощь бизнесу.</p>
-        </div>
-    </footer>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({duration:800,once:true,offset:100});</script>
-</body>
-</html>
+                    <p>Более 500 клиентов, вы
