@@ -51,7 +51,7 @@
         .header {
             background-color: #0a2a3a;
             color: white;
-            padding: 20px 0;
+            padding: 16px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -78,6 +78,7 @@
             font-size: 0.8rem;
             opacity: 0.8;
         }
+        /* Десктопное меню */
         .nav-links {
             display: flex;
             gap: 24px;
@@ -93,6 +94,45 @@
         .nav-links a:hover {
             color: #c85c17;
         }
+        /* Бургер-меню (скрыто на десктопе) */
+        .burger-menu {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            line-height: 1;
+        }
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 72px;
+            left: 0;
+            right: 0;
+            background: #0a2a3a;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 20px;
+            z-index: 999;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .mobile-nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .mobile-nav a:last-child {
+            border-bottom: none;
+        }
+        .mobile-nav.show {
+            display: flex;
+        }
+        /* остальные стили как в вашем коде, только футер и фото увеличены */
         .contact-header {
             color: white;
             text-decoration: none;
@@ -274,15 +314,6 @@
                 grid-template-columns: 1fr;
             }
         }
-        @media (max-width: 640px) {
-    .about-photo img {
-        width: 200px;
-        height: 200px;
-    }
-    .about-photo {
-        padding: 30px 16px;
-    }
-}
         .package-card {
             background: #1e293b;
             border: 1px solid #334155;
@@ -505,21 +536,21 @@
             color: #cbd5e1;
         }
         .about-photo {
-    flex: 1;
-    text-align: center;
-    background: #1e293b;
-    border-radius: 40px;
-    padding: 40px 20px;
-    box-shadow: 0 12px 28px rgba(0,0,0,0.2);
-}
-.about-photo img {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 20px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
+            flex: 1;
+            text-align: center;
+            background: #1e293b;
+            border-radius: 40px;
+            padding: 32px 24px;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+        }
+        .about-photo img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
         .form-card {
             background: #1e293b;
             border: 1px solid #334155;
@@ -776,27 +807,21 @@
             .hero-text h2 { font-size: 2.2rem; }
             .section-title { font-size: 1.8rem; }
             .header-inner { flex-direction: column; text-align: center; }
-            .nav-links { justify-content: center; }
+            .nav-links { display: none; }
+            .burger-menu { display: block; }
+            .mobile-nav { top: 72px; }
             .carousel-slide img { max-height: 350px; }
             .carousel-case-slide img { max-height: 300px; }
             .carousel-case-slide { min-height: 480px; }
             .carousel-case-btn { top: 25%; }
             .tg-channel-card { padding: 40px 24px; }
             .tg-channel-card h3 { font-size: 1.5rem; }
-            section[id] {
-                scroll-margin-top: 70px;
-            }
-            .cookie-banner {
-                flex-direction: column;
-                text-align: center;
-            }
+            section[id] { scroll-margin-top: 70px; }
+            .about-photo img { width: 200px; height: 200px; }
+            .about-photo { padding: 30px 20px; }
         }
         @media (max-width: 640px) {
-            .direction-card {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
+            .direction-card { flex-direction: column; align-items: center; text-align: center; }
         }
     </style>
 </head>
@@ -807,6 +832,7 @@
                 <h1>ФАВОР СИБИРЬ</h1>
                 <p>юридическая защита с 2014 года</p>
             </div>
+            <!-- Десктопное меню -->
             <div class="nav-links">
                 <a href="#directions">Услуги</a>
                 <a href="#packages">Стоимость</a>
@@ -820,6 +846,22 @@
                 <a href="#contact" class="btn-scroll">Оставить заявку</a>
                 <a href="tel:+79133761860" class="contact-header">+7 913 376 18 60</a>
             </div>
+            <!-- Кнопка бургер-меню (мобильная) -->
+            <button class="burger-menu" id="burgerBtn">☰</button>
+        </div>
+        <!-- Мобильное меню (скрытое) -->
+        <div class="mobile-nav" id="mobileNav">
+            <a href="#directions">Услуги</a>
+            <a href="#packages">Стоимость</a>
+            <a href="#cases">Кейсы</a>
+            <a href="#about">О нас</a>
+            <a href="#reviews">Отзывы</a>
+            <a href="#tg-channel">Блог</a>
+            <a href="business.html">Бизнесу</a>
+            <a href="#contact">Контакты</a>
+            <a href="https://t.me/Favor_sibir" target="_blank">Telegram</a>
+            <a href="#contact" class="btn-scroll" style="background:#c85c17; text-align:center;">Оставить заявку</a>
+            <a href="tel:+79133761860" class="contact-header" style="display:block; text-align:center; margin-top:8px;">+7 913 376 18 60</a>
         </div>
     </div>
 
@@ -981,20 +1023,20 @@
     </section>
 
     <section id="about" class="about">
-    <div class="container about-grid">
-        <div class="about-text" data-aos="fade-right">
-            <h2>Павел Машко — основатель и руководитель</h2>
-            <p>12 лет в юриспруденции. В 2021 году открыл собственную частную практику. Помог больше 500 клиентам. Убеждён: юридическая помощь должна быть прозрачной. Каждый клиент получает доступ в Telegram-бот, где видит все этапы дела — от подачи иска до отчета о заседании.</p>
-            <h3>Команда</h3>
-            <p>Ваши права защищают сильнейшие юристы своей отрасли совместно с экспертами по строительству и автоэкспертами. Вместе мы закрываем споры с застройщиками и подрядчиками; споры по ДТП, споры по трудовым, наследственным делам. Защищаем предпринимателей.</p>
+        <div class="container about-grid">
+            <div class="about-text" data-aos="fade-right">
+                <h2>Павел Машко — основатель и руководитель</h2>
+                <p>12 лет в юриспруденции. В 2021 году открыл собственную частную практику. Помог больше 500 клиентам. Убеждён: юридическая помощь должна быть прозрачной. Каждый клиент получает доступ в Telegram-бот, где видит все этапы дела — от подачи иска до отчета о заседании.</p>
+                <h3>Команда</h3>
+                <p>Ваши права защищают сильнейшие юристы своей отрасли совместно с экспертами по строительству и автоэкспертами. Вместе мы закрываем споры с застройщиками и подрядчиками; споры по ДТП, споры по трудовым, наследственным делам. Защищаем предпринимателей.</p>
+            </div>
+            <div class="about-photo" data-aos="fade-left">
+                <img src="pavel.jpg" alt="Павел Машко">
+                <p style="margin-top: 16px;"><strong>Павел Машко</strong><br></p>
+                <p style="font-size: 0.85rem; color: #94a3b8;">Ваше доверие — наша репутация</p>
+            </div>
         </div>
-        <div class="about-photo" data-aos="fade-left">
-            <img src="pavel.jpg" alt="Павел Машко">
-            <p style="margin-top: 16px;"><strong>Павел Машко</strong><br></p>
-            <p style="font-size: 0.85rem; color: #94a3b8;">Ваше доверие — наша репутация</p>
-        </div>
-    </div>
-</section>
+    </section>
 
     <section id="reviews">
         <div class="container">
@@ -1045,13 +1087,13 @@
     </section>
 
     <footer>
-    <div class="container">
-        <p><i class="ri-mail-line"></i> favorsibir@mail.ru | <i class="ri-phone-line"></i> <a href="tel:+79133761860">+7 913 376 18 60</a> | <i class="ri-telegram-line"></i> Telegram: @Favor_sibir</p>
-        <p>ИП Машко Павел Игоревич | ОГРНИП: 321665800167760 | ИНН: 661588362049</p>
-        <p>© 2026 «ФАВОР СИБИРЬ» — юридическая помощь со всей ответственностью.</p>
-        <p>Информация на сайте не является публичной офертой.</p>
-    </div>
-</footer>
+        <div class="container">
+            <p><i class="ri-mail-line"></i> favorsibir@mail.ru | <i class="ri-phone-line"></i> <a href="tel:+79133761860">+7 913 376 18 60</a> | <i class="ri-telegram-line"></i> Telegram: @Favor_sibir</p>
+            <p>ИП Машко Павел Игоревич | ОГРНИП: 321665800167760 | ИНН: 661588362049</p>
+            <p>© 2026 «ФАВОР СИБИРЬ» — юридическая помощь со всей ответственностью.</p>
+            <p>Информация на сайте не является публичной офертой.</p>
+        </div>
+    </footer>
 
     <!-- Cookie баннер -->
     <div id="cookieBanner" class="cookie-banner">
@@ -1062,8 +1104,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({duration:800,once:true,offset:100});
-        
-        // Cookie баннер
+        // Куки-баннер
         if (!localStorage.getItem('cookiesAccepted')) {
             document.getElementById('cookieBanner').style.display = 'flex';
         }
@@ -1071,8 +1112,21 @@
             localStorage.setItem('cookiesAccepted', 'true');
             document.getElementById('cookieBanner').style.display = 'none';
         });
+        // Бургер-меню
+        const burgerBtn = document.getElementById('burgerBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        burgerBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('show');
+        });
+        // Закрыть меню при клике на ссылку
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('show');
+            });
+        });
     </script>
 
+    <!-- Карусель кейсов -->
     <script>
         const caseData = [
             {
@@ -1155,6 +1209,7 @@
         }
     </script>
 
+    <!-- Карусель отзывов -->
     <script>
         const reviewImages = [
             "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg",
@@ -1219,6 +1274,7 @@
         }
     </script>
 
+    <!-- Отправка формы -->
     <script>
         const form = document.getElementById('tgForm');
         const submitBtn = document.getElementById('submitBtn');
@@ -1267,6 +1323,7 @@
         });
     </script>
 
+    <!-- Выравнивание высоты блоков цены -->
     <script>
         function equalizePriceHeights() {
             const priceBlocks = document.querySelectorAll('.package-card .price');
@@ -1308,7 +1365,6 @@
                 { keywords: ["консультация", "записаться", "стоимость"], answer: "Первичная консультация — бесплатно. Вы можете написать мне в Telegram напрямую: https://t.me/Favor_sibir или оставить свой номер, и я перезвоню." }
             ]
         };
-
         const style = document.createElement('style');
         style.textContent = `
             .chat-widget-btn {
@@ -1327,14 +1383,8 @@
                 z-index: 9999;
                 transition: all 0.2s;
             }
-            .chat-widget-btn:hover {
-                transform: scale(1.05);
-            }
-            .chat-widget-btn svg {
-                width: 32px;
-                height: 32px;
-                fill: white;
-            }
+            .chat-widget-btn:hover { transform: scale(1.05); }
+            .chat-widget-btn svg { width: 32px; height: 32px; fill: white; }
             .chat-widget-window {
                 position: fixed;
                 bottom: 90px;
@@ -1352,9 +1402,7 @@
                 font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
                 border: 1px solid #334155;
             }
-            .chat-widget-window.closed {
-                display: none;
-            }
+            .chat-widget-window.closed { display: none; }
             .chat-header {
                 background: ${CONFIG.secondaryColor};
                 color: white;
