@@ -418,12 +418,9 @@
         // Получаем выбранный пакет из URL
         const urlParams = new URLSearchParams(window.location.search);
         const selectedPackage = urlParams.get('package');
-        if (selectedPackage) {
-            document.getElementById('selectedPackageDisplay').innerText = selectedPackage;
-            document.getElementById('package').value = selectedPackage;
         } else {
-            document.getElementById('selectedPackageDisplay').innerText = 'не выбран';
-        }
+    document.getElementById('selectedPackageDisplay').innerText = '';
+}
 
         // === ВАШИ КЛЮЧИ EMAILJS ===
         const EMAILJS_PUBLIC_KEY = 'xKJbzElJOq1DMFUou';
