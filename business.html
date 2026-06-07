@@ -208,24 +208,6 @@
             position: absolute;
             left: 0;
         }
-        .btn-outline {
-            background: none;
-            border: 2px solid #c85c17;
-            color: #c85c17;
-            padding: 12px;
-            border-radius: 60px;
-            font-weight: 700;
-            text-align: center;
-            display: block;
-            width: 100%;
-            text-decoration: none;
-            transition: 0.2s;
-            margin-top: 20px;
-        }
-        .btn-outline:hover {
-            background: #c85c17;
-            color: #0f172a;
-        }
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -259,7 +241,6 @@
             margin-bottom: 16px;
             display: inline-block;
         }
-        /* Исправленная кнопка Telegram — белый текст, яркий фон */
         .btn-tg {
             background: #c85c17;
             color: #ffffff;
@@ -321,7 +302,7 @@
                 <p>юридическая защита бизнеса с 2014 года</p>
             </div>
             <div class="nav-links">
-                <a href="index.html">Главная</a>
+                <a href="business.html">Главная</a>
                 <a href="business.html#packages">Тарифы</a>
                 <a href="business.html#benefits">Преимущества</a>
                 <a href="https://t.me/Favor_sibir" target="_blank"><i class="ri-telegram-line"></i> Telegram</a>
@@ -334,7 +315,7 @@
         <div class="container">
             <h2 data-aos="fade-up">Юридическое сопровождение бизнеса</h2>
             <p data-aos="fade-up" data-aos-delay="100">Фиксированная ежемесячная плата за полный спектр юридических услуг. Предсказуемые расходы, профессиональная защита.</p>
-            <a href="business.html#contact" class="btn-primary" data-aos="fade-up" data-aos-delay="200">Оставить заявку →</a>
+            <a href="business-questionnaire.html" class="btn-primary" data-aos="fade-up" data-aos-delay="200">Рассчитать стоимость →</a>
         </div>
     </div>
 
@@ -353,7 +334,6 @@
                         <li>Проверка контрагентов (до 5 в месяц)</li>
                         <li>Ежемесячный отчёт в Telegram-боте</li>
                     </ul>
-                    <a href="business-questionnaire.html?package=Базовый" class="btn-outline">Рассчитать</a>
                 </div>
                 <div class="package-card" data-aos="fade-up" data-aos-delay="50">
                     <div class="package-name">Стандарт</div>
@@ -367,7 +347,6 @@
                         <li>Представительство в госорганах</li>
                         <li>Приоритетное рассмотрение</li>
                     </ul>
-                    <a href="business-questionnaire.html?package=Стандарт" class="btn-outline">Рассчитать</a>
                 </div>
                 <div class="package-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="package-name">Премиум</div>
@@ -381,8 +360,14 @@
                         <li>Стратегические сессии (раз в месяц)</li>
                         <li>Персональный куратор — Павел Машко</li>
                     </ul>
-                    <a href="business-questionnaire.html?package=Премиум" class="btn-outline">Рассчитать</a>
                 </div>
+            </div>
+            <!-- Общая кнопка под пакетами -->
+            <div style="text-align: center; margin-top: 50px;" data-aos="fade-up">
+                <a href="business-questionnaire.html" class="btn-primary" style="background: #c85c17; color: white; padding: 16px 48px; font-size: 1.2rem;">
+                    Рассчитать стоимость →
+                </a>
+                <p style="margin-top: 20px; font-size: 0.9rem; color: #94a3b8;">Индивидуальный расчёт после заполнения анкеты</p>
             </div>
         </div>
     </section>
