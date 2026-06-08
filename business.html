@@ -49,7 +49,7 @@
         section {
             padding: 80px 0;
         }
-        #packages, #benefits, #contact {
+        #packages, #benefits, #stories, #contact {
             scroll-margin-top: 100px;
         }
         .header {
@@ -226,6 +226,68 @@
             color: #c85c17;
             margin-bottom: 16px;
         }
+        /* Стили для блока историй */
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .story-card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 28px;
+            padding: 32px 24px;
+            transition: 0.25s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .story-card:hover {
+            transform: translateY(-6px);
+            border-color: #c85c17;
+            box-shadow: 0 24px 36px -12px rgba(0,0,0,0.3);
+        }
+        .story-icon {
+            font-size: 3rem;
+            color: #c85c17;
+            margin-bottom: 20px;
+        }
+        .story-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #f1f5f9;
+        }
+        .story-description {
+            color: #cbd5e1;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+        .story-link {
+            margin-top: 20px;
+            color: #c85c17;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.2s;
+        }
+        .story-link:hover {
+            gap: 10px;
+            color: #a44510;
+        }
+        @media (max-width: 1000px) {
+            .stories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 640px) {
+            .stories-grid {
+                grid-template-columns: 1fr;
+            }
+        }
         .form-placeholder {
             background: #1e293b;
             border: 1px solid #334155;
@@ -305,6 +367,7 @@
                 <a href="index.html">Главная</a>
                 <a href="business.html#packages">Тарифы</a>
                 <a href="business.html#benefits">Преимущества</a>
+                <a href="business.html#stories">Кейсы</a>
                 <a href="https://t.me/Favor_sibir" target="_blank"><i class="ri-telegram-line"></i> Telegram</a>
                 <a href="tel:+79133761860" class="contact-header">+7 913 376 18 60</a>
             </div>
@@ -397,6 +460,40 @@
                     <p>Более 500 клиентов, выигранные дела на сумму более 200 млн ₽.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Блок успешных историй (кейсов) -->
+    <section id="stories">
+        <div class="container">
+            <h2 class="section-title">Успешные истории</h2>
+            <div class="stories-grid">
+                <div class="story-card" data-aos="fade-up">
+                    <div class="story-icon"><i class="ri-building-line"></i></div>
+                    <div class="story-title">Спор с застройщиком</div>
+                    <div class="story-description">
+                        Клиент — крупный девелопер. Помогли расторгнуть десятки договоров долевого участия и вернуть средства дольщикам. Сэкономили более 50 млн ₽ на судебных издержках и штрафах.
+                    </div>
+                    <a href="#" class="story-link">Подробнее <i class="ri-arrow-right-line"></i></a>
+                </div>
+                <div class="story-card" data-aos="fade-up" data-aos-delay="50">
+                    <div class="story-icon"><i class="ri-bank-card-line"></i></div>
+                    <div class="story-title">Защита от налоговых претензий</div>
+                    <div class="story-description">
+                        ИП на УСН получил многомиллионные доначисления. Выстроили правовую позицию, оспорили решение налоговой. В итоге доначисления отменены полностью, штрафы сняты.
+                    </div>
+                    <a href="#" class="story-link">Подробнее <i class="ri-arrow-right-line"></i></a>
+                </div>
+                <div class="story-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="story-icon"><i class="ri-hand-heart-line"></i></div>
+                    <div class="story-title">Корпоративный конфликт</div>
+                    <div class="story-description">
+                        Помогли двум учредителям ООО мирно разделить бизнес с сохранением активов. Разработали договор купли-продажи доли, избежали судебных тяжб.
+                    </div>
+                    <a href="#" class="story-link">Подробнее <i class="ri-arrow-right-line"></i></a>
+                </div>
+            </div>
+            <!-- При необходимости можно добавить ещё одну строку карточек -->
         </div>
     </section>
 
