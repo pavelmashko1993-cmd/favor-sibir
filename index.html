@@ -181,6 +181,7 @@
         }
         .hero-text {
             flex: 1.2;
+            min-width: 280px;
         }
         .hero-text h2 {
             font-size: 4rem;
@@ -212,6 +213,19 @@
         .btn-primary:hover {
             background: #a44510;
             transform: translateY(-2px);
+        }
+        .hero-photo {
+            flex: 0 0 350px;
+            max-width: 350px;
+            text-align: center;
+        }
+        .hero-photo img {
+            width: 100%;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #c85c17;
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.3);
         }
         .hero-stats {
             background: rgba(0,0,0,0.5);
@@ -778,6 +792,17 @@
             .about-photo img { width: 200px; height: 200px; }
             .about-photo { padding: 30px 20px; }
             .cookie-banner { flex-direction: column; text-align: center; }
+            .hero-photo {
+                flex: 0 0 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+            .hero-photo img {
+                height: 300px;
+            }
+            .hero-stats {
+                flex: 1 1 100%;
+            }
         }
         @media (max-width: 640px) {
             .direction-card { flex-direction: column; align-items: center; text-align: center; }
@@ -827,6 +852,9 @@
                 <h2>Юридическая защита в сложных судебных спорах</h2>
                 <p>Споры с застройщиками, ИЖС, ДТП, семейные, наследственные, трудовые споры, помощь бизнесу. Команда профессионалов под руководством Павла Машко. 12 лет реальной судебной практики, 500+ клиентов.</p>
                 <a href="https://t.me/Favor_sibir" target="_blank" class="btn-primary">Бесплатная консультация →</a>
+            </div>
+            <div class="hero-photo" data-aos="fade-up" data-aos-delay="100">
+                <img src="pavel.jpg" alt="Павел Машко">
             </div>
             <div class="hero-stats" data-aos="fade-up" data-aos-delay="200">
                 <div><strong>12 лет</strong> юридической практики</div>
@@ -1093,7 +1121,7 @@
             }
         });
 
-        // ========== КАРУСЕЛЬ КЕЙСОВ (обновлена с вашими фото) ==========
+        // ========== КАРУСЕЛЬ КЕЙСОВ ==========
         const caseData = [
             { 
                 img: "result (1).jpg", 
