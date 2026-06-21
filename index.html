@@ -1093,73 +1093,190 @@
             }
         });
 
-        // Карусель кейсов
+        // ========== КАРУСЕЛЬ КЕЙСОВ (обновлена с вашими фото) ==========
         const caseData = [
-            { img: "https://via.placeholder.com/600x400?text=Кейс+1", title: "Спор с застройщиком «Расцветай»", description: "Расторжение ДДУ, взыскание рыночной стоимости квартиры + неустойка, штраф, моральный вред.", amount: "Взыскано 36 млн ₽" },
-            { img: "https://via.placeholder.com/600x400?text=Кейс+2", title: "Неустойка за просрочку ИЖС", description: "Взыскание неустойки, штрафа и морального вреда за срыв сроков строительства дома.", amount: "Взыскано 1 850 000 ₽" },
-            { img: "https://via.placeholder.com/600x400?text=Кейс+3", title: "Дефекты квартиры", description: "Взыскание стоимости устранения строительных недостатков и расходов на экспертизу.", amount: "Взыскано 890 000 ₽" }
+            { 
+                img: "result (1).jpg", 
+                title: "Спор с застройщиком «Расцветай»", 
+                description: "Расторжение ДДУ, взыскание рыночной стоимости квартиры + неустойка, штраф, моральный вред.", 
+                amount: "Взыскано 36 млн ₽" 
+            },
+            { 
+                img: "result (2).jpg", 
+                title: "Неустойка за просрочку ИЖС", 
+                description: "Взыскание неустойки, штрафа и морального вреда за срыв сроков строительства дома.", 
+                amount: "Взыскано 1 850 000 ₽" 
+            },
+            { 
+                img: "result (3).jpg", 
+                title: "Дефекты квартиры", 
+                description: "Взыскание стоимости устранения строительных недостатков и расходов на экспертизу.", 
+                amount: "Взыскано 890 000 ₽" 
+            },
+            { 
+                img: "result (4).jpg", 
+                title: "Взыскание страхового возмещения по ДТП", 
+                description: "Получение полной суммы страховки после ДТП, включая судебные издержки.", 
+                amount: "Взыскано 620 000 ₽" 
+            }
         ];
+
         let caseIndex = 0;
         const caseSlidesContainer = document.getElementById('carouselCaseSlides');
         const caseDotsContainer = document.getElementById('caseDotsContainer');
+
         function buildCaseCarousel() {
-            caseSlidesContainer.innerHTML = ''; caseDotsContainer.innerHTML = '';
+            caseSlidesContainer.innerHTML = '';
+            caseDotsContainer.innerHTML = '';
             caseData.forEach((item, idx) => {
-                const slideDiv = document.createElement('div'); slideDiv.className = 'carousel-case-slide';
-                slideDiv.innerHTML = `<img src="${item.img}" alt="Судебный акт ${idx+1}"><div class="case-description"><h4>${item.title}</h4><p>${item.description}</p><div class="case-amount">${item.amount}</div></div>`;
+                const slideDiv = document.createElement('div');
+                slideDiv.className = 'carousel-case-slide';
+                slideDiv.innerHTML = `
+                    <img src="${item.img}" alt="Судебный акт ${idx+1}">
+                    <div class="case-description">
+                        <h4>${item.title}</h4>
+                        <p>${item.description}</p>
+                        <div class="case-amount">${item.amount}</div>
+                    </div>
+                `;
                 caseSlidesContainer.appendChild(slideDiv);
-                const dot = document.createElement('div'); dot.className = 'case-dot'; dot.addEventListener('click', () => goToCaseSlide(idx));
+                const dot = document.createElement('div');
+                dot.className = 'case-dot';
+                dot.addEventListener('click', () => goToCaseSlide(idx));
                 caseDotsContainer.appendChild(dot);
             });
-            updateCaseDots(); updateCaseSlidePosition();
+            updateCaseDots();
+            updateCaseSlidePosition();
         }
-        function updateCaseSlidePosition() { caseSlidesContainer.style.transform = `translateX(-${caseIndex * 100}%)`; updateCaseDots(); }
-        function updateCaseDots() { document.querySelectorAll('.case-dot').forEach((dot, idx) => idx === caseIndex ? dot.classList.add('active') : dot.classList.remove('active')); }
-        function goToCaseSlide(index) { caseIndex = (index + caseData.length) % caseData.length; updateCaseSlidePosition(); }
-        if (caseData.length) { buildCaseCarousel(); document.getElementById('casePrevBtn').addEventListener('click', () => goToCaseSlide(caseIndex - 1)); document.getElementById('caseNextBtn').addEventListener('click', () => goToCaseSlide(caseIndex + 1)); }
-        else { document.getElementById('carouselCaseSlides').innerHTML = '<div class="carousel-case-slide">Скоро появятся судебные акты</div>'; document.getElementById('casePrevBtn').style.display = 'none'; document.getElementById('caseNextBtn').style.display = 'none'; }
+
+        function updateCaseSlidePosition() {
+            caseSlidesContainer.style.transform = `translateX(-${caseIndex * 100}%)`;
+            updateCaseDots();
+        }
+
+        function updateCaseDots() {
+            document.querySelectorAll('.case-dot').forEach((dot, idx) => {
+                if (idx === caseIndex) dot.classList.add('active');
+                else dot.classList.remove('active');
+            });
+        }
+
+        function goToCaseSlide(index) {
+            caseIndex = (index + caseData.length) % caseData.length;
+            updateCaseSlidePosition();
+        }
+
+        if (caseData.length) {
+            buildCaseCarousel();
+            document.getElementById('casePrevBtn').addEventListener('click', () => goToCaseSlide(caseIndex - 1));
+            document.getElementById('caseNextBtn').addEventListener('click', () => goToCaseSlide(caseIndex + 1));
+        } else {
+            document.getElementById('carouselCaseSlides').innerHTML = '<div class="carousel-case-slide">Скоро появятся судебные акты</div>';
+            document.getElementById('casePrevBtn').style.display = 'none';
+            document.getElementById('caseNextBtn').style.display = 'none';
+        }
 
         // Карусель отзывов
         const reviewImages = ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg","9.jpg","10.jpg","11.jpg","12.jpg","13.jpg","14.jpg","15.jpg","16.jpg","17.jpg","18.jpg"];
         let reviewIndex = 0;
-        const slidesContainer = document.getElementById('carouselSlides'); const dotsContainer = document.getElementById('dotsContainer');
+        const slidesContainer = document.getElementById('carouselSlides');
+        const dotsContainer = document.getElementById('dotsContainer');
+
         function buildReviewCarousel() {
-            slidesContainer.innerHTML = ''; dotsContainer.innerHTML = '';
+            slidesContainer.innerHTML = '';
+            dotsContainer.innerHTML = '';
             reviewImages.forEach((src, idx) => {
-                const slide = document.createElement('div'); slide.className = 'carousel-slide';
-                const img = document.createElement('img'); img.src = src; img.alt = `Отзыв ${idx+1}`; slide.appendChild(img); slidesContainer.appendChild(slide);
-                const dot = document.createElement('div'); dot.className = 'dot'; dot.addEventListener('click', () => goToReviewSlide(idx)); dotsContainer.appendChild(dot);
+                const slide = document.createElement('div');
+                slide.className = 'carousel-slide';
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = `Отзыв ${idx+1}`;
+                slide.appendChild(img);
+                slidesContainer.appendChild(slide);
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                dot.addEventListener('click', () => goToReviewSlide(idx));
+                dotsContainer.appendChild(dot);
             });
-            updateReviewDots(); updateReviewSlidePosition();
+            updateReviewDots();
+            updateReviewSlidePosition();
         }
-        function updateReviewSlidePosition() { slidesContainer.style.transform = `translateX(-${reviewIndex * 100}%)`; updateReviewDots(); }
-        function updateReviewDots() { document.querySelectorAll('.dot').forEach((dot, idx) => idx === reviewIndex ? dot.classList.add('active') : dot.classList.remove('active')); }
-        function goToReviewSlide(index) { reviewIndex = (index + reviewImages.length) % reviewImages.length; updateReviewSlidePosition(); }
-        if (reviewImages.length) { buildReviewCarousel(); document.getElementById('prevBtn').addEventListener('click', () => goToReviewSlide(reviewIndex - 1)); document.getElementById('nextBtn').addEventListener('click', () => goToReviewSlide(reviewIndex + 1)); }
-        else { slidesContainer.innerHTML = '<div class="carousel-slide">Скоро появятся отзывы</div>'; document.getElementById('prevBtn').style.display = 'none'; document.getElementById('nextBtn').style.display = 'none'; }
+
+        function updateReviewSlidePosition() {
+            slidesContainer.style.transform = `translateX(-${reviewIndex * 100}%)`;
+            updateReviewDots();
+        }
+
+        function updateReviewDots() {
+            document.querySelectorAll('.dot').forEach((dot, idx) => {
+                if (idx === reviewIndex) dot.classList.add('active');
+                else dot.classList.remove('active');
+            });
+        }
+
+        function goToReviewSlide(index) {
+            reviewIndex = (index + reviewImages.length) % reviewImages.length;
+            updateReviewSlidePosition();
+        }
+
+        if (reviewImages.length) {
+            buildReviewCarousel();
+            document.getElementById('prevBtn').addEventListener('click', () => goToReviewSlide(reviewIndex - 1));
+            document.getElementById('nextBtn').addEventListener('click', () => goToReviewSlide(reviewIndex + 1));
+        } else {
+            slidesContainer.innerHTML = '<div class="carousel-slide">Скоро появятся отзывы</div>';
+            document.getElementById('prevBtn').style.display = 'none';
+            document.getElementById('nextBtn').style.display = 'none';
+        }
 
         // Отправка формы
-        const form = document.getElementById('tgForm'); const submitBtn = document.getElementById('submitBtn'); const WEBHOOK_URL = 'https://hook.eu1.make.com/zqnio8l4f5q1t1imhbvxjkxmpc3wmslh';
+        const form = document.getElementById('tgForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const WEBHOOK_URL = 'https://hook.eu1.make.com/zqnio8l4f5q1t1imhbvxjkxmpc3wmslh';
+
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const name = document.getElementById('name').value.trim(); const phone = document.getElementById('phone').value.trim(); const message = document.getElementById('message').value.trim(); const consent = document.getElementById('consent').checked;
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const message = document.getElementById('message').value.trim();
+            const consent = document.getElementById('consent').checked;
             if (!name || !phone || !message) return alert('Заполните все поля');
             if (!consent) return alert('Необходимо согласие на обработку данных');
-            submitBtn.disabled = true; submitBtn.textContent = 'Отправка...';
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Отправка...';
             try {
-                const response = await fetch(WEBHOOK_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name, phone, message, consent }) });
-                if (response.ok) { alert('✅ Заявка отправлена! Мы свяжемся с вами.'); form.reset(); } else alert('❌ Ошибка. Попробуйте позже.');
-            } catch (error) { alert('❌ Ошибка соединения.'); } finally { submitBtn.disabled = false; submitBtn.textContent = 'Перезвоните мне'; }
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, phone, message, consent })
+                });
+                if (response.ok) {
+                    alert('✅ Заявка отправлена! Мы свяжемся с вами.');
+                    form.reset();
+                } else {
+                    alert('❌ Ошибка. Попробуйте позже.');
+                }
+            } catch (error) {
+                alert('❌ Ошибка соединения.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Перезвоните мне';
+            }
         });
 
         // Выравнивание высоты цен
         function equalizePriceHeights() {
             const priceBlocks = document.querySelectorAll('.package-card .price');
             if (!priceBlocks.length) return;
-            let max = 0; priceBlocks.forEach(block => { block.style.height = 'auto'; max = Math.max(max, block.offsetHeight); });
+            let max = 0;
+            priceBlocks.forEach(block => {
+                block.style.height = 'auto';
+                max = Math.max(max, block.offsetHeight);
+            });
             priceBlocks.forEach(block => block.style.height = max + 'px');
         }
-        window.addEventListener('load', equalizePriceHeights); window.addEventListener('resize', equalizePriceHeights);
+        window.addEventListener('load', equalizePriceHeights);
+        window.addEventListener('resize', equalizePriceHeights);
     </script>
 
     <!-- Чат-бот (виджет) -->
