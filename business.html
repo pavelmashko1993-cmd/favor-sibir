@@ -1,422 +1,108 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Абонентское обслуживание бизнеса | ФАВОР СИБИРЬ</title>
-    <meta name="description" content="Юридическое сопровождение бизнеса на ежемесячной основе. Фиксированная стоимость, полный спектр услуг.">
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.5;
-            color: #e2e8f0;
-            background-color: #0f172a;
-            scroll-behavior: smooth;
-        }
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-        h1, h2, h3, .section-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-        }
-        .section-title {
-            font-size: 3rem;
-            margin-bottom: 48px;
-            text-align: center;
-            color: #f1f5f9;
-            position: relative;
-        }
-        .section-title:after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 2px;
-            background: #c85c17;
-            margin: 20px auto 0;
-        }
-        section {
-            padding: 80px 0;
-        }
-        #packages, #benefits, #contact {
-            scroll-margin-top: 100px;
-        }
-        .header {
-            background-color: #0a2a3a;
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(8px);
-            background-color: rgba(10, 42, 58, 0.95);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .header-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .logo h1 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .logo p {
-            font-size: 0.8rem;
-            opacity: 0.8;
-        }
-        .nav-links {
-            display: flex;
-            gap: 24px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: 0.2s;
-        }
-        .nav-links a:hover {
-            color: #c85c17;
-        }
-        .contact-header {
-            color: white;
-            text-decoration: none;
-            background: #c85c17;
-            padding: 10px 22px;
-            border-radius: 40px;
-            font-weight: 600;
-            transition: 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .contact-header:hover {
-            background: #a44510;
-            transform: translateY(-2px);
-        }
-        .hero {
-            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.92)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format') center/cover no-repeat;
-            padding: 120px 0;
-            text-align: center;
-        }
-        .hero h2 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-        }
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            color: rgba(255,255,255,0.85);
-        }
-        .btn-primary {
-            background: #c85c17;
-            color: white;
-            border: none;
-            padding: 14px 34px;
-            font-size: 1.1rem;
-            border-radius: 60px;
-            cursor: pointer;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: 0.2s;
-        }
-        .btn-primary:hover {
-            background: #a44510;
-            transform: translateY(-2px);
-        }
-        .packages {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 40px;
-        }
-        @media (max-width: 1000px) {
-            .packages { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 640px) {
-            .packages { grid-template-columns: 1fr; }
-        }
-        .package-card {
-            background: #1e293b;
-            border: 1px solid #334155;
-            border-radius: 28px;
-            padding: 32px 24px;
-            transition: 0.25s;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-        .package-card:hover {
-            transform: translateY(-6px);
-            border-color: #c85c17;
-            box-shadow: 0 24px 36px -12px rgba(0,0,0,0.3);
-        }
-        .package-name {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 16px;
-            color: #f1f5f9;
-        }
-        .price {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: #c85c17;
-            margin-bottom: 16px;
-        }
-        .price small {
-            font-size: 0.9rem;
-            font-weight: 400;
-            color: #94a3b8;
-        }
-        .package-desc {
-            list-style: none;
-            margin: 20px 0;
-            flex-grow: 1;
-        }
-        .package-desc li {
-            margin-bottom: 12px;
-            padding-left: 28px;
-            position: relative;
-            color: #cbd5e1;
-        }
-        .package-desc li::before {
-            content: "✓";
-            color: #c85c17;
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        .feature-item {
-            text-align: center;
-            padding: 24px;
-            background: #1e293b;
-            border-radius: 24px;
-            border: 1px solid #334155;
-        }
-        .feature-icon {
-            font-size: 2.5rem;
-            color: #c85c17;
-            margin-bottom: 16px;
-        }
-        .form-placeholder {
-            background: #1e293b;
-            border: 1px solid #334155;
-            border-radius: 32px;
-            padding: 44px;
-            max-width: 680px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .form-placeholder i {
-            font-size: 2.5rem;
-            color: #c85c17;
-            margin-bottom: 16px;
-            display: inline-block;
-        }
-        .btn-tg {
-            background: #c85c17;
-            color: #ffffff;
-            border: none;
-            padding: 16px 40px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            border-radius: 60px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-            transition: 0.2s;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            line-height: 1.2;
-        }
-        .btn-tg:hover {
-            background: #a44510;
-            transform: translateY(-3px);
-            color: #ffffff;
-        }
-        footer {
-            background-color: #0a0c10;
-            color: #94a3b8;
-            text-align: center;
-            padding: 40px 0;
-            font-size: 0.9rem;
-        }
-        footer a {
-            color: #c85c17;
-            text-decoration: none;
-        }
-        [data-aos] {
-            opacity: 0;
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        [data-aos].aos-animate {
-            opacity: 1;
-            transform: translateY(0) !important;
-        }
-        [data-aos="fade-up"] {
-            transform: translateY(30px);
-        }
-        @media (max-width: 800px) {
-            .hero h2 { font-size: 2.2rem; }
-            .section-title { font-size: 2rem; }
-            .header-inner { flex-direction: column; text-align: center; }
-            .nav-links { justify-content: center; }
-            .btn-tg { padding: 12px 24px; font-size: 1rem; }
-            section { padding: 60px 0; }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Юридическая поддержка бизнеса — ФАВОР СИБИРЬ</title>
+  <meta name="description" content="Юридическая поддержка предпринимателей и судебная защита бизнеса под руководством Павла Машко.">
+  <meta name="theme-color" content="#081419">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23081419'/%3E%3Cpath d='M16 18h32v7H25v9h19v7H25v15h-9V18z' fill='%23c77a45'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="header">
-        <div class="container header-inner">
-            <div class="logo">
-                <h1>ФАВОР СИБИРЬ</h1>
-                <p>комплексная юридическая защита с 2021 года</p>
-            </div>
-            <div class="nav-links">
-                <a href="index.html">Главная</a>
-                <a href="business.html#packages">Тарифы</a>
-                <a href="business.html#benefits">Преимущества</a>
-                <a href="https://t.me/Favor_sibir" target="_blank"><i class="ri-telegram-line"></i> Telegram</a>
-                <a href="tel:+79133761860" class="contact-header">+7 913 376 18 60</a>
-            </div>
-        </div>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-name">ФАВОР СИБИРЬ</span>
+        <span class="brand-subtitle">судебная практика Павла Машко</span>
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
+        <a href="index.html#practice">Практика</a>
+        <a href="index.html#cases">Дела</a>
+        <a href="index.html#approach">Подход</a>
+        <a href="index.html">Главная</a>
+      </nav>
+      <a class="header-contact" href="index.html#contact">Обсудить задачу</a>
     </div>
+  </header>
 
-    <div class="hero">
-        <div class="container">
-            <h2 data-aos="fade-up">Юридическое сопровождение бизнеса</h2>
-            <p data-aos="fade-up" data-aos-delay="100">Фиксированная ежемесячная плата за полный спектр юридических услуг. Предсказуемые расходы, профессиональная защита.</p>
-            <a href="business-questionnaire.html" class="btn-primary" data-aos="fade-up" data-aos-delay="200">Рассчитать стоимость →</a>
+  <main>
+    <section class="business-hero">
+      <div class="shell business-hero-grid">
+        <div class="business-hero-copy reveal">
+          <div class="section-heading">
+            <p class="eyebrow">Юридическая поддержка бизнеса</p>
+            <h1>Внешняя юридическая функция для собственника компании</h1>
+            <p>Команда ведёт текущие договорные и претензионные вопросы. Павел Машко подключается к сложным переговорам, судебной стратегии и ситуациям, где цена ошибки особенно высока.</p>
+          </div>
+          <a class="button button-primary" href="index.html#contact">Обсудить задачи бизнеса</a>
         </div>
+        <figure class="hero-portrait business-portrait reveal">
+          <img src="assets/pavel-business.webp" alt="Павел Машко на встрече с клиентом" width="1122" height="1402">
+          <figcaption>
+            <strong>Павел Машко</strong>
+            <span>стратегия, переговоры и ключевые решения</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Что берём на себя</p>
+          <h2>Не абстрактный «полный спектр», а конкретная юридическая работа</h2>
+        </div>
+        <div class="business-services">
+          <article class="business-service reveal"><span class="card-number">01</span><h3>Договорная работа</h3><p>Анализ и подготовка договоров, правок и протоколов разногласий с учётом реальной модели бизнеса.</p></article>
+          <article class="business-service reveal"><span class="card-number">02</span><h3>Претензии и переговоры</h3><p>Формируем позицию, готовим документы и ведём переговоры до того, как конфликт перерастёт в судебный процесс.</p></article>
+          <article class="business-service reveal"><span class="card-number">03</span><h3>Арбитражные споры</h3><p>Подряд, поставка, аренда, взыскание задолженности и убытков, расторжение договоров и защита от требований.</p></article>
+          <article class="business-service reveal"><span class="card-number">04</span><h3>Правовые риски</h3><p>Разбираем нестандартные ситуации собственника и предлагаем решение с понятными последствиями и следующим шагом.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section approach-section">
+      <div class="shell business-conditions">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Формат сотрудничества</p>
+          <h2>Объём и стоимость определяются после диагностики</h2>
+          <p>Количество задач само по себе ничего не говорит об их сложности. Поэтому мы сначала оцениваем нагрузку, судебные риски и необходимый уровень участия руководителя практики.</p>
+        </div>
+        <div class="business-conditions-list reveal">
+          <p>Фиксируем, какие задачи входят в ежемесячное сопровождение.</p>
+          <p>Определяем сроки ответа и порядок постановки поручений.</p>
+          <p>Судебные проекты и крупные разовые задачи оцениваем отдельно.</p>
+          <p>Собственник понимает, кто отвечает за вопрос и на какой стадии находится работа.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section">
+      <div class="shell contact-grid">
+        <div class="contact-copy reveal">
+          <p class="eyebrow">Начать разговор</p>
+          <h2>Опишите компанию и основные юридические задачи</h2>
+          <p>Мы оценим предполагаемую нагрузку и предложим формат, который не создаёт лишних расходов и действительно закрывает риски бизнеса.</p>
+        </div>
+        <div class="contact-form reveal">
+          <h3>Связаться напрямую</h3>
+          <p>Напишите Павлу Машко в Telegram или позвоните. Для первого разговора достаточно кратко описать сферу бизнеса и основные задачи.</p>
+          <a class="button button-primary" href="https://t.me/Favor_sibir" target="_blank" rel="noreferrer">Написать в Telegram</a>
+          <a class="text-link" href="tel:+79133761860">+7 913 376-18-60</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div><strong>ФАВОР СИБИРЬ</strong><span>Авторская судебная практика Павла Машко</span></div>
+      <div><span>ИП Машко Павел Игоревич</span><span>ИНН 661588362049 · ОГРНИП 321665800167760</span></div>
+      <div><a href="privacy.html">Согласие на обработку данных</a><a href="privacy2.html">Политика конфиденциальности</a></div>
     </div>
-
-    <section id="packages">
-        <div class="container">
-            <h2 class="section-title">Пакеты абонентского обслуживания</h2>
-            <div class="packages">
-                <div class="package-card" data-aos="fade-up">
-                    <div class="package-name">Базовый</div>
-                    <div class="price">от 20 000 ₽ <small>/ месяц</small></div>
-                    <ul class="package-desc">
-                        <li>4 устные консультации до 30 минут в месяц</li>
-                        <li>Анализ договоров (до 2 шт./мес)</li>
-                        <li>Составление договоров (до 1 шт./мес)</li>
-                        <li>Претензионная работа (до 2 претензий/мес)</li>
-                    </ul>
-                </div>
-                <div class="package-card" data-aos="fade-up" data-aos-delay="50">
-                    <div class="package-name">Стандарт</div>
-                    <div class="price">от 40 000 ₽ <small>/ месяц</small></div>
-                    <ul class="package-desc">
-                        <li>6 устных консультаций до 30 минут в месяц</li>
-                        <li>Анализ договоров (до 5 шт./мес)</li>
-                        <li>Составление договоров (до 5 шт./мес)</li>
-                        <li>Претензионная работа (до 5 претензий/мес)</li>
-                        <li>Ведение одного судебного дела</li>
-                    </ul>
-                </div>
-                <div class="package-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="package-name">Премиум</div>
-                    <div class="price">от 100 000 ₽ <small>/ месяц</small></div>
-                    <ul class="package-desc">
-                        <li>10 устных консультаций до 30 минут в месяц</li>
-                        <li>Анализ договоров (до 15 шт./мес)</li>
-                        <li>Составление договоров (до 15 шт./мес)</li>
-                        <li>Претензионная работа (до 15 претензий/мес)</li>
-                        <li>Ведение трех судебных дел</li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Общая кнопка под пакетами -->
-            <div style="text-align: center; margin-top: 50px;" data-aos="fade-up">
-                <a href="business-questionnaire.html" class="btn-primary" style="background: #c85c17; color: white; padding: 16px 48px; font-size: 1.2rem;">
-                    Рассчитать стоимость →
-                </a>
-                <p style="margin-top: 20px; font-size: 0.9rem; color: #94a3b8;">Индивидуальный расчёт после заполнения анкеты</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="benefits">
-        <div class="container">
-            <h2 class="section-title">Почему бизнес выбирает нас</h2>
-            <div class="features-grid">
-                <div class="feature-item" data-aos="fade-up">
-                    <div class="feature-icon"><i class="ri-shield-check-line"></i></div>
-                    <h3>Фиксированная цена</h3>
-                    <p>Вы точно знаете месячные расходы на юриста. Никаких почасовых ставок.</p>
-                </div>
-                <div class="feature-item" data-aos="fade-up" data-aos-delay="50">
-                    <div class="feature-icon"><i class="ri-time-line"></i></div>
-                    <h3>Экономия времени</h3>
-                    <p>Сконцентрируйтесь на бизнесе — юрвопросы решает команда. Ответ до 2 часов.</p>
-                </div>
-                <div class="feature-item" data-aos="fade-up" data-aos-delay="100">
-                    <div class="feature-icon"><i class="ri-bar-chart-2-line"></i></div>
-                    <h3>Прозрачность</h3>
-                    <p>Статус обращений и дел в Telegram-боте. Вы всегда в курсе.</p>
-                </div>
-                <div class="feature-item" data-aos="fade-up" data-aos-delay="150">
-                    <div class="feature-icon"><i class="ri-briefcase-line"></i></div>
-                    <h3>12 лет на рынке</h3>
-                    <p>Более 500 клиентов, выигранные дела на сумму более 200 млн ₽.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title">Начните сотрудничество</h2>
-            <div class="form-placeholder" data-aos="fade-up">
-                <i class="ri-customer-service-line"></i>
-                <p>Оставьте заявку, и мы подберём оптимальный пакет для вашего бизнеса.</p>
-                <a href="https://t.me/Favor_sibir" target="_blank" class="btn-tg" style="margin-top: 20px;">
-                    Написать в Telegram
-                </a>
-                <p style="margin-top: 24px; font-size: 0.85rem;">Или позвоните: <a href="tel:+79133761860" style="color:#c85c17;">+7 913 376 18 60</a></p>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p><i class="ri-mail-line"></i> favorsibir@mail.ru | <i class="ri-phone-line"></i> <a href="tel:+79133761860">+7 913 376 18 60</a> | <i class="ri-telegram-line"></i> Telegram: @Favor_sibir</p>
-            <p>ИП Машко Павел Игоревич | ОГРНИП: 321665800167760 | ИНН: 661588362049</p>
-            <p>© 2026 «ФАВОР СИБИРЬ» — юридическая помощь бизнесу.</p>
-        </div>
-    </footer>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({duration:800,once:true,offset:100});</script>
+    <div class="shell footer-bottom">© 2026 ФАВОР СИБИРЬ. Информация на сайте не является публичной офертой.</div>
+  </footer>
+  <script src="script.js"></script>
 </body>
 </html>

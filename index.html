@@ -1,1382 +1,229 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>ФАВОР СИБИРЬ | Юридическая компания Павла Машко</title>
-    <meta name="description" content="Юридическая компания Павла Машко: споры с застройщиками, ДДУ, ИЖС, ДТП, семейные, арбитраж. 12 лет практики, выигранные дела на сумму более 200 млн ₽. Бесплатная консультация.">
-    <meta name="keywords" content="юрист по ДДУ, споры с застройщиком, неустойка, расторжение договора, юридическая помощь Новосибирск, взыскание страховых выплат, арбитражные споры, семейный юрист">
-    <meta name="author" content="Павел Машко">
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <style>
-        /* все ваши стили (без изменений) */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.5;
-            color: #e2e8f0;
-            background-color: #0f172a;
-            scroll-behavior: smooth;
-        }
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-        h1, h2, h3, .section-title, .package-name, .direction-text h3, .case-title, .tg-channel-card h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-        }
-        .section-title {
-            font-size: 3rem;
-            margin-bottom: 48px;
-            text-align: center;
-            color: #f1f5f9;
-            position: relative;
-        }
-        .section-title:after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 2px;
-            background: #c85c17;
-            margin: 20px auto 0;
-        }
-        .header {
-            background-color: #0a2a3a;
-            color: white;
-            padding: 16px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(8px);
-            background-color: rgba(10, 42, 58, 0.95);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .header-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .logo h1 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .logo p {
-            font-size: 0.8rem;
-            opacity: 0.8;
-        }
-        .nav-links {
-            display: flex;
-            gap: 24px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: 0.2s;
-        }
-        .nav-links a:hover {
-            color: #c85c17;
-        }
-        .burger-menu {
-            display: none;
-            cursor: pointer;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.8rem;
-            line-height: 1;
-        }
-        .mobile-nav {
-            display: none;
-            position: fixed;
-            top: 72px;
-            left: 0;
-            right: 0;
-            background: #0a2a3a;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding: 20px;
-            z-index: 999;
-            flex-direction: column;
-            gap: 16px;
-        }
-        .mobile-nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 500;
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .mobile-nav a:last-child {
-            border-bottom: none;
-        }
-        .mobile-nav.show {
-            display: flex;
-        }
-        .contact-header {
-            color: white;
-            text-decoration: none;
-            background: #c85c17;
-            padding: 10px 22px;
-            border-radius: 40px;
-            font-weight: 600;
-            transition: 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .contact-header:hover {
-            background: #a44510;
-            transform: translateY(-2px);
-        }
-        .tg-header {
-            background: transparent;
-            border: 1px solid rgba(255,255,255,0.3);
-            padding: 10px 18px;
-        }
-        .tg-header:hover {
-            background: #26A5E4;
-            border-color: #26A5E4;
-        }
-        .btn-scroll {
-            background: #c85c17;
-            color: white;
-            padding: 8px 20px;
-            border-radius: 40px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: 0.2s;
-        }
-        .btn-scroll:hover {
-            background: #a44510;
-        }
-        .hero {
-            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.92)), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070&auto=format') center/cover no-repeat;
-            padding: 140px 0 120px;
-            color: white;
-        }
-        .hero-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 48px;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .hero-text {
-            flex: 1.2;
-            min-width: 280px;
-        }
-        .hero-text h2 {
-            font-size: 4rem;
-            line-height: 1.1;
-            color: white;
-            margin-bottom: 24px;
-        }
-        .hero-text p {
-            font-size: 1.2rem;
-            color: rgba(255,255,255,0.85);
-            margin-bottom: 32px;
-        }
-        .btn-primary {
-            background: #c85c17;
-            color: white;
-            border: none;
-            padding: 14px 34px;
-            font-size: 1.1rem;
-            border-radius: 60px;
-            cursor: pointer;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: 0.2s;
-            box-shadow: none;
-        }
-        .btn-primary:hover {
-            background: #a44510;
-            transform: translateY(-2px);
-        }
-        .hero-photo {
-            flex: 0 0 350px;
-            max-width: 350px;
-            text-align: center;
-        }
-        .hero-photo img {
-            width: 100%;
-            height: 350px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #c85c17;
-            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.3);
-        }
-        .hero-stats {
-            background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(8px);
-            padding: 32px;
-            border-radius: 32px;
-            flex: 0 0 300px;
-            border: 1px solid rgba(255,255,255,0.15);
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-        }
-        .hero-stats div {
-            font-size: 1rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding: 12px 0;
-        }
-        .hero-stats strong {
-            font-size: 2rem;
-            color: #c85c17;
-            display: block;
-            line-height: 1.2;
-        }
-        .hero-stats .cases-link {
-            margin: 12px 0;
-            display: inline-block;
-            background: #c85c17;
-            color: #0f172a;
-            padding: 8px 16px;
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            text-decoration: none;
-            transition: 0.2s;
-            text-align: center;
-            align-self: flex-start;
-        }
-        .hero-stats .cases-link:hover {
-            background: #a44510;
-            transform: translateY(-2px);
-            color: white;
-        }
-        section {
-            padding: 80px 0;
-        }
-        .directions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
-        }
-        .direction-card {
-            background: #1e293b;
-            border: 1px solid #334155;
-            border-radius: 24px;
-            padding: 32px 28px;
-            transition: 0.25s;
-            display: flex;
-            gap: 16px;
-            align-items: flex-start;
-        }
-        .direction-card:hover {
-            transform: translateY(-4px);
-            border-color: #c85c17;
-            background: #0f172a;
-            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.3);
-        }
-        .direction-icon {
-            font-size: 2.2rem;
-            flex-shrink: 0;
-            line-height: 1;
-            color: #c85c17;
-        }
-        .direction-text h3 {
-            font-size: 1.25rem;
-            margin-bottom: 8px;
-            color: #f1f5f9;
-        }
-        .direction-text p {
-            font-size: 0.9rem;
-            color: #94a3b8;
-            line-height: 1.4;
-        }
-        .packages {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            align-items: start;
-        }
-        @media (max-width: 1000px) {
-            .packages {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        @media (max-width: 640px) {
-            .packages {
-                grid-template-columns: 1fr;
-            }
-        }
-        .package-card {
-            background: #1e293b;
-            border: 1px solid #334155;
-            border-radius: 28px;
-            padding: 28px 24px;
-            transition: 0.25s;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-        .package-card:hover {
-            transform: translateY(-6px);
-            border-color: #c85c17;
-            box-shadow: 0 24px 36px -12px rgba(0,0,0,0.3);
-        }
-        .package-name {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-bottom: 16px;
-            color: #f1f5f9;
-        }
-        .price {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: #c85c17;
-            margin: 0 0 20px 0;
-        }
-        .package-desc {
-            list-style: none;
-            margin: 0 0 24px 0;
-            padding: 0;
-            flex-grow: 1;
-        }
-        .package-desc li {
-            margin-bottom: 12px;
-            padding-left: 26px;
-            position: relative;
-            font-size: 0.95rem;
-            line-height: 1.4;
-            color: #cbd5e1;
-        }
-        .package-desc li::before {
-            content: "✓";
-            color: #c85c17;
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
-        .btn-outline {
-            background: none;
-            border: 2px solid #c85c17;
-            color: #c85c17;
-            padding: 12px;
-            border-radius: 60px;
-            font-weight: 700;
-            text-align: center;
-            display: block;
-            width: 100%;
-            text-decoration: none;
-            transition: 0.2s;
-            margin-top: auto;
-        }
-        .btn-outline:hover {
-            background: #c85c17;
-            color: #0f172a;
-        }
-        .carousel-case-container {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-            border-radius: 32px;
-            overflow: hidden;
-            box-shadow: 0 12px 28px -8px rgba(0,0,0,0.3);
-        }
-        .carousel-case-slides {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-        .carousel-case-slide {
-            min-width: 100%;
-            box-sizing: border-box;
-            background: #1e293b;
-            padding: 40px 20px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 550px;
-        }
-        .carousel-case-slide img {
-            max-width: 100%;
-            max-height: 350px;
-            object-fit: contain;
-            border-radius: 24px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-        .case-description {
-            margin-top: 0;
-            text-align: left;
-        }
-        .case-description h4 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: #f1f5f9;
-        }
-        .case-description p {
-            font-size: 0.95rem;
-            color: #cbd5e1;
-            margin-bottom: 12px;
-        }
-        .case-description .case-amount {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #c85c17;
-        }
-        .carousel-case-btn {
-            position: absolute;
-            top: 30%;
-            transform: translateY(-50%);
-            background: rgba(0,0,0,0.6);
-            color: white;
-            border: none;
-            font-size: 2rem;
-            cursor: pointer;
-            padding: 8px 16px;
-            border-radius: 40px;
-            transition: 0.2s;
-            z-index: 2;
-        }
-        .carousel-case-btn:hover {
-            background: #c85c17;
-        }
-        .case-prev {
-            left: 20px;
-        }
-        .case-next {
-            right: 20px;
-        }
-        .case-dots {
-            text-align: center;
-            margin-top: 24px;
-        }
-        .case-dot {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            background-color: #475569;
-            border-radius: 50%;
-            margin: 0 6px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .case-dot.active {
-            background-color: #c85c17;
-            transform: scale(1.2);
-        }
-        .about {
-            background-color: #0f172a;
-        }
-        .about-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 48px;
-            align-items: center;
-        }
-        .about-text {
-            flex: 2;
-        }
-        .about-text h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: #f1f5f9;
-        }
-        .about-text h3 {
-            font-size: 1.4rem;
-            margin: 28px 0 12px;
-            color: #f1f5f9;
-        }
-        .about-text p {
-            color: #cbd5e1;
-        }
-        .about-photo {
-            flex: 1;
-            text-align: center;
-            background: #1e293b;
-            border-radius: 40px;
-            padding: 32px 24px;
-            box-shadow: 0 12px 28px rgba(0,0,0,0.2);
-        }
-        .about-photo img {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-        .form-card {
-            background: #1e293b;
-            border: 1px solid #334155;
-            border-radius: 32px;
-            padding: 44px;
-            max-width: 680px;
-            margin: 0 auto;
-            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
-        }
-        .form-card label {
-            display: block;
-            margin-bottom: 4px;
-            font-weight: 500;
-            color: #e2e8f0;
-        }
-        input, textarea {
-            width: 100%;
-            padding: 14px 18px;
-            margin: 8px 0 20px;
-            border: 1.5px solid #334155;
-            border-radius: 28px;
-            font-family: inherit;
-            font-size: 1rem;
-            transition: 0.2s;
-            background: #0f172a;
-            color: white;
-            resize: none;
-            overflow: auto;
-        }
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: #c85c17;
-            box-shadow: 0 0 0 3px rgba(200,92,23,0.1);
-        }
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin: 20px 0;
-            font-size: 0.85rem;
-            flex-wrap: nowrap;
-        }
-        .checkbox-group input {
-            width: 20px;
-            height: 20px;
-            margin: 0;
-            cursor: pointer;
-            accent-color: #c85c17;
-            flex-shrink: 0;
-        }
-        .checkbox-group label {
-            cursor: pointer;
-            color: #cbd5e1;
-            margin: 0;
-        }
-        .checkbox-group a {
-            color: #c85c17;
-            text-decoration: none;
-            white-space: nowrap;
-        }
-        .checkbox-group a:hover {
-            text-decoration: underline;
-        }
-        button[type="submit"] {
-            background: #c85c17;
-            color: white;
-            border: none;
-            padding: 14px;
-            width: 100%;
-            font-size: 1rem;
-            border-radius: 60px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.2s;
-            margin-top: 10px;
-        }
-        button[type="submit"]:hover {
-            background: #a44510;
-        }
-        .carousel-container {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-            border-radius: 32px;
-            overflow: hidden;
-            box-shadow: 0 12px 28px -8px rgba(0,0,0,0.3);
-        }
-        .carousel-slides {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-        .carousel-slide {
-            min-width: 100%;
-            box-sizing: border-box;
-            background: #1e293b;
-            padding: 40px 20px;
-            text-align: center;
-        }
-        .carousel-slide img {
-            max-width: 100%;
-            max-height: 500px;
-            object-fit: contain;
-            border-radius: 24px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0,0,0,0.6);
-            color: white;
-            border: none;
-            font-size: 2rem;
-            cursor: pointer;
-            padding: 8px 16px;
-            border-radius: 40px;
-            transition: 0.2s;
-            z-index: 2;
-        }
-        .carousel-btn:hover {
-            background: #c85c17;
-        }
-        .prev { left: 20px; }
-        .next { right: 20px; }
-        .dots {
-            text-align: center;
-            margin-top: 24px;
-        }
-        .dot {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            background-color: #475569;
-            border-radius: 50%;
-            margin: 0 6px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .dot.active {
-            background-color: #c85c17;
-            transform: scale(1.2);
-        }
-        .tg-channel-card {
-            background: linear-gradient(135deg, #0a2a3a, #0f172a);
-            border-radius: 48px;
-            padding: 60px 40px;
-            text-align: center;
-            color: white;
-            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
-        }
-        .tg-channel-card h3 {
-            font-size: 2rem;
-            margin-bottom: 16px;
-        }
-        .tg-channel-card p {
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto 32px;
-            opacity: 0.9;
-        }
-        .tg-channel-card .btn-tg {
-            background: #c85c17;
-            color: #0f172a;
-            border: none;
-            padding: 16px 40px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            border-radius: 60px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            transition: 0.2s;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-        .tg-channel-card .btn-tg:hover {
-            background: #a44510;
-            transform: translateY(-3px);
-            color: white;
-        }
-        footer {
-            background-color: #0a0c10;
-            color: #94a3b8;
-            text-align: center;
-            padding: 40px 0;
-            font-size: 0.9rem;
-        }
-        footer a {
-            color: #c85c17;
-            text-decoration: none;
-        }
-        .btn-tg i, .contact-header i, .quick-btn i {
-            vertical-align: middle;
-            margin-right: 4px;
-            font-size: 1.1em;
-        }
-        [data-aos] {
-            opacity: 0;
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        [data-aos].aos-animate {
-            opacity: 1;
-            transform: translateY(0) !important;
-        }
-        [data-aos="fade-up"] {
-            transform: translateY(30px);
-        }
-        section[id] {
-            scroll-margin-top: 85px;
-        }
-        .cookie-banner {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: #1e293b;
-            border-top: 1px solid #334155;
-            padding: 16px 24px;
-            z-index: 1000;
-            display: none;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
-            backdrop-filter: blur(4px);
-        }
-        .cookie-banner p {
-            font-size: 0.85rem;
-            color: #cbd5e1;
-            margin: 0;
-        }
-        .cookie-banner a {
-            color: #c85c17;
-            text-decoration: none;
-        }
-        .cookie-banner .btn-cookie {
-            background: #c85c17;
-            color: #0f172a;
-            border: none;
-            padding: 8px 24px;
-            border-radius: 40px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-            font-size: 0.85rem;
-        }
-        .cookie-banner .btn-cookie:hover {
-            background: #a44510;
-            color: white;
-        }
-        @media (max-width: 800px) {
-            .hero-text h2 { font-size: 2.2rem; }
-            .section-title { font-size: 1.8rem; }
-            .header-inner { flex-direction: column; text-align: center; }
-            .nav-links { display: none; }
-            .burger-menu { display: block; }
-            .mobile-nav { top: 72px; }
-            .carousel-slide img { max-height: 350px; }
-            .carousel-case-slide img { max-height: 300px; }
-            .carousel-case-slide { min-height: 480px; }
-            .carousel-case-btn { top: 25%; }
-            .tg-channel-card { padding: 40px 24px; }
-            .tg-channel-card h3 { font-size: 1.5rem; }
-            section[id] { scroll-margin-top: 70px; }
-            .about-photo img { width: 200px; height: 200px; }
-            .about-photo { padding: 30px 20px; }
-            .cookie-banner { flex-direction: column; text-align: center; }
-            .hero-photo {
-                flex: 0 0 100%;
-                max-width: 300px;
-                margin: 0 auto;
-            }
-            .hero-photo img {
-                height: 300px;
-            }
-            .hero-stats {
-                flex: 1 1 100%;
-            }
-        }
-        @media (max-width: 640px) {
-            .direction-card { flex-direction: column; align-items: center; text-align: center; }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ФАВОР СИБИРЬ — авторская судебная практика Павла Машко</title>
+  <meta name="description" content="Авторская судебная практика Павла Машко. Споры в сфере недвижимости и строительства, страхования и ДТП, коммерческие и арбитражные споры.">
+  <meta name="theme-color" content="#081419">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23081419'/%3E%3Cpath d='M16 18h32v7H25v9h19v7H25v15h-9V18z' fill='%23c77a45'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="header">
-        <div class="container header-inner">
-            <div class="logo">
-                <h1>ФАВОР СИБИРЬ</h1>
-                <p>комплексная юридическая защита с 2021 года</p>
-            </div>
-            <div class="nav-links">
-                <a href="#directions">Услуги</a>
-                <a href="#packages">Стоимость</a>
-                <a href="#cases">Кейсы</a>
-                <a href="#about">О нас</a>
-                <a href="#reviews">Отзывы</a>
-                <a href="#tg-channel">Блог</a>
-                <a href="business.html">Бизнесу</a>
-                <a href="#contact">Контакты</a>
-                <a href="https://t.me/Favor_sibir" target="_blank" style="display: inline-flex; align-items: center; gap: 4px;"><i class="ri-telegram-line"></i> Telegram</a>
-                <a href="#contact" class="btn-scroll">Оставить заявку</a>
-                <a href="tel:+79133761860" class="contact-header">+7 913 376 18 60</a>
-            </div>
-            <button class="burger-menu" id="burgerBtn">☰</button>
-        </div>
-        <div class="mobile-nav" id="mobileNav">
-            <a href="#directions">Услуги</a>
-            <a href="#packages">Стоимость</a>
-            <a href="#cases">Кейсы</a>
-            <a href="#about">О нас</a>
-            <a href="#reviews">Отзывы</a>
-            <a href="#tg-channel">Блог</a>
-            <a href="business.html">Бизнесу</a>
-            <a href="#contact">Контакты</a>
-            <a href="https://t.me/Favor_sibir" target="_blank">Telegram</a>
-            <a href="#contact" class="btn-scroll" style="background:#c85c17; text-align:center;">Оставить заявку</a>
-            <a href="tel:+79133761860" class="contact-header" style="display:block; text-align:center; margin-top:8px;">+7 913 376 18 60</a>
-        </div>
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+  <header class="site-header" id="top">
+    <div class="shell header-inner">
+      <a class="brand" href="#top" aria-label="ФАВОР СИБИРЬ — на главную">
+        <span class="brand-name">ФАВОР СИБИРЬ</span>
+        <span class="brand-subtitle">судебная практика Павла Машко</span>
+      </a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+      <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
+        <a href="#practice">Практика</a>
+        <a href="#cases">Дела</a>
+        <a href="#approach">Подход</a>
+        <a href="business.html">Бизнесу</a>
+        <a href="https://t.me/pavelmashko" target="_blank" rel="noreferrer">Блог</a>
+      </nav>
+      <a class="header-contact" href="#contact">Обсудить дело</a>
     </div>
+  </header>
 
-    <div class="hero">
-        <div class="container hero-grid">
-            <div class="hero-text" data-aos="fade-up">
-                <h2>Юридическая защита в судебных спорах</h2>
-                <p>Споры с застройщиками и подрядчиками ИЖС. Споры по ДТП и страхованию. Семейные и наследственные споры. Помощь бизнесу.</p>
-                <p>Команда профессионалов Павла Машко.</p>
-                <a href="https://t.me/Favor_sibir" target="_blank" class="btn-primary">Бесплатная консультация →</a>
-            </div>
-            <div class="hero-photo" data-aos="fade-up" data-aos-delay="100">
-                <img src="pavel.jpg" alt="Павел Машко">
-            </div>
-            <div class="hero-stats" data-aos="fade-up" data-aos-delay="200">
-                <div><strong>12 лет</strong> юридической практики</div>
-                <div><strong>500+</strong> клиентов с 2021</div>
-                <div><strong>100%</strong> прозрачность: <br> Telegram-бот с отчетами</div>
-                <div><strong>>200 000 000₽</strong> взыскано за 2025 год</div>
-                <a href="#cases" class="cases-link">Смотреть дела →</a>
-            </div>
+  <main id="main">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Авторская юридическая практика</p>
+          <h1>Судебная стратегия начинается с личной ответственности</h1>
+          <p class="hero-lead">Павел Машко определяет правовую стратегию и ключевые решения по делу. Команда ФАВОР СИБИРЬ ведёт производство по единому стандарту и отвечает за каждый этап работы.</p>
+          <p class="hero-formula">Личная стратегия. Командное исполнение. Ответственность под моим именем.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#contact">Оценить перспективы дела</a>
+            <a class="text-link" href="#cases">Посмотреть реальные дела <span aria-hidden="true">↘</span></a>
+          </div>
+          <div class="hero-facts" aria-label="Показатели практики">
+            <span><strong>12 лет</strong> в юридической практике</span>
+            <span><strong>500+</strong> клиентов с 2021 года</span>
+            <span><strong>200+ млн ₽</strong> взыскано за 2025 год</span>
+          </div>
         </div>
+        <figure class="hero-portrait reveal">
+          <img src="assets/pavel-mashko.jpg" alt="Павел Машко в зале суда" width="1024" height="1536">
+          <figcaption>
+            <strong>Павел Машко</strong>
+            <span>основатель и руководитель ФАВОР СИБИРЬ</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="practice">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Основные направления</p>
+          <h2>Основные направления практики</h2>
+        </div>
+        <div class="practice-grid">
+          <article class="practice-card reveal">
+            <span class="card-number">01</span>
+            <h3>Недвижимость и строительство</h3>
+            <p>Споры с застройщиками и подрядчиками ИЖС, дефекты, нарушение сроков, расторжение договоров и взыскание убытков.</p>
+          </article>
+          <article class="practice-card reveal">
+            <span class="card-number">02</span>
+            <h3>Страхование и ДТП</h3>
+            <p>Страховые выплаты, размер ущерба, ответственность участников ДТП, сложные споры со страховыми компаниями.</p>
+          </article>
+          <article class="practice-card reveal">
+            <span class="card-number">03</span>
+            <h3>Коммерческие споры</h3>
+            <p>Подряд, поставка, аренда, корпоративные конфликты, взыскание убытков и защита интересов предпринимателей.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cases-section" id="cases">
+      <div class="shell">
+        <div class="section-heading heading-row reveal">
+          <div>
+            <p class="eyebrow">Реальные дела</p>
+            <h2>Не обещания, а конкретные судебные результаты</h2>
+          </div>
+          <p class="heading-note">Каждое дело требует отдельной оценки. Результаты прошлых споров не гарантируют аналогичный исход, но показывают наш подход к работе.</p>
+        </div>
+        <div class="cases-grid">
+          <article class="case-card case-card-featured reveal">
+            <div class="case-topline"><span>Недвижимость</span><span>Расторжение ДДУ</span></div>
+            <div class="case-result">36 млн ₽</div>
+            <h3>Спор с застройщиком «Расцветай»</h3>
+            <p>Добились расторжения договора долевого участия и взыскания рыночной стоимости квартиры, неустойки, штрафа и компенсации морального вреда.</p>
+          </article>
+          <article class="case-card reveal">
+            <div class="case-topline"><span>ИЖС</span><span>Нарушение сроков</span></div>
+            <div class="case-result">1,85 млн ₽</div>
+            <h3>Просрочка строительства дома</h3>
+            <p>Взыскали с подрядчика неустойку, штраф и компенсацию за срыв согласованных сроков строительства.</p>
+          </article>
+          <article class="case-card reveal">
+            <div class="case-topline"><span>Строительство</span><span>Недостатки</span></div>
+            <div class="case-result">890 тыс. ₽</div>
+            <h3>Дефекты квартиры</h3>
+            <p>Взыскали стоимость устранения строительных недостатков и расходы клиента на проведение экспертизы.</p>
+          </article>
+          <article class="case-card reveal">
+            <div class="case-topline"><span>ДТП</span><span>Страховой спор</span></div>
+            <div class="case-result">620 тыс. ₽</div>
+            <h3>Полное страховое возмещение</h3>
+            <p>Добились выплаты страхового возмещения после ДТП и возмещения понесённых судебных расходов.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reviews-section" id="reviews">
+      <div class="shell">
+        <div class="reviews-heading reveal">
+          <div>
+            <p class="eyebrow">Отзывы клиентов</p>
+            <h2>О работе — словами доверителей</h2>
+          </div>
+          <a class="reviews-rating" href="https://2gis.ru/novosibirsk/firm/70000001056315569/tab/reviews" target="_blank" rel="noreferrer" aria-label="Посмотреть все отзывы о ФАВОР СИБИРЬ в 2ГИС">
+            <strong>4,9</strong>
+            <span>57 отзывов в 2ГИС ↗</span>
+          </a>
+        </div>
+        <div class="reviews-grid">
+          <article class="review-card reveal">
+            <p>На консультации обсудили весь план действий, иск подготовили в течение недели, задолженность взыскали.</p>
+            <footer><strong>Дарима Б.</strong><span>Взыскание долга</span></footer>
+          </article>
+          <article class="review-card reveal">
+            <p>После неудачного опыта с другим юристом обратился по вопросу ущерба после ДТП и получил положенный результат.</p>
+            <footer><strong>Игорь Д.</strong><span>Спор после ДТП</span></footer>
+          </article>
+          <article class="review-card reveal">
+            <p>Организовали экспертизу, прошли судебный процесс и взыскали более 700 000 рублей за дефекты и просрочку.</p>
+            <footer><strong>Никита К.</strong><span>Спор с застройщиком</span></footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section approach-section" id="approach">
+      <div class="shell approach-grid">
+        <div class="section-heading sticky-heading reveal">
+          <p class="eyebrow">Как устроена работа</p>
+          <h2>Компания под руководством Павла Машко</h2>
+          <p>Павел отвечает за диагностику, стратегию и ключевые решения. Команда ведёт текущее производство, доказательства, документы и сроки.</p>
+        </div>
+        <ol class="steps-list">
+          <li class="reveal">
+            <span>01</span>
+            <div><h3>Диагностика</h3><p>Изучаем документы, отделяем юридически значимые обстоятельства от эмоций и оцениваем перспективы.</p></div>
+          </li>
+          <li class="reveal">
+            <span>02</span>
+            <div><h3>Стратегия</h3><p>Павел Машко определяет требования, доказательственную модель, переговорную позицию и ключевые процессуальные решения.</p></div>
+          </li>
+          <li class="reveal">
+            <span>03</span>
+            <div><h3>Производство</h3><p>Команда готовит документы, контролирует сроки, формирует доказательства и ведёт ежедневную работу по делу.</p></div>
+          </li>
+          <li class="reveal">
+            <span>04</span>
+            <div><h3>Контроль</h3><p>Ключевые документы и развилки проходят проверку, а клиент видит следующий шаг и получает отчёты по ходу дела.</p></div>
+          </li>
+          <li class="reveal compact-note">
+            <span>05</span>
+            <div><h3>Стоимость</h3><p>Условия определяются после анализа документов. До заключения договора вы понимаете объём работы, порядок оплаты и точки личного участия Павла.</p></div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <aside class="business-strip" id="business">
+      <div class="shell business-strip-inner reveal">
+        <div><span>Для предпринимателей</span><strong>Юридическая поддержка и судебная защита бизнеса</strong></div>
+        <a class="button button-outline" href="business.html">Подробнее для бизнеса</a>
+      </div>
+    </aside>
+
+    <section class="section contact-section" id="contact">
+      <div class="shell contact-grid">
+        <div class="contact-copy reveal">
+          <p class="eyebrow">Обсудить дело</p>
+          <h2>Направьте краткое описание ситуации</h2>
+          <p>Мы запросим необходимые документы, оценим, относится ли вопрос к нашей специализации, и предложим следующий шаг.</p>
+          <div class="direct-contacts">
+            <a href="tel:+79133761860">+7 913 376-18-60</a>
+            <a href="https://t.me/Favor_sibir" target="_blank" rel="noreferrer">Telegram @Favor_sibir</a>
+            <a href="mailto:favorsibir@mail.ru">favorsibir@mail.ru</a>
+          </div>
+        </div>
+        <form class="contact-form reveal" id="contact-form">
+          <label for="name">Имя</label>
+          <input id="name" name="name" autocomplete="name" required>
+          <label for="phone">Телефон</label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" required>
+          <label for="message">Кратко о ситуации</label>
+          <textarea id="message" name="message" rows="5" required placeholder="Что произошло, на какой стадии находится спор, какие документы есть"></textarea>
+          <label class="consent"><input id="consent" type="checkbox" required><span>Согласен на <a href="privacy.html" target="_blank">обработку персональных данных</a> и ознакомлен с <a href="privacy2.html" target="_blank">политикой конфиденциальности</a>.</span></label>
+          <button class="button button-primary" type="submit">Направить обращение</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div><strong>ФАВОР СИБИРЬ</strong><span>Авторская судебная практика Павла Машко</span></div>
+      <div><span>ИП Машко Павел Игоревич</span><span>ИНН 661588362049 · ОГРНИП 321665800167760</span></div>
+      <div><a href="privacy.html">Согласие на обработку данных</a><a href="privacy2.html">Политика конфиденциальности</a></div>
     </div>
-
-    <section id="directions" class="directions">
-        <div class="container">
-            <h2 class="section-title">Основная практика по делам физических лиц</h2>
-            <div class="directions-grid">
-                <div class="direction-card" data-aos="fade-up">
-                    <div class="direction-icon"><i class="ri-building-line"></i></div>
-                    <div class="direction-text">
-                        <h3>Недвижимость / споры с застройщиками</h3>
-                        <p>Защита прав дольщиков, споры по ИЖС, качество строительства, сроки сдачи.</p>
-                    </div>
-                </div>
-                <div class="direction-card" data-aos="fade-up" data-aos-delay="50">
-                    <div class="direction-icon"><i class="ri-car-line"></i></div>
-                    <div class="direction-text">
-                        <h3>Страхование имущества и споры по ДТП</h3>
-                        <p>Споры по ОСАГО, КАСКО, ущерб зданиям, взыскание страховых выплат, оценка ущерба.</p>
-                    </div>
-                </div>
-                <div class="direction-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="direction-icon"><i class="ri-bank-card-line"></i></div>
-                    <div class="direction-text">
-                        <h3>Взыскание / защита от взыскания</h3>
-                        <p>Долги, расписки, банкротство, исполнительное производство, оспаривание сделок.</p>
-                    </div>
-                </div>
-                <div class="direction-card" data-aos="fade-up" data-aos-delay="150">
-                    <div class="direction-icon"><i class="ri-heart-line"></i></div>
-                    <div class="direction-text">
-                        <h3>Семейное и наследственное право</h3>
-                        <p>Раздел имущества, алименты, споры об опеке, наследство, завещания.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Новая кнопка -->
-            <div style="text-align: center; margin-top: 40px;" data-aos="fade-up">
-                <a href="business.html" class="btn-primary" style="background: #c85c17; color: white; padding: 14px 34px; font-size: 1.1rem;">
-                    Правовая помощь бизнесу и предпринимателям →
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section id="packages">
-        <div class="container">
-            <h2 class="section-title">Пакеты услуг для физических лиц</h2>
-            <div class="packages">
-                <div class="package-card" data-aos="fade-up">
-                    <div class="package-name">Базовый</div>
-                    <div class="price">50 000 ₽ +15% <span style="font-size: 1rem;">или</span> 30% от взысканной суммы <span style="display:block; font-size:0.9rem;">при цене иска до 1 млн ₽</span></div>
-                    <ul class="package-desc">
-                        <li>Анализ документов</li>
-                        <li>Иск + ведение в суде первой инстанции</li>
-                        <li>Апелляция / кассация</li>
-                        <li>Исполнительное производство</li>
-                        <li>Отчеты в Telegram-боте</li>
-                        <li>Два звонка юристу</li>
-                        <li>Оплата после получения денег (при выборе способа оплаты 30%)</li>
-                    </ul>
-                    <a href="https://t.me/Favor_sibir" target="_blank" class="btn-outline">Выбрать</a>
-                </div>
-                <div class="package-card" data-aos="fade-up" data-aos-delay="50">
-                    <div class="package-name">Без оплаты</div>
-                    <div class="price">35% от взысканной суммы <span style="display:block; font-size:0.9rem;">при цене иска от 1 до 10 млн ₽</span></div>
-                    <ul class="package-desc">
-                        <li>Анализ документов</li>
-                        <li>Иск + ведение в суде первой инстанции</li>
-                        <li>Апелляция / кассация</li>
-                        <li>Исполнительное производство</li>
-                        <li>Отчеты в Telegram-боте</li>
-                        <li>Два звонка юристу</li>
-                        <li>Оплата после получения денег</li>
-                    </ul>
-                    <a href="https://t.me/Favor_sibir" target="_blank" class="btn-outline">Выбрать</a>
-                </div>
-                <div class="package-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="package-name">Решение</div>
-                    <div class="price">80 000 ₽ +20% от взысканной суммы <span style="display:block; font-size:0.9rem;">при цене иска от 1 до 10 млн ₽</span></div>
-                    <ul class="package-desc">
-                        <li>Анализ документов</li>
-                        <li>Иск + ведение в суде первой инстанции</li>
-                        <li>Апелляция / кассация</li>
-                        <li>Исполнительное производство</li>
-                        <li>Отчеты в Telegram-боте</li>
-                        <li>Два звонка юристу</li>
-                    </ul>
-                    <a href="https://t.me/Favor_sibir" target="_blank" class="btn-outline">Выбрать</a>
-                </div>
-                <div class="package-card" data-aos="fade-up" data-aos-delay="150">
-                    <div class="package-name">Персональный</div>
-                    <div class="price">Индивидуальный расчёт <span style="display:block; font-size:0.9rem;">при цене иска более 10 млн ₽</span></div>
-                    <ul class="package-desc">
-                        <li>Полное ведение дела Павлом Машко</li>
-                        <li>Анализ документов</li>
-                        <li>Иск + ведение в суде первой инстанции</li>
-                        <li>Апелляция / кассация</li>
-                        <li>Исполнительное производство</li>
-                        <li>Отчеты в Telegram-боте</li>
-                        <li>Неограниченное количество звонков</li>
-                    </ul>
-                    <a href="https://t.me/Favor_sibir" target="_blank" class="btn-outline">Выбрать</a>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 40px; padding: 16px; background: #1e293b; border-radius: 20px; color: #94a3b8;" data-aos="fade-up">
-                <i class="ri-information-line"></i> Итоговая стоимость определяется после консультации и анализа документов — зависит от сложности дела и объёма работы.
-            </div>
-            <div style="text-align: center; margin-top: 40px;" data-aos="fade-up">
-                <a href="business.html#packages" class="btn-primary" style="background: #c85c17; color: white; padding: 14px 34px; font-size: 1.1rem;">
-                    Пакеты услуг для юридических лиц и предпринимателей →
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section id="cases">
-        <div class="container">
-            <h2 class="section-title">Выигранные дела</h2>
-            <div class="carousel-case-container">
-                <div class="carousel-case-slides" id="carouselCaseSlides"></div>
-                <button class="carousel-case-btn case-prev" id="casePrevBtn">❮</button>
-                <button class="carousel-case-btn case-next" id="caseNextBtn">❯</button>
-                <div class="case-dots" id="caseDotsContainer"></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="about">
-        <div class="container about-grid">
-            <div class="about-text" data-aos="fade-right">
-                <h2>Павел Машко — основатель и руководитель</h2>
-                <p>12 лет в юриспруденции. В 2021 году открыл собственную частную практику. Помог больше 500 клиентам. Убеждён: юридическая помощь должна быть прозрачной. Каждый клиент получает доступ в Telegram-бот, где видит все этапы дела — от подачи иска до отчета о заседании.</p>
-                <h3>Команда</h3>
-                <p>Ваши права защищают сильнейшие юристы своей отрасли совместно с экспертами по строительству и автоэкспертами. Вместе мы закрываем споры с застройщиками и подрядчиками; споры по ДТП, споры по трудовым, наследственным делам. Защищаем предпринимателей.</p>
-            </div>
-            <div class="about-photo" data-aos="fade-left">
-                <img src="pavel.jpg" alt="Павел Машко">
-                <p style="margin-top: 16px;"><strong>Павел Машко</strong><br></p>
-                <p style="font-size: 0.85rem; color: #94a3b8;">Ваше доверие — наша репутация</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="reviews">
-        <div class="container">
-            <h2 class="section-title">Отзывы клиентов</h2>
-            <div class="carousel-container">
-                <div class="carousel-slides" id="carouselSlides"></div>
-                <button class="carousel-btn prev" id="prevBtn">❮</button>
-                <button class="carousel-btn next" id="nextBtn">❯</button>
-                <div class="dots" id="dotsContainer"></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="tg-channel">
-        <div class="container">
-            <div class="tg-channel-card" data-aos="fade-up">
-                <h3><i class="ri-telegram-line"></i> Авторский Telegram-канал Павла Машко</h3>
-                <p>Разборы судебных дел, внутренняя кухня юриспруденции, новости законодательства, видео-блоги и экспертные комментарии. Подпишитесь, чтобы быть в курсе.</p>
-                <a href="https://t.me/pavelmashko" target="_blank" class="btn-tg">
-                    <i class="ri-telegram-line"></i> Подписаться → @pavelmashko
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title">Получите консультацию</h2>
-            <div class="form-card" data-aos="fade-up">
-                <form id="tgForm">
-                    <label>Ваше имя</label>
-                    <input type="text" id="name" name="name" placeholder="Иван Иванов" required>
-                    <label>Телефон</label>
-                    <input type="tel" id="phone" name="phone" placeholder="+7 913 376 18 60" required>
-                    <label>Коротко опишите ситуацию</label>
-                    <textarea id="message" name="message" rows="3" placeholder="Например: построили дом/квартиру с дефектами..."></textarea>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="consent" required>
-                        <label for="consent">Я согласен на <a href="privacy.html" target="_blank">обработку персональных данных</a> и ознакомлен с <a href="privacy2.html" target="_blank">политикой конфиденциальности</a></label>
-                    </div>
-                    <button type="submit" id="submitBtn">Перезвоните мне</button>
-                    <p style="font-size: 12px; margin-top: 20px; text-align:center; color:#94a3b8;">Нажимая на кнопку, вы соглашаетесь с обработкой данных. Свяжемся в течение суток.</p>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p><i class="ri-mail-line"></i> favorsibir@mail.ru | <i class="ri-phone-line"></i> <a href="tel:+79133761860">+7 913 376 18 60</a> | <i class="ri-telegram-line"></i> Telegram: @Favor_sibir</p>
-            <p>ИП Машко Павел Игоревич | ОГРНИП: 321665800167760 | ИНН: 661588362049</p>
-            <p>© 2026 «ФАВОР СИБИРЬ» — юридическая помощь со всей ответственностью.</p>
-            <p>Информация на сайте не является публичной офертой.</p>
-        </div>
-    </footer>
-
-    <div id="cookieBanner" class="cookie-banner">
-        <p>Мы используем файлы cookie для улучшения работы сайта. <a href="privacy2.html" target="_blank">Подробнее о политике обработки данных</a></p>
-        <button id="acceptCookies" class="btn-cookie">Принять</button>
-    </div>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({duration:800,once:true,offset:100});
-
-        // Cookie
-        if (!localStorage.getItem('cookiesAccepted')) {
-            document.getElementById('cookieBanner').style.display = 'flex';
-        }
-        document.getElementById('acceptCookies').addEventListener('click', function() {
-            localStorage.setItem('cookiesAccepted', 'true');
-            document.getElementById('cookieBanner').style.display = 'none';
-        });
-
-        // Бургер-меню с переключением иконки ☰ / ✕
-        const burgerBtn = document.getElementById('burgerBtn');
-        const mobileNav = document.getElementById('mobileNav');
-
-        function updateBurgerIcon() {
-            if (mobileNav.classList.contains('show')) {
-                burgerBtn.innerHTML = '✕';
-            } else {
-                burgerBtn.innerHTML = '☰';
-            }
-        }
-
-        burgerBtn.addEventListener('click', () => {
-            mobileNav.classList.toggle('show');
-            updateBurgerIcon();
-        });
-
-        // Закрыть меню при клике на любую ссылку внутри и сбросить иконку
-        document.querySelectorAll('.mobile-nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileNav.classList.remove('show');
-                updateBurgerIcon();
-            });
-        });
-
-        // При изменении размера окна на десктоп (ширина > 800px) скрыть меню и сбросить иконку
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 800 && mobileNav.classList.contains('show')) {
-                mobileNav.classList.remove('show');
-                updateBurgerIcon();
-            }
-        });
-
-        // ========== КАРУСЕЛЬ КЕЙСОВ ==========
-        const caseData = [
-            { 
-                img: "result (1).jpg", 
-                title: "Спор с застройщиком «Расцветай»", 
-                description: "Расторжение ДДУ, взыскание рыночной стоимости квартиры + неустойка, штраф, моральный вред.", 
-                amount: "Взыскано 36 млн ₽" 
-            },
-            { 
-                img: "result (2).jpg", 
-                title: "Неустойка за просрочку ИЖС", 
-                description: "Взыскание неустойки, штрафа и морального вреда за срыв сроков строительства дома.", 
-                amount: "Взыскано 1 850 000 ₽" 
-            },
-            { 
-                img: "result (3).jpg", 
-                title: "Дефекты квартиры", 
-                description: "Взыскание стоимости устранения строительных недостатков и расходов на экспертизу.", 
-                amount: "Взыскано 890 000 ₽" 
-            },
-            { 
-                img: "result (4).jpg", 
-                title: "Взыскание страхового возмещения по ДТП", 
-                description: "Получение полной суммы страховки после ДТП, включая судебные издержки.", 
-                amount: "Взыскано 620 000 ₽" 
-            }
-        ];
-
-        let caseIndex = 0;
-        const caseSlidesContainer = document.getElementById('carouselCaseSlides');
-        const caseDotsContainer = document.getElementById('caseDotsContainer');
-
-        function buildCaseCarousel() {
-            caseSlidesContainer.innerHTML = '';
-            caseDotsContainer.innerHTML = '';
-            caseData.forEach((item, idx) => {
-                const slideDiv = document.createElement('div');
-                slideDiv.className = 'carousel-case-slide';
-                slideDiv.innerHTML = `
-                    <img src="${item.img}" alt="Судебный акт ${idx+1}">
-                    <div class="case-description">
-                        <h4>${item.title}</h4>
-                        <p>${item.description}</p>
-                        <div class="case-amount">${item.amount}</div>
-                    </div>
-                `;
-                caseSlidesContainer.appendChild(slideDiv);
-                const dot = document.createElement('div');
-                dot.className = 'case-dot';
-                dot.addEventListener('click', () => goToCaseSlide(idx));
-                caseDotsContainer.appendChild(dot);
-            });
-            updateCaseDots();
-            updateCaseSlidePosition();
-        }
-
-        function updateCaseSlidePosition() {
-            caseSlidesContainer.style.transform = `translateX(-${caseIndex * 100}%)`;
-            updateCaseDots();
-        }
-
-        function updateCaseDots() {
-            document.querySelectorAll('.case-dot').forEach((dot, idx) => {
-                if (idx === caseIndex) dot.classList.add('active');
-                else dot.classList.remove('active');
-            });
-        }
-
-        function goToCaseSlide(index) {
-            caseIndex = (index + caseData.length) % caseData.length;
-            updateCaseSlidePosition();
-        }
-
-        if (caseData.length) {
-            buildCaseCarousel();
-            document.getElementById('casePrevBtn').addEventListener('click', () => goToCaseSlide(caseIndex - 1));
-            document.getElementById('caseNextBtn').addEventListener('click', () => goToCaseSlide(caseIndex + 1));
-        } else {
-            document.getElementById('carouselCaseSlides').innerHTML = '<div class="carousel-case-slide">Скоро появятся судебные акты</div>';
-            document.getElementById('casePrevBtn').style.display = 'none';
-            document.getElementById('caseNextBtn').style.display = 'none';
-        }
-
-        // Карусель отзывов
-        const reviewImages = ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg","9.jpg","10.jpg","11.jpg","12.jpg","13.jpg","14.jpg","15.jpg","16.jpg","17.jpg","18.jpg"];
-        let reviewIndex = 0;
-        const slidesContainer = document.getElementById('carouselSlides');
-        const dotsContainer = document.getElementById('dotsContainer');
-
-        function buildReviewCarousel() {
-            slidesContainer.innerHTML = '';
-            dotsContainer.innerHTML = '';
-            reviewImages.forEach((src, idx) => {
-                const slide = document.createElement('div');
-                slide.className = 'carousel-slide';
-                const img = document.createElement('img');
-                img.src = src;
-                img.alt = `Отзыв ${idx+1}`;
-                slide.appendChild(img);
-                slidesContainer.appendChild(slide);
-                const dot = document.createElement('div');
-                dot.className = 'dot';
-                dot.addEventListener('click', () => goToReviewSlide(idx));
-                dotsContainer.appendChild(dot);
-            });
-            updateReviewDots();
-            updateReviewSlidePosition();
-        }
-
-        function updateReviewSlidePosition() {
-            slidesContainer.style.transform = `translateX(-${reviewIndex * 100}%)`;
-            updateReviewDots();
-        }
-
-        function updateReviewDots() {
-            document.querySelectorAll('.dot').forEach((dot, idx) => {
-                if (idx === reviewIndex) dot.classList.add('active');
-                else dot.classList.remove('active');
-            });
-        }
-
-        function goToReviewSlide(index) {
-            reviewIndex = (index + reviewImages.length) % reviewImages.length;
-            updateReviewSlidePosition();
-        }
-
-        if (reviewImages.length) {
-            buildReviewCarousel();
-            document.getElementById('prevBtn').addEventListener('click', () => goToReviewSlide(reviewIndex - 1));
-            document.getElementById('nextBtn').addEventListener('click', () => goToReviewSlide(reviewIndex + 1));
-        } else {
-            slidesContainer.innerHTML = '<div class="carousel-slide">Скоро появятся отзывы</div>';
-            document.getElementById('prevBtn').style.display = 'none';
-            document.getElementById('nextBtn').style.display = 'none';
-        }
-
-        // Отправка формы
-        const form = document.getElementById('tgForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const WEBHOOK_URL = 'https://hook.eu1.make.com/zqnio8l4f5q1t1imhbvxjkxmpc3wmslh';
-
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const name = document.getElementById('name').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const message = document.getElementById('message').value.trim();
-            const consent = document.getElementById('consent').checked;
-            if (!name || !phone || !message) return alert('Заполните все поля');
-            if (!consent) return alert('Необходимо согласие на обработку данных');
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Отправка...';
-            try {
-                const response = await fetch(WEBHOOK_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name, phone, message, consent })
-                });
-                if (response.ok) {
-                    alert('✅ Заявка отправлена! Мы свяжемся с вами.');
-                    form.reset();
-                } else {
-                    alert('❌ Ошибка. Попробуйте позже.');
-                }
-            } catch (error) {
-                alert('❌ Ошибка соединения.');
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Перезвоните мне';
-            }
-        });
-
-        // Выравнивание высоты цен
-        function equalizePriceHeights() {
-            const priceBlocks = document.querySelectorAll('.package-card .price');
-            if (!priceBlocks.length) return;
-            let max = 0;
-            priceBlocks.forEach(block => {
-                block.style.height = 'auto';
-                max = Math.max(max, block.offsetHeight);
-            });
-            priceBlocks.forEach(block => block.style.height = max + 'px');
-        }
-        window.addEventListener('load', equalizePriceHeights);
-        window.addEventListener('resize', equalizePriceHeights);
-    </script>
-
-    <!-- Чат-бот (виджет) -->
-    <script>
-        (function() {
-            const CONFIG = {
-                botName: "Юрист-консультант",
-                welcomeMessage: "Здравствуйте! Я помощник Павла Машко. Выберите одну из частых тем и получите базовую консультацию. Для подробной консультации заполните форму обратной связи или свяжитесь по контактам.",
-                primaryColor: "#c85c17",
-                secondaryColor: "#0a2a3a",
-                leadUrl: "https://t.me/Favor_sibir",
-                useAI: false,
-                openaiApiKey: "",
-                faq: [
-                    { keywords: ["неустойка","просрочка","застройщик","дду"], answer: "По спорам о взыскании неустойки с застройщика мы работаем на условиях «гонорар успеха» — вы платите только после получения денег по суду. Для первичной оценки пришлите договор долевого участия и акт приёма-передачи." },
-                    { keywords: ["дтп","страховая","осага","каско"], answer: "По ДТП и страховым спорам мы помогаем собрать документы, провести независимую экспертизу и взыскать страховое возмещение в суде. Средний срок — от 2 до 4 месяцев." },
-                    { keywords: ["развод","алименты","раздел имущества","наследство"], answer: "Семейные и наследственные споры требуют индивидуального подхода. Напишите подробности — я проконсультирую бесплатно и предложу стратегию." },
-                    { keywords: ["арбитраж","поставка","подряд","договор"], answer: "Арбитражные споры (взыскание долгов, споры по договорам подряда, поставки) веду удалённо по всей РФ. Обычно результат — взыскание суммы долга, неустойки и расходов на юриста." },
-                    { keywords: ["ижс","дом","стройка","подрядчик"], answer: "При спорах с подрядчиками по ИЖС мы проводим строительную экспертизу, готовим претензию, иск и представляем интересы в суде. Работаем по факту результата." },
-                    { keywords: ["консультация","записаться","стоимость"], answer: "Первичная консультация — бесплатно. Вы можете написать мне в Telegram напрямую: https://t.me/Favor_sibir или оставить свой номер, и я перезвоню." }
-                ]
-            };
-            const style = document.createElement('style');
-            style.textContent = `
-                .chat-widget-btn { position:fixed; bottom:20px; right:20px; width:60px; height:60px; background:${CONFIG.primaryColor}; border-radius:50%; cursor:pointer; box-shadow:0 4px 12px rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; z-index:9999; transition:0.2s; }
-                .chat-widget-btn:hover { transform:scale(1.05); }
-                .chat-widget-btn svg { width:32px; height:32px; fill:white; }
-                .chat-widget-window { position:fixed; bottom:90px; right:20px; width:350px; max-width:calc(100vw - 40px); height:500px; background:#1e293b; border-radius:20px; box-shadow:0 10px 25px rgba(0,0,0,0.3); display:flex; flex-direction:column; overflow:hidden; z-index:10000; font-family:system-ui; border:1px solid #334155; }
-                .chat-widget-window.closed { display:none; }
-                .chat-header { background:${CONFIG.secondaryColor}; color:white; padding:15px; font-weight:bold; display:flex; justify-content:space-between; align-items:center; }
-                .chat-header h4 { margin:0; font-size:1rem; }
-                .chat-header button { background:none; border:none; color:white; font-size:20px; cursor:pointer; }
-                .chat-messages { flex:1; overflow-y:auto; padding:15px; background:#0f172a; display:flex; flex-direction:column; gap:10px; }
-                .message { max-width:85%; padding:8px 12px; border-radius:18px; font-size:14px; line-height:1.4; word-wrap:break-word; }
-                .message.bot { background:#1e293b; color:#e2e8f0; align-self:flex-start; border-bottom-left-radius:4px; }
-                .message.user { background:${CONFIG.primaryColor}; color:white; align-self:flex-end; border-bottom-right-radius:4px; }
-                .chat-input-area { display:flex; padding:10px; border-top:1px solid #334155; background:#1e293b; }
-                .chat-input-area input { flex:1; border:1px solid #334155; border-radius:24px; padding:8px 12px; font-size:14px; outline:none; background:#0f172a; color:white; }
-                .chat-input-area button { background:${CONFIG.primaryColor}; border:none; color:white; border-radius:24px; padding:8px 16px; margin-left:8px; cursor:pointer; font-weight:bold; }
-                .quick-buttons { display:flex; flex-wrap:wrap; gap:8px; padding:8px 12px; background:#0f172a; }
-                .quick-btn { background:#1e293b; border:1px solid ${CONFIG.primaryColor}; border-radius:20px; padding:6px 12px; font-size:12px; cursor:pointer; color:${CONFIG.primaryColor}; transition:0.2s; display:inline-flex; align-items:center; gap:4px; }
-                .quick-btn:hover { background:${CONFIG.primaryColor}; color:#0f172a; }
-                @media (max-width:480px) { .chat-widget-window { width:100vw; height:100vh; bottom:0; right:0; border-radius:0; } .chat-widget-btn { bottom:15px; right:15px; } }
-            `;
-            document.head.appendChild(style);
-            const widgetHTML = `<div class="chat-widget-btn" id="chatBtn"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg></div>
-            <div class="chat-widget-window closed" id="chatWindow"><div class="chat-header"><h4>${CONFIG.botName}</h4><button id="closeChatBtn">✕</button></div><div class="chat-messages" id="chatMessages"><div class="message bot">${CONFIG.welcomeMessage}</div></div><div class="quick-buttons" id="quickButtons"><button class="quick-btn" data-question="Неустойка с застройщика"><i class="ri-building-line"></i> Неустойка</button><button class="quick-btn" data-question="ДТП и страховые споры"><i class="ri-car-line"></i> ДТП</button><button class="quick-btn" data-question="Развод и наследство"><i class="ri-home-heart-line"></i> Семейные споры</button><button class="quick-btn" data-question="Спор с подрядчиком ИЖС"><i class="ri-hammer-line"></i> ИЖС</button><button class="quick-btn" data-question="Записаться на консультацию"><i class="ri-customer-service-line"></i> Консультация</button></div><div class="chat-input-area"><input type="text" id="chatInput" placeholder="Напишите вопрос..."><button id="sendBtn">Отправить</button></div></div>`;
-            document.body.insertAdjacentHTML('beforeend', widgetHTML);
-            const btn = document.getElementById('chatBtn'), windowDiv = document.getElementById('chatWindow'), closeBtn = document.getElementById('closeChatBtn');
-            const messagesDiv = document.getElementById('chatMessages'), input = document.getElementById('chatInput'), sendBtn = document.getElementById('sendBtn');
-            const quickBtns = document.querySelectorAll('.quick-btn');
-            function addMessage(text, isUser=false) { const msgDiv = document.createElement('div'); msgDiv.className = `message ${isUser ? 'user' : 'bot'}`; msgDiv.innerText = text; messagesDiv.appendChild(msgDiv); messagesDiv.scrollTop = messagesDiv.scrollHeight; }
-            async function getBotReply(userMessage) {
-                const lowerMsg = userMessage.toLowerCase();
-                let bestAnswer = null, maxMatches = 0;
-                for (const item of CONFIG.faq) {
-                    let matches = 0;
-                    for (const kw of item.keywords) if (lowerMsg.includes(kw)) matches++;
-                    if (matches > maxMatches) { maxMatches = matches; bestAnswer = item.answer; }
-                }
-                if (bestAnswer) return bestAnswer;
-                return "Спасибо за вопрос. Чтобы получить точную консультацию, напишите, пожалуйста, в Telegram: https://t.me/Favor_sibir или оставьте свой номер телефона (я свяжусь с вами).";
-            }
-            async function handleSend() {
-                const text = input.value.trim(); if (!text) return;
-                addMessage(text, true); input.value = ""; addMessage("...", false);
-                const reply = await getBotReply(text);
-                messagesDiv.removeChild(messagesDiv.lastChild); addMessage(reply, false);
-                if (text.toLowerCase().includes("записаться") || text.toLowerCase().includes("консультация") || reply.toLowerCase().includes("телефон")) {
-                    setTimeout(() => addMessage("Вы можете оставить свой номер телефона, и я передам его юристу. Или напишите напрямую в Telegram: https://t.me/Favor_sibir", false), 500);
-                }
-            }
-            btn.addEventListener('click', () => windowDiv.classList.toggle('closed'));
-            closeBtn.addEventListener('click', () => windowDiv.classList.add('closed'));
-            sendBtn.addEventListener('click', handleSend);
-            input.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSend(); });
-            quickBtns.forEach(btn => btn.addEventListener('click', () => { input.value = btn.getAttribute('data-question'); handleSend(); }));
-        })();
-    </script>
+    <div class="shell footer-bottom">© 2026 ФАВОР СИБИРЬ. Информация на сайте не является публичной офертой.</div>
+  </footer>
+  <script src="script.js"></script>
 </body>
 </html>
