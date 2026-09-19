@@ -8,6 +8,49 @@
   <meta name="theme-color" content="#081419">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="stylesheet" href="styles.css?v=6">
+  <style>
+    .business-conditions .business-conditions-list {
+      counter-reset: cooperation-step;
+      display: grid;
+      gap: 0;
+      align-self: start;
+      background: transparent;
+      border-top: 1px solid rgba(228, 164, 118, .42);
+    }
+
+    .business-conditions .business-conditions-list p {
+      counter-increment: cooperation-step;
+      position: relative;
+      margin: 0;
+      padding: 25px 24px 25px 76px;
+      background: transparent;
+      border-bottom: 1px solid rgba(243, 239, 231, .16);
+      color: var(--paper);
+      font-size: 1rem;
+    }
+
+    .business-conditions .business-conditions-list p::before {
+      content: "0" counter(cooperation-step);
+      position: absolute;
+      left: 8px;
+      top: 24px;
+      color: var(--copper-light);
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      line-height: 1;
+    }
+
+    @media (max-width: 780px) {
+      .business-conditions .business-conditions-list p {
+        padding: 22px 10px 22px 58px;
+      }
+
+      .business-conditions .business-conditions-list p::before {
+        left: 4px;
+        top: 22px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
